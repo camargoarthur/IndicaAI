@@ -1,0 +1,19 @@
+@model TrackingDateForm
+
+<div data-tracking-date-group hidden="@(!Model.Input.ShowStart)">
+    <div class="date-grid">
+        <div class="field" data-date-field="start" hidden="@(!Model.Input.ShowStart)">
+            <label asp-for="Input.Start">@T["StartDate"] (@T["Optional"])</label>
+            <input asp-for="Input.Start" type="date" asp-format="{0:yyyy-MM-dd}" disabled="@(!Model.Input.ShowStart)" data-date-edit />
+        </div>
+        <div class="field" data-date-field="completion" hidden="@(!Model.Input.ShowCompletion)">
+            <label asp-for="Input.Completion">@T["CompletionDate"] (@T["Optional"])</label>
+            <input asp-for="Input.Completion" type="date" asp-format="{0:yyyy-MM-dd}" disabled="@(!Model.Input.ShowCompletion)" data-date-edit />
+        </div>
+    </div>
+    <p class="help">
+        @T.Get("DateReference", T.Date(Model.IncludedOn))
+        <span data-completion-reference hidden="@(!Model.Input.ShowCompletion)"><br />@T["NoAutomaticCompletion"]</span>
+    </p>
+</div>
+<partial name="_DateConfirmation" model='new DateConfirmation(Model.Warnings, Model.Input.ExpectedDateConfirmationKey, "Input.")' />

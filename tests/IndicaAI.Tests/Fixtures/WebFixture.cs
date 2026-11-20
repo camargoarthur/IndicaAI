@@ -7,5 +7,6 @@ namespace IndicaAI.Tests.Fixtures;
 public sealed class WebFixture : WebApplicationFactory<global::Program>
 {
     public DataPaths Paths { get; } = DataPaths.ForRoot(Path.Combine(Path.GetTempPath(), "IndicaAI-web-tests", Guid.NewGuid().ToString("N")));
-    protected override void ConfigureWebHost(IWebHostBuilder builder) => builder.ConfigureServices(services => { services.RemoveAll<DataPaths>(); services.AddSingleton(Paths); });
+    protected override void ConfigureWebHost(IWebHostBuilder builder) => builder.UseSetting("IndicaAI:DemoCatalog", "true")
+        .ConfigureServices(services => { services.RemoveAll<DataPaths>(); services.AddSingleton(Paths); });
 }

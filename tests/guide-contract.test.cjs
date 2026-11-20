@@ -8,10 +8,10 @@ test('guia usa versão funcional e armazenamento separado por versão',()=>{
  assert.ok(html.includes('indicaai-manual-tests-'+version+'-v1'));
  assert.match(html,new RegExp('class="edition"[^>]*>[\\s\\S]*?'+version.replaceAll('.','\\.')));
 });
-test('39 IDs únicos, caminhos, execução e resultados continuam presentes',()=>{
+test('43 IDs únicos, caminhos, execução e resultados continuam presentes',()=>{
  const articles=[...html.matchAll(/<article class="case" id="(TM\d+)"[\s\S]*?<\/article>/g)];
- assert.ok(articles.length>=39);assert.equal(new Set(articles.map(m=>m[1])).size,articles.length);
- for(let i=1;i<=39;i++)assert.ok(articles.some(m=>m[1]==='TM'+String(i).padStart(2,'0')));
+ assert.ok(articles.length>=43);assert.equal(new Set(articles.map(m=>m[1])).size,articles.length);
+ for(let i=1;i<=43;i++)assert.ok(articles.some(m=>m[1]==='TM'+String(i).padStart(2,'0')));
  for(const [article]of articles)for(const text of ['Caminho da tela','Como executar','Resultado esperado','data-result=','data-field='])assert.ok(article.includes(text));
 });
 test('JavaScript válido, fontes/licenças incorporadas e links locais existentes',()=>{

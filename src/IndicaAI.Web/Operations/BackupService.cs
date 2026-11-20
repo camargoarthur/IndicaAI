@@ -14,8 +14,8 @@ public sealed class BackupService(DataPaths paths)
     public async Task<string> CreateAsync(string reason, CancellationToken ct = default) { var gate = DatabaseGate.For(paths); await gate.WaitAsync(ct); try { return await CreateCoreAsync(reason, ct); } finally { gate.Release(); } }
     internal async Task<string> CreateCoreAsync(string reason, CancellationToken ct)
     {
-        if (reason is not ("daily" or "pre-migration" or "manual" or "pre-restore")) throw new DomainException("backup_invalid");
-        var code = reason switch { "daily" => "d", "pre-migration" => "u", "pre-restore" => "r", _ => "m" };
+        if (reason is not ("daily" or "pre-migration" or "manual" or "pre-restore" or "pre-demo-cleanup")) throw new DomainException("backup_invalid");
+        var code = reason switch { "daily" => "d", "pre-migration" => "u", "pre-restore" => "r", "pre-demo-cleanup" => "c", _ => "m" };
         paths.EnsureDirectories(); var name = "b-" + code + "-" + DateTime.UtcNow.ToString("yyyyMMdd-HHmmss") + "-" + Guid.NewGuid().ToString("N")[..8]; var pending = Path.Combine(paths.Backups, ".p-" + name); Directory.CreateDirectory(Path.Combine(pending, "data"));
         await using (var source = new SqliteConnection(new SqliteConnectionStringBuilder { DataSource = paths.Database, Mode = SqliteOpenMode.ReadOnly, Pooling = false }.ToString())) { await source.OpenAsync(ct); await using var target = new SqliteConnection(new SqliteConnectionStringBuilder { DataSource = Path.Combine(pending, "data", "indicaai.db"), Pooling = false }.ToString()); await target.OpenAsync(ct); source.BackupDatabase(target); await using var mode = target.CreateCommand(); mode.CommandText = "PRAGMA journal_mode=DELETE"; await mode.ExecuteNonQueryAsync(ct); }
         if (Directory.Exists(paths.Assets)) CopyTree(paths.Assets, Path.Combine(pending, "assets")); else Directory.CreateDirectory(Path.Combine(pending, "assets"));

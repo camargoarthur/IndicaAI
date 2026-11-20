@@ -1,6 +1,42 @@
 @page
 @model IndicaAI.Web.Pages.Admin.Import.ResultModel
-@{ViewData["Title"]=T["ImportResult"];}
-<a href="/Admin/Import/Preview" class="back-link">@T["ImportCsv"]</a><header class="page-heading"><h1>@T["ImportResult"]</h1></header><p class="notice" role="status">@T["import."+Model.Result.Status] · @T["Applied"]: @Model.Result.Applied · @T["Rejected"]: @Model.Result.Rejected · @T["Ignored"]: @Model.Result.IgnoredRecords · @T["Unprocessed"]: @Model.Result.Unprocessed</p>
-<div class="table-scroll"><table><thead><tr><th>@T["Record"]</th><th>@T["Key"]</th><th>@T["Action"]</th><th>@T["Details"]</th></tr></thead><tbody>@foreach(var row in Model.Result.Rows){<tr><td>@row.RecordNumber</td><td><code>@row.Key</code></td><td>@T["import."+row.Status] · @T["action."+row.Action]</td><td>@if(row.ReasonCode!=null){@T["error."+row.ReasonCode]}</td></tr>}</tbody></table></div>
-
+@{ ViewData["Title"] = T["ImportResult"]; }
+<a asp-page="Preview" class="back-link">@T["ImportCsv"]</a>
+<header class="page-heading"><h1>@T["ImportResult"]</h1></header>
+<p class="notice" role="status">
+    @T["import." + Model.Result.Status] · @T["Applied"]: @Model.Result.Applied · @T["Rejected"]: @Model.Result.Rejected · @T["Ignored"]: @Model.Result.IgnoredRecords · @T["Unprocessed"]: @Model.Result.Unprocessed
+</p>
+@if (Model.RejectedOnly)
+{
+    <p><a asp-page="Result" asp-route-id="@Model.Result.BatchId">@T["ImportViewAllRows"]</a></p>
+    @if (Model.Result.Rejected == 0)
+    {
+        <p class="empty-state">@T["ImportNoRejections"]</p>
+    }
+}
+else if (Model.Result.Rejected > 0)
+{
+    <p><a asp-page="Result" asp-route-id="@Model.Result.BatchId" asp-route-rejectedOnly="true">@T["ImportViewRejections"]</a></p>
+}
+@if (Model.Rows.Any())
+{
+    <div class="table-scroll">
+        <table class="import-table">
+            <thead><tr><th scope="col">@T["Record"]</th><th scope="col">@T["Key"]</th><th scope="col">@T["Action"]</th><th scope="col">@T["Details"]</th></tr></thead>
+            <tbody>
+                @foreach (var row in Model.Rows)
+                {
+                    <tr class="@(row.Status == "rejected" ? "row-rejected" : null)">
+                        <td>@row.RecordNumber <small>@T["PhysicalLine"] @row.PhysicalStartLine</small></td>
+                        <td><code>@row.Key</code></td>
+                        <td>
+                            @T["import." + row.Status]
+                            @if (row.Status != row.Action) { <span> · @T["action." + row.Action]</span> }
+                        </td>
+                        <td><partial name="_ReasonDetails" model="row" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

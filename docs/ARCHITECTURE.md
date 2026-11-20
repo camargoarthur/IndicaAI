@@ -13,6 +13,10 @@ Arquitetura A1 escolhida e implementada: aplicação local em .NET 10, Razor Pag
 
 Um acompanhamento por identidade/obra mantém estado atual, ciclos e histórico. Comandos validam versões e repetição de operação; lote pessoal é atômico. CSV administrativo faz preview e aplica registros válidos com falhas isoladas. Backup abrange banco e recursos e é validado antes da restauração.
 
+Em `Features/Catalog`, o cliente TMDB consulta filmes em HTTPS com token mantido pelo servidor. A página protege os dados selecionados na prévia antes do POST de confirmação. `Works.TmdbMovieId` é opcional e único; cadeias de busca, erros externos e credenciais ficam fora do acompanhamento local. O fluxo de acompanhamento existente recebe o ID interno da obra.
+
+O lote de filmes e séries usa IDs externos distintos por mídia e recibo por entrada, com gravação da obra e do acompanhamento inicial na mesma transação. O catálogo usa os registros locais e seus estados. Pôsteres externos têm cache local com expiração em 90 dias, separado dos dados permanentes e dos backups. Os arquivos locais sem correspondência inequívoca preservam o título e a descrição enviados pelo usuário, com o vínculo externo pendente.
+
 ## Referências técnicas
 
 - [Modelo conceitual](architecture/DATA_MODEL.md) e [modelo físico](architecture/PHYSICAL_MODEL.md).

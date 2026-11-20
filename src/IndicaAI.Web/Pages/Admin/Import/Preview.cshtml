@@ -17,7 +17,7 @@ else{<div class="notice"><strong>@T["PreviewHelp"]</strong><p>@T["Valid"]: @Mode
  <td>
  @if(row.Status=="rejected")
  {
-  <p>@T["error."+row.ReasonCode] @if(row.ReasonArgs is not null){<code>@string.Join(", ",System.Text.Json.JsonSerializer.Deserialize<string[]>(row.ReasonArgs)??[])</code>}</p><p class="muted">@T["RowRejected"]</p>
+  <p><partial name="_ReasonDetails" model="row" /></p><p class="muted">@T["RowRejected"]</p>
  }
  else if(row.Action=="unchanged")
  {

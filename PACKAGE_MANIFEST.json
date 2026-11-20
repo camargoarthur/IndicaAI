@@ -1,6 +1,6 @@
 {
   "package": "IndicaAI-local-mvp",
-  "version": "0.10",
+  "version": "0.13",
   "date": "2026-11-20",
   "scope": "source-tests-documents-and-static-assets-excludes-runtime-personal-data-and-caches",
   "files": [
@@ -21,8 +21,8 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 9513,
-      "sha256": "0a3ef0469096b1889f395fd27c81426541c1a70d37f98ecad6775e38091391fd"
+      "bytes": 9773,
+      "sha256": "32a28e3ffaa8a85150f6e188bd2c942d3beb3887000a0430af626b1254fcd55d"
     },
     {
       "path": "Directory.Build.props",
@@ -30,9 +30,124 @@
       "sha256": "b6fae116decbb3591cf33ead6a1dcc867c73f3ca465e2b3b0df8929316edeb6d"
     },
     {
+      "path": "IndicaAI.slnx",
+      "bytes": 231,
+      "sha256": "5af4cc23cfd99014bef9aff4097d2361f205f06f2b6949a5ed68f1645b659051"
+    },
+    {
+      "path": "Iniciar-IndicaAI.bat",
+      "bytes": 52,
+      "sha256": "c890e60b93d7e266752e85ac5aa6308bd99ac1cb201b48fdf1a98365615165cf"
+    },
+    {
+      "path": "Iniciar-Testes-IndicaAI.bat",
+      "bytes": 198,
+      "sha256": "eb92b84a20deac1599aab71c26f7c876932603c45b0a7912b7eba3125b763b6d"
+    },
+    {
+      "path": "Iniciar-Testes-Restaurados-IndicaAI.bat",
+      "bytes": 370,
+      "sha256": "65f6b067f747da783d977be709fc0ed3eafe8a424274213ebe58e697ee9ab9ae"
+    },
+    {
+      "path": "NuGet.Config",
+      "bytes": 179,
+      "sha256": "fd6836e883aa6bf334e587a02ff7239f68713f4baac6d749f743a2b489b1769c"
+    },
+    {
+      "path": "PATCH_NOTES.md",
+      "bytes": 6720,
+      "sha256": "00f545540fa2c2b7880515f123369c024a003847fb0e69c74dd02c33f93a9ce1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2457,
+      "sha256": "0528b655902b761b2a84c4313237e25392a670ef8723a1b4fe6dcc0607417067"
+    },
+    {
+      "path": "VERSION",
+      "bytes": 5,
+      "sha256": "342a2d9e91ecb95d736e0a0cd7540c7b4637173ebc0f3a12a09839873b863e56"
+    },
+    {
+      "path": "Validar-IndicaAI.bat",
+      "bytes": 449,
+      "sha256": "1cf76a0a1ad0e121382390ebf314f0bd9154e453bfb26c83e3533483ae32590a"
+    },
+    {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 1776,
-      "sha256": "a6cf4ea347a04e3d79609e59030a01752ff2a9a12e02ea44838da03ffbd780a5"
+      "bytes": 2614,
+      "sha256": "82f186fec2e9604f46946a63c703f686e8ad6387f03eb4b762237312aaf670d3"
+    },
+    {
+      "path": "docs/BACKLOG.md",
+      "bytes": 3366,
+      "sha256": "d30a64c6fa21761c10239736967a30cc6024cd738fa955a1a3510075d3d0fdea"
+    },
+    {
+      "path": "docs/CONTINUE_HERE.md",
+      "bytes": 8940,
+      "sha256": "3f812a4baedeff1ece8f9e118f4182099ac5ac06426ed411c5eb28eabb1e807a"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "bytes": 14424,
+      "sha256": "80239526d6a8bccf1408933c63a9874874c1225dc8f5e6535175c4176f285d14"
+    },
+    {
+      "path": "docs/GATES.md",
+      "bytes": 834,
+      "sha256": "4283f59c7aaa574b1d06bf367fc1b195d33b78631acbbb549279cf187c016837"
+    },
+    {
+      "path": "docs/OPEN_QUESTIONS.md",
+      "bytes": 662,
+      "sha256": "fdd5dda1224dddf774f6ffee404cdb7746718a0b2ca50e25b8dd9e011aa830e8"
+    },
+    {
+      "path": "docs/OPERATIONS.md",
+      "bytes": 11671,
+      "sha256": "6b5ce55b02de482e95e185f8f55857beba8d6594ec2da3a5c36e031a87b058ac"
+    },
+    {
+      "path": "docs/PRD.md",
+      "bytes": 6791,
+      "sha256": "1804af44cc2720599d84c3af2aac29b83990c1fed0ee4ffcef0b114c4bd3f816"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 1111,
+      "sha256": "b4a7d376a7fec67359f3d87b3e7d724c222d14b76feaae77b93e3c2aa0a47a52"
+    },
+    {
+      "path": "docs/SKILLS.md",
+      "bytes": 669,
+      "sha256": "3683f3e1c0543516ac9bec2235d6f66fc4c712c8fbec02d759c5875a44413b94"
+    },
+    {
+      "path": "docs/STRUCTURE.md",
+      "bytes": 5904,
+      "sha256": "2286b87c0e44a7505958b601bfd9c7832c2dbd4bbc8f10af6f77858c3b7b8198"
+    },
+    {
+      "path": "docs/TEST_CASES.html",
+      "bytes": 1198847,
+      "sha256": "6544c9d3cf1d66c2bff7446b2e3dd707ed703910a1236e5276aee88c181d92c7"
+    },
+    {
+      "path": "docs/TEST_CASES.md",
+      "bytes": 503,
+      "sha256": "8e41be76b565e5a9a8f15848a2f1811b31b812e501b0b17726e8daa589071dec"
+    },
+    {
+      "path": "docs/THIRD_PARTY.md",
+      "bytes": 4703,
+      "sha256": "9a96738c85532d19dd2577a47175982708df81188d3967cada53415119520712"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "bytes": 6349,
+      "sha256": "8d0e842a1a277fc60e0c495b5ee64edae3ea31aca150e915d31c472adba3a379"
     },
     {
       "path": "docs/architecture/CSV_CONTRACT.md",
@@ -55,19 +170,14 @@
       "sha256": "60026048068311e08018d300295c43701178756e6c3c145ff2c3141e020a4cfd"
     },
     {
-      "path": "docs/BACKLOG.md",
-      "bytes": 2995,
-      "sha256": "99fabc8838ddad754faa79f100ba2e3ff94c9f8f7b6a1cf56d1c29601077bff7"
+      "path": "docs/design/DIRECTION-2.md",
+      "bytes": 7454,
+      "sha256": "51470c3e5d23cbef25a60a170a158aa93530b6a69f117f5cfe9eae9a3daf45d8"
     },
     {
-      "path": "docs/CONTINUE_HERE.md",
-      "bytes": 2624,
-      "sha256": "13b3e96add82e8439421d9253d6b70eac00a837b5588ec7fca8a5f44520b1802"
-    },
-    {
-      "path": "docs/DECISIONS.md",
-      "bytes": 13045,
-      "sha256": "69e93e571ec3bab6f4552b7d31d9c6a16c366cf32b0e021b93832bb1eb62fe9f"
+      "path": "docs/design/README.md",
+      "bytes": 5089,
+      "sha256": "a54b60be84de29f99c0171de05130d08a85ed9181e9cb2393290c8fec3d53ba4"
     },
     {
       "path": "docs/design/direcao-2-acompanhamento.png",
@@ -95,19 +205,9 @@
       "sha256": "86b3528daed6b4743abe04329b398250bc45eb3a28466b412e43387774629ab4"
     },
     {
-      "path": "docs/design/DIRECTION-2.md",
-      "bytes": 7454,
-      "sha256": "51470c3e5d23cbef25a60a170a158aa93530b6a69f117f5cfe9eae9a3daf45d8"
-    },
-    {
       "path": "docs/design/estudo-2.png",
       "bytes": 2046473,
       "sha256": "85a46d5a7269ef656cfd394fa76a881366b578cdf179ea76379e0c4dc216c840"
-    },
-    {
-      "path": "docs/design/README.md",
-      "bytes": 5089,
-      "sha256": "a54b60be84de29f99c0171de05130d08a85ed9181e9cb2393290c8fec3d53ba4"
     },
     {
       "path": "docs/evidence/10-delivery-suite.log",
@@ -185,6 +285,31 @@
       "sha256": "ffb4a00c45ce89e2147af9ab81c2637e83b5d71bc6b9863142d3ac38518df120"
     },
     {
+      "path": "docs/evidence/THIRD_PARTY-PACKAGES.json",
+      "bytes": 7760,
+      "sha256": "02f34f2def64324180d8724924cbc40fdbe275145c35249dfb925139c8e07663"
+    },
+    {
+      "path": "docs/evidence/VALIDATION-0.10-full.json",
+      "bytes": 5760,
+      "sha256": "b9ef78c9b53861931b45a52e1e4d38a936f171c7e39d30567dabce74583c05aa"
+    },
+    {
+      "path": "docs/evidence/VALIDATION-0.10-launcher.log",
+      "bytes": 323,
+      "sha256": "124b86c48396e4751afadaffae08db20b40d3811f02bcfb3ac8ccaaf4b4eafdc"
+    },
+    {
+      "path": "docs/evidence/VALIDATION-0.10-module.json",
+      "bytes": 4128,
+      "sha256": "da0ecc7d81e2384ff0432891affb8263012e65d6d949d6d07225684a64346032"
+    },
+    {
+      "path": "docs/evidence/VALIDATION-0.10.md",
+      "bytes": 3839,
+      "sha256": "e79254e9405e822bca0a8296afc17062e3ff53aa55f2289556623af70455e137"
+    },
+    {
       "path": "docs/evidence/test-guide/compare-identity.png",
       "bytes": 2279858,
       "sha256": "baa55854b1d26370d50254f6edc5b9f80a2490fa59a58316c899a63320806d63"
@@ -250,46 +375,6 @@
       "sha256": "237b544ecfdfea93af74faf2521782b2edbec70b15d7162d4c5f167010287997"
     },
     {
-      "path": "docs/evidence/THIRD_PARTY-PACKAGES.json",
-      "bytes": 7760,
-      "sha256": "02f34f2def64324180d8724924cbc40fdbe275145c35249dfb925139c8e07663"
-    },
-    {
-      "path": "docs/evidence/ui/compare-batch.png",
-      "bytes": 2181756,
-      "sha256": "4a8833e8c56a1bb0d42ef426ea1fcdbdc62f507b8648a3d164c09be699fe0483"
-    },
-    {
-      "path": "docs/evidence/ui/compare-csv-focus.png",
-      "bytes": 1142029,
-      "sha256": "833f0f05dd56d670abdd558ec2a8788e49097ccb4500642e09f53367b749a8d9"
-    },
-    {
-      "path": "docs/evidence/ui/compare-csv.png",
-      "bytes": 2409550,
-      "sha256": "1fef1e02df0668dc632816590c818564123469cf15cb9a67f04be0d1ec6e43d1"
-    },
-    {
-      "path": "docs/evidence/ui/compare-dark-en.png",
-      "bytes": 2667545,
-      "sha256": "03500913bcedfee5addccf978f2f402fc5a991847ab8ee8cd1adc67c6dacad5e"
-    },
-    {
-      "path": "docs/evidence/ui/compare-detail.png",
-      "bytes": 2874399,
-      "sha256": "f2f022f66169d2e5b71e075a0a418e38a1e0c3d971cf443c5313658ba950d8b8"
-    },
-    {
-      "path": "docs/evidence/ui/compare-history.png",
-      "bytes": 2075794,
-      "sha256": "fea2b3cd4f1bf0c4c8a84a1e9d77b7f7f6ccdae585c02dbb561a5b410ef83cac"
-    },
-    {
-      "path": "docs/evidence/ui/compare-library.png",
-      "bytes": 4452498,
-      "sha256": "c36657c8a2197dd02d0e2ab9970794ba5089f9c2b20b663b99ca2ab9f0469133"
-    },
-    {
       "path": "docs/evidence/ui/F-batch.jpg",
       "bytes": 70917,
       "sha256": "a427dd7b7252c8a110facd1d34826a159f60c52d7112acff151e60f267b3be4e"
@@ -345,34 +430,44 @@
       "sha256": "0f5b1834d615a68ffb014dc728c3a82246390dfe621dc104012b2651e263d145"
     },
     {
+      "path": "docs/evidence/ui/compare-batch.png",
+      "bytes": 2181756,
+      "sha256": "4a8833e8c56a1bb0d42ef426ea1fcdbdc62f507b8648a3d164c09be699fe0483"
+    },
+    {
+      "path": "docs/evidence/ui/compare-csv-focus.png",
+      "bytes": 1142029,
+      "sha256": "833f0f05dd56d670abdd558ec2a8788e49097ccb4500642e09f53367b749a8d9"
+    },
+    {
+      "path": "docs/evidence/ui/compare-csv.png",
+      "bytes": 2409550,
+      "sha256": "1fef1e02df0668dc632816590c818564123469cf15cb9a67f04be0d1ec6e43d1"
+    },
+    {
+      "path": "docs/evidence/ui/compare-dark-en.png",
+      "bytes": 2667545,
+      "sha256": "03500913bcedfee5addccf978f2f402fc5a991847ab8ee8cd1adc67c6dacad5e"
+    },
+    {
+      "path": "docs/evidence/ui/compare-detail.png",
+      "bytes": 2874399,
+      "sha256": "f2f022f66169d2e5b71e075a0a418e38a1e0c3d971cf443c5313658ba950d8b8"
+    },
+    {
+      "path": "docs/evidence/ui/compare-history.png",
+      "bytes": 2075794,
+      "sha256": "fea2b3cd4f1bf0c4c8a84a1e9d77b7f7f6ccdae585c02dbb561a5b410ef83cac"
+    },
+    {
+      "path": "docs/evidence/ui/compare-library.png",
+      "bytes": 4452498,
+      "sha256": "c36657c8a2197dd02d0e2ab9970794ba5089f9c2b20b663b99ca2ab9f0469133"
+    },
+    {
       "path": "docs/evidence/ui/preference-conflict.jpg",
       "bytes": 112996,
       "sha256": "01144182eb1bc14d22bad6622ec19d39b231a6d0caaed35c4df322f8b168eb03"
-    },
-    {
-      "path": "docs/evidence/VALIDATION-0.10-full.json",
-      "bytes": 5760,
-      "sha256": "b9ef78c9b53861931b45a52e1e4d38a936f171c7e39d30567dabce74583c05aa"
-    },
-    {
-      "path": "docs/evidence/VALIDATION-0.10-launcher.log",
-      "bytes": 323,
-      "sha256": "124b86c48396e4751afadaffae08db20b40d3811f02bcfb3ac8ccaaf4b4eafdc"
-    },
-    {
-      "path": "docs/evidence/VALIDATION-0.10-module.json",
-      "bytes": 4128,
-      "sha256": "da0ecc7d81e2384ff0432891affb8263012e65d6d949d6d07225684a64346032"
-    },
-    {
-      "path": "docs/evidence/VALIDATION-0.10.md",
-      "bytes": 3839,
-      "sha256": "e79254e9405e822bca0a8296afc17062e3ff53aa55f2289556623af70455e137"
-    },
-    {
-      "path": "docs/GATES.md",
-      "bytes": 834,
-      "sha256": "4283f59c7aaa574b1d06bf367fc1b195d33b78631acbbb549279cf187c016837"
     },
     {
       "path": "docs/licenses/CsvHelper-LICENSE.txt",
@@ -395,11 +490,6 @@
       "sha256": "b98a397897ff55f76cddc380041507a95a896b2946e0188703bf0496793d6516"
     },
     {
-      "path": "docs/licenses/SmartFormat-LICENSE.md",
-      "bytes": 1666,
-      "sha256": "622a38d0b848adcb73e29e6d0466d840d63e2cc126616ff5c22942797640149d"
-    },
-    {
       "path": "docs/licenses/SQLitePCL.raw-LICENSE.TXT",
       "bytes": 11358,
       "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
@@ -410,9 +500,9 @@
       "sha256": "5a1ab2f670f86dd2f8d42e40a8459cc278ca6d5225a7e2a5fa3ea0184396a6d9"
     },
     {
-      "path": "docs/licenses/src/SmartFormat.ZString/repo/LICENSE",
-      "bytes": 1070,
-      "sha256": "f3e6cffb78d6d94fa37fd26ada7294c3284b6b89940b5645f93ed24cdd5b36b0"
+      "path": "docs/licenses/SmartFormat-LICENSE.md",
+      "bytes": 1666,
+      "sha256": "622a38d0b848adcb73e29e6d0466d840d63e2cc126616ff5c22942797640149d"
     },
     {
       "path": "docs/licenses/ZString-LICENSE",
@@ -420,19 +510,9 @@
       "sha256": "f3e6cffb78d6d94fa37fd26ada7294c3284b6b89940b5645f93ed24cdd5b36b0"
     },
     {
-      "path": "docs/OPEN_QUESTIONS.md",
-      "bytes": 662,
-      "sha256": "fdd5dda1224dddf774f6ffee404cdb7746718a0b2ca50e25b8dd9e011aa830e8"
-    },
-    {
-      "path": "docs/OPERATIONS.md",
-      "bytes": 8910,
-      "sha256": "4efe03018e55a931099a21cc2985f2d4522da1cf000225e0991ed99086c3dd9e"
-    },
-    {
-      "path": "docs/PRD.md",
-      "bytes": 5942,
-      "sha256": "374c93321a79645c4d2e6ceb5f2c2ae2340b127ee83c4750156779ca23809363"
+      "path": "docs/licenses/src/SmartFormat.ZString/repo/LICENSE",
+      "bytes": 1070,
+      "sha256": "f3e6cffb78d6d94fa37fd26ada7294c3284b6b89940b5645f93ed24cdd5b36b0"
     },
     {
       "path": "docs/quality/ACCEPTANCE.md",
@@ -440,9 +520,9 @@
       "sha256": "d1c029dd6d458dca9a7cac7d2bed657ecfe6339b8116bcc79bf3ffda61b6068a"
     },
     {
-      "path": "docs/quality/design-qa.md",
-      "bytes": 7494,
-      "sha256": "964a8e19af22b5d8974d1c2a693cf4d4f76597597362f0eef46e4ba2dc37e8e3"
+      "path": "docs/quality/AUDITORIA-USABILIDADE.md",
+      "bytes": 5614,
+      "sha256": "19ac5933749de2a462ba74d186890544068a89c55194d8a5d34a2acc99e6d965"
     },
     {
       "path": "docs/quality/EXECUTION_LOG.md",
@@ -465,9 +545,9 @@
       "sha256": "d072dd7964457c8e637f3caa5e53c873bc1b63c19756237f3a8fcab6d2999140"
     },
     {
-      "path": "docs/README.md",
-      "bytes": 1111,
-      "sha256": "b4a7d376a7fec67359f3d87b3e7d724c222d14b76feaae77b93e3c2aa0a47a52"
+      "path": "docs/quality/design-qa.md",
+      "bytes": 7494,
+      "sha256": "964a8e19af22b5d8974d1c2a693cf4d4f76597597362f0eef46e4ba2dc37e8e3"
     },
     {
       "path": "docs/records/ADR-001-local-architecture.md",
@@ -515,39 +595,9 @@
       "sha256": "3cf774e0e188d426f33922a529368f3c1d672da9fbc3353efc873e9f4d99e4bb"
     },
     {
-      "path": "docs/SKILLS.md",
-      "bytes": 669,
-      "sha256": "3683f3e1c0543516ac9bec2235d6f66fc4c712c8fbec02d759c5875a44413b94"
-    },
-    {
-      "path": "docs/STRUCTURE.md",
-      "bytes": 5904,
-      "sha256": "2286b87c0e44a7505958b601bfd9c7832c2dbd4bbc8f10af6f77858c3b7b8198"
-    },
-    {
       "path": "docs/superpowers/plans/2026-11-12-automated-validation.md",
       "bytes": 6383,
       "sha256": "dc33cd1182aaaf68945e619990b58999face283cb3d61312f4d6141261ac06b4"
-    },
-    {
-      "path": "docs/TEST_CASES.html",
-      "bytes": 1189185,
-      "sha256": "a13bc0f6e288aedc98a7fad6579c90a635a9384baf948d625a8bdb3b09058791"
-    },
-    {
-      "path": "docs/TEST_CASES.md",
-      "bytes": 503,
-      "sha256": "8e41be76b565e5a9a8f15848a2f1811b31b812e501b0b17726e8daa589071dec"
-    },
-    {
-      "path": "docs/THIRD_PARTY.md",
-      "bytes": 4026,
-      "sha256": "4168f58ee267526d25751a4d94642ba4e4e5fc375dbc09eddc7c846a972b9408"
-    },
-    {
-      "path": "docs/VALIDATION.md",
-      "bytes": 6390,
-      "sha256": "ee80771ecf644356038eb154a74387bf3ff9399240e5508f856a0e1e28254091"
     },
     {
       "path": "dotnet-tools.json",
@@ -555,14 +605,14 @@
       "sha256": "2b32367de32d5a27309300af7ea49ae8e41bb0893077dcc068c6def810eae067"
     },
     {
-      "path": "examples/associacoes-proposta.csv",
-      "bytes": 80,
-      "sha256": "9a8caf97411eb12dabd85af8b00f7eff07e6adee657656bc7a5de2ead85466d2"
-    },
-    {
       "path": "examples/README.md",
       "bytes": 854,
       "sha256": "387584e23f6639c52f4826c232c312c5969f2b716da9751a96031f2d7590fdb0"
+    },
+    {
+      "path": "examples/associacoes-proposta.csv",
+      "bytes": 80,
+      "sha256": "9a8caf97411eb12dabd85af8b00f7eff07e6adee657656bc7a5de2ead85466d2"
     },
     {
       "path": "examples/tags-proposta.csv",
@@ -573,41 +623,6 @@
       "path": "global.json",
       "bytes": 149,
       "sha256": "c01135e6969ef6fc8c24e12ae51c25db29b43b8cbb305288b2da738848397ee7"
-    },
-    {
-      "path": "IndicaAI.slnx",
-      "bytes": 231,
-      "sha256": "5af4cc23cfd99014bef9aff4097d2361f205f06f2b6949a5ed68f1645b659051"
-    },
-    {
-      "path": "Iniciar-IndicaAI.bat",
-      "bytes": 52,
-      "sha256": "c890e60b93d7e266752e85ac5aa6308bd99ac1cb201b48fdf1a98365615165cf"
-    },
-    {
-      "path": "Iniciar-Testes-IndicaAI.bat",
-      "bytes": 185,
-      "sha256": "e01aa0fe1887bfcecbecbb5d5b8616802aeab50eb41c11b544391671b59a044e"
-    },
-    {
-      "path": "Iniciar-Testes-Restaurados-IndicaAI.bat",
-      "bytes": 357,
-      "sha256": "be6f2465353a916e2899f6a70a57245600341e4b3a245a97b0d7c91f4a907e6b"
-    },
-    {
-      "path": "NuGet.Config",
-      "bytes": 179,
-      "sha256": "fd6836e883aa6bf334e587a02ff7239f68713f4baac6d749f743a2b489b1769c"
-    },
-    {
-      "path": "PATCH_NOTES.md",
-      "bytes": 13589,
-      "sha256": "9629f53463c41352aa76dd0b18add447e5868e4d0d50f146aeedc1f227a59568"
-    },
-    {
-      "path": "README.md",
-      "bytes": 2457,
-      "sha256": "0528b655902b761b2a84c4313237e25392a670ef8723a1b4fe6dcc0607417067"
     },
     {
       "path": "scripts/LauncherProcess.cs",
@@ -621,8 +636,8 @@
     },
     {
       "path": "scripts/Start-IndicaAI.ps1",
-      "bytes": 1906,
-      "sha256": "4e43f55a91b59aaa4f1a574340ad1e0400a4145cc553e81474b075e496d4805f"
+      "bytes": 2843,
+      "sha256": "28a141e1a013f152a180570d5c6b8e3a663d44fcd621ff5466b19a447c12b9ae"
     },
     {
       "path": "scripts/Use-Dotnet.ps1",
@@ -630,19 +645,9 @@
       "sha256": "a114e4a1376e9b1a8128301f17ff07ff7207f0ba6eaf9e5de4745e8b2a4c4fa8"
     },
     {
-      "path": "scripts/validate.cjs",
-      "bytes": 6814,
-      "sha256": "2108e6d5c75d8a0c239c591db5fe2872afb93e9a4db6be82d09b0f3e3ef53707"
-    },
-    {
       "path": "scripts/Validate.ps1",
       "bytes": 516,
       "sha256": "82342b22a8384f80071958230792f00cbd1c386b4dc6f6cdd024e83594fe0bc5"
-    },
-    {
-      "path": "scripts/validation-plan.cjs",
-      "bytes": 2941,
-      "sha256": "6bb9b21d16c08e748321ab6ed3bff6165d7cc8ad79dd9323c8052dcb2aa19f07"
     },
     {
       "path": "scripts/Verify-Documents.ps1",
@@ -651,18 +656,18 @@
     },
     {
       "path": "scripts/Verify-Release.ps1",
-      "bytes": 2642,
-      "sha256": "0d2f3d396742029374089acd4b8c5394196c757fea29370ae4936d053979d61e"
+      "bytes": 2839,
+      "sha256": "9e988eace8a3121813882c308942a9902b73c7d3f7914c2ff56f2de7dd8024df"
     },
     {
-      "path": "src/IndicaAI.Web/appsettings.Development.json",
-      "bytes": 154,
-      "sha256": "2f962afb0c211ad8148abe63029bb390c3e637c40d265b57c9e29e66fda90651"
+      "path": "scripts/validate.cjs",
+      "bytes": 6852,
+      "sha256": "7aa263ff9d8c1a69aaec1a9fcbb187d633f2a09857c393d6325381c1cfb52e8b"
     },
     {
-      "path": "src/IndicaAI.Web/appsettings.json",
-      "bytes": 151,
-      "sha256": "200332b434757a0054a3d356c91cde01f2c48712be8aa2bcb0f3e973619f06e3"
+      "path": "scripts/validation-plan.cjs",
+      "bytes": 3247,
+      "sha256": "5985a7db3299fde9cfb03bbeeb94258b4e2c5bb5d564e38d0608c762ecc0059b"
     },
     {
       "path": "src/IndicaAI.Web/Domain/Classification.cs",
@@ -706,8 +711,8 @@
     },
     {
       "path": "src/IndicaAI.Web/Domain/Work.cs",
-      "bytes": 983,
-      "sha256": "d829c0f751465b448ff7e8585bac2fd0bbb70e4b855c0db1a73cecc70a5228b6"
+      "bytes": 1068,
+      "sha256": "4bb06b39c410f327f49d5a3cdf6fb325e2df6e1b2a2fad547c7a4cc433a22ebb"
     },
     {
       "path": "src/IndicaAI.Web/Features/Archive/ArchiveService.cs",
@@ -720,14 +725,39 @@
       "sha256": "728d667acef0dc177fb81f5a4762d667e7720428e13bbd584d1d2c315f02f5e6"
     },
     {
+      "path": "src/IndicaAI.Web/Features/Catalog/TmdbCatalog.cs",
+      "bytes": 3402,
+      "sha256": "20b21e8685275ed0687c6e08c32f9b8172fb7f502bf30f2c195f752fc2db5050"
+    },
+    {
+      "path": "src/IndicaAI.Web/Features/Catalog/TmdbMovies.cs",
+      "bytes": 7956,
+      "sha256": "f17506358e783ba5faed5a503f2a7c923bb7b325ad867009552d58fc8481d16b"
+    },
+    {
+      "path": "src/IndicaAI.Web/Features/Catalog/TmdbPosterCache.cs",
+      "bytes": 5923,
+      "sha256": "11182ff1a03122ce9ca13bccb9baf4c03e226c80db51d0021521893ef6907525"
+    },
+    {
+      "path": "src/IndicaAI.Web/Features/Catalog/WatchList.cs",
+      "bytes": 2877,
+      "sha256": "c4f9f236f1fdd6c20f2baf44c3db37599a644b3b088a585cd3b5ca05efa5e303"
+    },
+    {
+      "path": "src/IndicaAI.Web/Features/Catalog/WatchListImporter.cs",
+      "bytes": 11800,
+      "sha256": "ccc6c18e8ba111b26a6d727710064cfb2ba7fb914c7ea6cc6ec437c46a1b0af6"
+    },
+    {
       "path": "src/IndicaAI.Web/Features/Imports/CsvInputReader.cs",
       "bytes": 3247,
       "sha256": "2af85173d56e195a7c0093cc67ad5f3a0573f122eef829f160ce7d6f6f79ddc1"
     },
     {
       "path": "src/IndicaAI.Web/Features/Imports/ImportApplyService.cs",
-      "bytes": 5246,
-      "sha256": "2fd7816838a9aeb8f924b5ea60795ee25468db1a921ea5da67a4dd7521a175b5"
+      "bytes": 5459,
+      "sha256": "c6c9cd3c92e10d50dde60a49d4757738d1bf674aa28fc1faa6a1d7e1bafd514d"
     },
     {
       "path": "src/IndicaAI.Web/Features/Imports/ImportContracts.cs",
@@ -736,8 +766,8 @@
     },
     {
       "path": "src/IndicaAI.Web/Features/Imports/ImportPreviewService.cs",
-      "bytes": 6027,
-      "sha256": "b014568d6152e45128624ab89e1b6e047dd6eda795c3adb273bdb0cbbbc46eac"
+      "bytes": 6090,
+      "sha256": "96ab850f3fcb5be232757ebd721e4a60bb284ed6b21fe806c08ea7d2a40b2e96"
     },
     {
       "path": "src/IndicaAI.Web/Features/Imports/ImportRecoveryService.cs",
@@ -746,13 +776,13 @@
     },
     {
       "path": "src/IndicaAI.Web/Features/Library/LibraryFilter.cs",
-      "bytes": 747,
-      "sha256": "7b80fccf801a312f4cbd0e5ce491cce75d9451392bc4f6880aa04cc191fb6173"
+      "bytes": 792,
+      "sha256": "efba8f725fe9f2487c62f5312166daaa6268d5681f50dc8aecc53d382b33dcc9"
     },
     {
       "path": "src/IndicaAI.Web/Features/Library/LibraryQuery.cs",
-      "bytes": 2691,
-      "sha256": "c7428a9b2e67f7c41cdd93019b5d657a8c73d7e27006c0d0ae7e316c0b3fd72d"
+      "bytes": 3039,
+      "sha256": "adaed52ccda629a2e6b6e83d1c42d4374296a6bd102262ea8f29bc8ccaa2ad98"
     },
     {
       "path": "src/IndicaAI.Web/Features/Lists/ListService.cs",
@@ -771,18 +801,18 @@
     },
     {
       "path": "src/IndicaAI.Web/Features/Tracking/StateLabelService.cs",
-      "bytes": 2095,
-      "sha256": "46143bd42990c147d2593ec779005bb25438c12b71fa6f6974373db78745732d"
+      "bytes": 5169,
+      "sha256": "dcd827fe163f98c8bf524315befda0b7eba090b99e799652860a7eb5e3a955ff"
     },
     {
       "path": "src/IndicaAI.Web/Features/Tracking/TrackingContracts.cs",
-      "bytes": 985,
-      "sha256": "62faae2a057f9fe2c53b135ac3386ee97abe78d2e76db75d8f5b34bdeb765b86"
+      "bytes": 1354,
+      "sha256": "a61c42ca2ad89d14ac633d078537a3943d9278c3a24b2cc1c2719fd7a2a7fc41"
     },
     {
       "path": "src/IndicaAI.Web/Features/Tracking/TrackingService.cs",
-      "bytes": 10299,
-      "sha256": "c2cbc045d5d88f7c93fd9ca081f6608dc4c84a9bf17c0d224ffb0139a9e3f75f"
+      "bytes": 11239,
+      "sha256": "06bf54b2e5316411cb24d6024fc140ce47e57f930d5ca6ab6dda18bc10f5a171"
     },
     {
       "path": "src/IndicaAI.Web/Hosting/BundledAssets.cs",
@@ -821,13 +851,13 @@
     },
     {
       "path": "src/IndicaAI.Web/Operations/BackupService.cs",
-      "bytes": 7218,
-      "sha256": "8b8905d07955a64055da62ce80939099ed6116f84a48146a48b6bf1fbbe1b825"
+      "bytes": 7265,
+      "sha256": "73f2df507b0452d5a5d3fb71a93a9e8d8a9fa721b363c568e727d3c1604b3a23"
     },
     {
       "path": "src/IndicaAI.Web/Operations/MaintenanceCommand.cs",
-      "bytes": 1618,
-      "sha256": "7b17a4bf6cf054f7795691db05ea5172a24b4da946b0c4a425d12c0e52ba94c0"
+      "bytes": 7129,
+      "sha256": "95d00ee6ffe24094630c251af5b58b1daa630df4de54088fd3192b95f32fe8ed"
     },
     {
       "path": "src/IndicaAI.Web/Operations/RestoreService.cs",
@@ -835,34 +865,19 @@
       "sha256": "72d9ecf5658c6e6c35d47aeb03a0c6b600dec475dcd501ab903426edf8dc51be"
     },
     {
-      "path": "src/IndicaAI.Web/packages.lock.json",
-      "bytes": 13649,
-      "sha256": "fb8370f632122412884b25eb94924e3528c41230c3d7c81dc2c6327fa2d017f1"
-    },
-    {
-      "path": "src/IndicaAI.Web/Pages/_ViewImports.cshtml",
-      "bytes": 193,
-      "sha256": "77826399dd0e3870475c7be7d419f178a407540f236618bb69c3b2daeea6beaa"
-    },
-    {
-      "path": "src/IndicaAI.Web/Pages/_ViewStart.cshtml",
-      "bytes": 35,
-      "sha256": "47e02b4da20d198892b7b1b00b12944068797c438ef2e82d20ff70b4d56bad39"
-    },
-    {
       "path": "src/IndicaAI.Web/Pages/Admin/Associations/Index.cshtml",
-      "bytes": 1416,
-      "sha256": "2679f22138a652d2e0736fe7f64ad74e37f6d5e59e3b600b94fa853bee4413da"
+      "bytes": 4064,
+      "sha256": "f2865ed9db68fb342ea4ebc2f5969d3e2b8bf1e4dcd93543654542606e382873"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Admin/Associations/Index.cshtml.cs",
-      "bytes": 1169,
-      "sha256": "614f9613e017c2c08ea053fc8c5fb63bd9a31a844a889d2c1d874c72fe87e933"
+      "bytes": 2717,
+      "sha256": "41fafb00fc234e1ea31f04a72c36c9ed4656301809335c4d03b359c626edec1b"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Admin/Import/Preview.cshtml",
-      "bytes": 3710,
-      "sha256": "207b9de94bba62f83af03ca392c7dc18fc512d3cfbfdc1dfb7ab5bfd5254d557"
+      "bytes": 3589,
+      "sha256": "14f669de2ce4cf99fef0e32bddb7952b8bb7b3c422a55330be52d53606f88f54"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Admin/Import/Preview.cshtml.cs",
@@ -871,18 +886,23 @@
     },
     {
       "path": "src/IndicaAI.Web/Pages/Admin/Import/Result.cshtml",
-      "bytes": 878,
-      "sha256": "4c731230a07cad99bd7972f763281b4fefe799667691d6117d943cfac4ae450b"
+      "bytes": 1877,
+      "sha256": "a8b42eb89c5fb725eb4b9faffd931f2337b881d63aaf542ee54e79da73c82d58"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Admin/Import/Result.cshtml.cs",
-      "bytes": 511,
-      "sha256": "c7ab29c5bbad23e676e884490acd020fc7f9043c81f30145f11c1c6486f15b0f"
+      "bytes": 824,
+      "sha256": "c104e04a81eb8969b9d755a5b5949c4750a4384266b09a7fdda606f874e2a7e2"
+    },
+    {
+      "path": "src/IndicaAI.Web/Pages/Admin/Import/_ReasonDetails.cshtml",
+      "bytes": 268,
+      "sha256": "579d8469f293d65cb57eddec6782ad3ab1be6ac60546a06928fffc690cff957d"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Admin/Tags/Index.cshtml",
-      "bytes": 3474,
-      "sha256": "2dddf0f287e06efef217c9634cee34ef1d5675bb91850a2c2a45a7c55a11574b"
+      "bytes": 3504,
+      "sha256": "aa1cfb3680c51b4ad5a0775796362c4f1b63cf6aca5edca9135d270ce5f1cedd"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Admin/Tags/Index.cshtml.cs",
@@ -891,23 +911,23 @@
     },
     {
       "path": "src/IndicaAI.Web/Pages/Archive/Index.cshtml",
-      "bytes": 963,
-      "sha256": "4b286c0e22ad8b353683a53766331b8afe111f6b0b5bd39e2f60d7e40fbc0fbf"
+      "bytes": 2108,
+      "sha256": "8b52783c90a57f67646674d26f6b3b5b34af882f736ff6bacc5bbf43c5b38df1"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Archive/Index.cshtml.cs",
-      "bytes": 1392,
-      "sha256": "ef081c8bce461aa7a3cbbe33ca6231a674a57016524bc3cfdef00e4285fe0a0c"
+      "bytes": 2254,
+      "sha256": "f09380671b82b0c14f2087f03463dd289609b99e755d4317889e4f4cb461e8c3"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Batch/Review.cshtml",
-      "bytes": 3226,
-      "sha256": "644c1250e7b6b13fbe99139b5b143887fac610deb7da1cbd42259b0bb0148e43"
+      "bytes": 3468,
+      "sha256": "2b33e5cbce3b775d89531ae800ffb169890f1d318c0fd2020f02624e294ff726"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Batch/Review.cshtml.cs",
-      "bytes": 2742,
-      "sha256": "e185f41944458c3e40f6b335b1f0f4f60cdbed185fe67ab13d9143af525e0552"
+      "bytes": 3803,
+      "sha256": "a6a38e631b81275efdefb0b1982ffdde907a8893c7e8938ac8ad8d0d4225d91f"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Catalog/BrowseCatalogModel.cs",
@@ -918,6 +938,16 @@
       "path": "src/IndicaAI.Web/Pages/Catalog/Index.cshtml",
       "bytes": 127,
       "sha256": "dcec1b1efcf4410359174e80f901020c305386a7fe8c36eba6439ca76ec54868"
+    },
+    {
+      "path": "src/IndicaAI.Web/Pages/Catalog/Tmdb.cshtml",
+      "bytes": 6307,
+      "sha256": "7d82fd16a34d787e1b24994287c34d14409385c2b0b15a1529268635974ffea0"
+    },
+    {
+      "path": "src/IndicaAI.Web/Pages/Catalog/Tmdb.cshtml.cs",
+      "bytes": 4172,
+      "sha256": "0e43f4956a168c904152673df36f2dd8e6040ff1fe480606e540d520db224118"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Error.cshtml",
@@ -931,8 +961,13 @@
     },
     {
       "path": "src/IndicaAI.Web/Pages/Library/BrowseModel.cs",
-      "bytes": 2862,
-      "sha256": "e5ccae1e27baba25857b5e3bac4b998a63fec0b9150ed4f7939bd422dd6a7dc2"
+      "bytes": 5064,
+      "sha256": "62585f578ec082ebbbb5ba3143fc0952089565423ff1f896e981b38a7b6ee066"
+    },
+    {
+      "path": "src/IndicaAI.Web/Pages/Library/BrowseOrigin.cs",
+      "bytes": 724,
+      "sha256": "df805e10eb2e749597dcae6a721b8b65d28439a95528ff9a2ce6ed165b870d22"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Library/Index.cshtml",
@@ -941,63 +976,88 @@
     },
     {
       "path": "src/IndicaAI.Web/Pages/Lists/Index.cshtml",
-      "bytes": 1146,
-      "sha256": "7d1d9f8dc22112255ef77c3f97138c04d1198e28ed1539e3d63ccef4bd18b99c"
+      "bytes": 2141,
+      "sha256": "399a25f3dc0c4dcd74d99c788d8757d02e76da0719f6202d46beabc6d8d5760b"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Lists/Index.cshtml.cs",
-      "bytes": 1252,
-      "sha256": "148d55827f43e1711973672dcbaa739c93978d3443ae8e1e2253297a40e04e4e"
+      "bytes": 2137,
+      "sha256": "b237fa5aa6206a052e0b4ed379e49742d218695ad13fb8ed117caef78b7b1634"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Settings/Index.cshtml",
-      "bytes": 1914,
-      "sha256": "b2c32c49cd2e9f4813e074982c47f8ca6ad99b41e561c373b029028a1320d7cc"
+      "bytes": 2796,
+      "sha256": "68c7b8fe21bb8d63eb5881db0c1d56ba41cf8753109f338a595456f2ac97b237"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Settings/Index.cshtml.cs",
-      "bytes": 2400,
-      "sha256": "41e602b43d01ddd4c930f7ad48da3178369d94b074c85cfcfd532527baf9c5c0"
+      "bytes": 4043,
+      "sha256": "8017b4eca1915bce4b9fc9dd1b253aa959ef7e27f8c3a7c676edecfefa4fc49a"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Shared/_Browse.cshtml",
-      "bytes": 5485,
-      "sha256": "4d38a055ccdee27627cf392f78eba258974109fe945c745665f25284056bde71"
+      "bytes": 8199,
+      "sha256": "5e4d9d75671892b4efd4917d161ad61cfd22aac0a29744242533318c28cfd81f"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Shared/_Layout.cshtml",
-      "bytes": 2883,
-      "sha256": "3554b26752c856f7003ec00a54260673ce70abc771d1dc4c9c2a35b900fbad3c"
+      "bytes": 2978,
+      "sha256": "65ff91fd4debab90d326b82973a38f1160b1795827221bb75475ecd0afb73e14"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Works/Details.cshtml",
-      "bytes": 4525,
-      "sha256": "149eec32ba919d2a4af596eaa11e3da8bf0206fb574960c837b76904bd3927a9"
+      "bytes": 4849,
+      "sha256": "0be50ce68d81718cf3d2443d7f2c142d4db7c609dab327d0ba5deaacfb136237"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Works/Details.cshtml.cs",
-      "bytes": 4381,
-      "sha256": "301078374d7e2a67188867e6d1a0f18664272fa2bf2c91b4b35080fade9eba6c"
+      "bytes": 6136,
+      "sha256": "d27fc3047cdd2af477e17d5ac873a7aeaa2e4b5edf18e2ed1b01641cbe2b8a73"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Works/History.cshtml",
-      "bytes": 3537,
-      "sha256": "20bd8fa22ef43c14bddd8495b127199fbddb165bc75388283c14ece77da5181a"
+      "bytes": 4559,
+      "sha256": "5db9314c5e6c62ceae00dbf0097db7f02d847cedf0d15cf0cbe8e3fff58b7929"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Works/History.cshtml.cs",
-      "bytes": 2294,
-      "sha256": "56dd37be082c315e044be0630366f554dce8036e004ce2f3c75a59e8243ab669"
+      "bytes": 4791,
+      "sha256": "feaa113c2e9e241139029306158f59df413f74afbdb87070bc460741f5dd5167"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Works/NewCycle.cshtml",
-      "bytes": 1550,
-      "sha256": "ff009ec1451b55b0e126df9ca976c7694b3f5dfe9755c9a4eca9aa5f48f50da0"
+      "bytes": 2036,
+      "sha256": "c7f3899d7c6a0d279e18826139879131f822eeb5931d425819c0054e1a9dab7d"
     },
     {
       "path": "src/IndicaAI.Web/Pages/Works/NewCycle.cshtml.cs",
-      "bytes": 1708,
-      "sha256": "4003b37e4d36ba3d6bcc65cf04a23fb73d7c8d7b287b87eaa17b159e205eddfc"
+      "bytes": 2583,
+      "sha256": "0f8e39d48d80c18be5fe7213948a94f06024ea6c9d3689464b4c4eac8b0b54b8"
+    },
+    {
+      "path": "src/IndicaAI.Web/Pages/Works/TrackingDateForm.cs",
+      "bytes": 934,
+      "sha256": "e482805577e610a66103add4965b66b5400c9682bf7690ce39e2bfc3c5048394"
+    },
+    {
+      "path": "src/IndicaAI.Web/Pages/Works/_DateConfirmation.cshtml",
+      "bytes": 1008,
+      "sha256": "2b3b3a0011585b5b2da0cd1ae0e489cda21cee5c00777331f1f50a626f1ef9f4"
+    },
+    {
+      "path": "src/IndicaAI.Web/Pages/Works/_TrackingDates.cshtml",
+      "bytes": 1149,
+      "sha256": "7c648c2834de7ca3635ec3b03968a357b10b2189c5fc1d10d4f3c12b5f83563c"
+    },
+    {
+      "path": "src/IndicaAI.Web/Pages/_ViewImports.cshtml",
+      "bytes": 193,
+      "sha256": "77826399dd0e3870475c7be7d419f178a407540f236618bb69c3b2daeea6beaa"
+    },
+    {
+      "path": "src/IndicaAI.Web/Pages/_ViewStart.cshtml",
+      "bytes": 35,
+      "sha256": "47e02b4da20d198892b7b1b00b12944068797c438ef2e82d20ff70b4d56bad39"
     },
     {
       "path": "src/IndicaAI.Web/Persistence/AppDbContext.cs",
@@ -1011,13 +1071,13 @@
     },
     {
       "path": "src/IndicaAI.Web/Persistence/DatabaseBootstrapper.cs",
-      "bytes": 3919,
-      "sha256": "a4ae26dc1da4d2d43ef5b10c2a94ba62d43ee9f4e006b033af6c5a0c9304d55b"
+      "bytes": 2215,
+      "sha256": "a2569b6adba4c557467ec0c16c8931b39ef716fb10b54d722e98ba9b6c231ab9"
     },
     {
-      "path": "src/IndicaAI.Web/Persistence/Migrations/20261108174224_InitialLocalSchema.cs",
-      "bytes": 31634,
-      "sha256": "171da18df8488fa70e59fc67b252c34381ebbc8043eb4300a970f95d71d347d4"
+      "path": "src/IndicaAI.Web/Persistence/DemoCatalog.cs",
+      "bytes": 4506,
+      "sha256": "26b93726fc9b0f5f84657159c1fc23b2f29f13e6c54519e53cd7e0e20fb984c5"
     },
     {
       "path": "src/IndicaAI.Web/Persistence/Migrations/20261108174224_InitialLocalSchema.Designer.cs",
@@ -1025,9 +1085,9 @@
       "sha256": "226550c7ac271e68da397a29ece7c279f8341c8c58c67414ca0460739d7d34b2"
     },
     {
-      "path": "src/IndicaAI.Web/Persistence/Migrations/20261108184334_EnforceCatalogueFields.cs",
-      "bytes": 1145,
-      "sha256": "4ef54851d84da03bf5356da972c9eb0ae4849612cf5f5bf40554ea9d829ba55d"
+      "path": "src/IndicaAI.Web/Persistence/Migrations/20261108174224_InitialLocalSchema.cs",
+      "bytes": 31634,
+      "sha256": "171da18df8488fa70e59fc67b252c34381ebbc8043eb4300a970f95d71d347d4"
     },
     {
       "path": "src/IndicaAI.Web/Persistence/Migrations/20261108184334_EnforceCatalogueFields.Designer.cs",
@@ -1035,9 +1095,9 @@
       "sha256": "07d027122d374eec81bbadcbc5fa860976c4fe02909bec66d92af3385e335b4b"
     },
     {
-      "path": "src/IndicaAI.Web/Persistence/Migrations/20261108184532_CatalogueCompatibilityTriggers.cs",
-      "bytes": 3251,
-      "sha256": "a1c6e17b4dec33c02131d5cf690a26f7350539075a4a8cfd3e5f68aedbb91f6f"
+      "path": "src/IndicaAI.Web/Persistence/Migrations/20261108184334_EnforceCatalogueFields.cs",
+      "bytes": 1145,
+      "sha256": "4ef54851d84da03bf5356da972c9eb0ae4849612cf5f5bf40554ea9d829ba55d"
     },
     {
       "path": "src/IndicaAI.Web/Persistence/Migrations/20261108184532_CatalogueCompatibilityTriggers.Designer.cs",
@@ -1045,9 +1105,9 @@
       "sha256": "a3c95d0cf25dab1ee0186f989ebe5c70f6e9963e933f2399e24c74f5ceb39ca1"
     },
     {
-      "path": "src/IndicaAI.Web/Persistence/Migrations/20261108205509_ImportIgnoredCount.cs",
-      "bytes": 825,
-      "sha256": "9052f7edf5e3661ea584ca18d3486c92ae64d408aacd1f66d22da919c8971495"
+      "path": "src/IndicaAI.Web/Persistence/Migrations/20261108184532_CatalogueCompatibilityTriggers.cs",
+      "bytes": 3251,
+      "sha256": "a1c6e17b4dec33c02131d5cf690a26f7350539075a4a8cfd3e5f68aedbb91f6f"
     },
     {
       "path": "src/IndicaAI.Web/Persistence/Migrations/20261108205509_ImportIgnoredCount.Designer.cs",
@@ -1055,19 +1115,39 @@
       "sha256": "7940d128dd434258e1d24ced82e614a3e55463e6bf0ea0ebec2307002c53708c"
     },
     {
+      "path": "src/IndicaAI.Web/Persistence/Migrations/20261108205509_ImportIgnoredCount.cs",
+      "bytes": 825,
+      "sha256": "9052f7edf5e3661ea584ca18d3486c92ae64d408aacd1f66d22da919c8971495"
+    },
+    {
+      "path": "src/IndicaAI.Web/Persistence/Migrations/20261120115823_TmdbMovieIdentity.Designer.cs",
+      "bytes": 30700,
+      "sha256": "e7a1ddacca8f2d9a9bfb5437351afde020bdc74963d135586cded77fcf6a39b5"
+    },
+    {
+      "path": "src/IndicaAI.Web/Persistence/Migrations/20261120115823_TmdbMovieIdentity.cs",
+      "bytes": 1180,
+      "sha256": "dd64d0511291f9feb5927451ea032cf0b9ca68d97f603621f06a44a266170c40"
+    },
+    {
+      "path": "src/IndicaAI.Web/Persistence/Migrations/20261120162500_TmdbSeriesIdentity.cs",
+      "bytes": 1657,
+      "sha256": "583d865eca3222758bf3ee42586bf4402e56080c87a0991cb7af694b04aa8739"
+    },
+    {
       "path": "src/IndicaAI.Web/Persistence/Migrations/AppDbContextModelSnapshot.cs",
-      "bytes": 30394,
-      "sha256": "0ae36bf6fd6dc58abf4908c27fdcab56b381d382cdf01d4207bd1dd87391f7d6"
+      "bytes": 30784,
+      "sha256": "1d58b16f654f791b5b1283887063c5a1d5953227621ade726d0aba26c5f94359"
     },
     {
       "path": "src/IndicaAI.Web/Persistence/ModelConfiguration.cs",
-      "bytes": 7306,
-      "sha256": "721caebc929106e8cb7e9fd94a8e47ea1cd9e6e79502dd11f8e9cc47a8c86526"
+      "bytes": 7439,
+      "sha256": "f9ba10d46318e90d2a00fcfe944f48d5ed62312925c43a0657d3b22530fa5b86"
     },
     {
       "path": "src/IndicaAI.Web/Program.cs",
-      "bytes": 4602,
-      "sha256": "215dc5375b374e6e8426b15038e995b843e2411e4ed83ab556c62ca1f94d9375"
+      "bytes": 6221,
+      "sha256": "4a6bd534c16ed89354ef715cab57a9692d5fdbf404aa2193937f91fa2ed91dca"
     },
     {
       "path": "src/IndicaAI.Web/Properties/launchSettings.json",
@@ -1076,8 +1156,8 @@
     },
     {
       "path": "src/IndicaAI.Web/Resources/UiText.en.resx",
-      "bytes": 26665,
-      "sha256": "9543a4b4bdad2ef7119d4d9e553b7ea16259a70db3bf160e2223fbcb2381a47c"
+      "bytes": 32358,
+      "sha256": "740aeaf849c3feefa1fe514c6cfbb5f8c8c5105027f990e0821ae2324dd75ca3"
     },
     {
       "path": "src/IndicaAI.Web/Resources/UiText.fr.resx",
@@ -1086,8 +1166,8 @@
     },
     {
       "path": "src/IndicaAI.Web/Resources/UiText.pt-BR.resx",
-      "bytes": 27421,
-      "sha256": "ec39da9e2c09999ffcc411249f3623115741d859673ac6ca0a1dc30b70923fe6"
+      "bytes": 33297,
+      "sha256": "c38812ed2dfe8d00d6e7a549c03f8914248d93c9a1d8f87d7a350b8aa29d48e6"
     },
     {
       "path": "src/IndicaAI.Web/Text/CaseFolding-17.0.0.txt",
@@ -1103,6 +1183,21 @@
       "path": "src/IndicaAI.Web/Text/UnicodeNameKey.cs",
       "bytes": 1257,
       "sha256": "9dc1ffc29472ef339c787ebd136b317d3cfb14daa477fac2157bb33e5418dadb"
+    },
+    {
+      "path": "src/IndicaAI.Web/appsettings.Development.json",
+      "bytes": 154,
+      "sha256": "2f962afb0c211ad8148abe63029bb390c3e637c40d265b57c9e29e66fda90651"
+    },
+    {
+      "path": "src/IndicaAI.Web/appsettings.json",
+      "bytes": 151,
+      "sha256": "200332b434757a0054a3d356c91cde01f2c48712be8aa2bcb0f3e973619f06e3"
+    },
+    {
+      "path": "src/IndicaAI.Web/packages.lock.json",
+      "bytes": 13390,
+      "sha256": "ec888ab7bba9bfe68f1c9e9b9621cbeff047109ea4e2679a67a16ba81ca9d21c"
     },
     {
       "path": "src/IndicaAI.Web/wwwroot/covers/alem-do-vale.png",
@@ -1131,8 +1226,8 @@
     },
     {
       "path": "src/IndicaAI.Web/wwwroot/css/site.css",
-      "bytes": 19228,
-      "sha256": "c1b00506c277c3f550968cbb1e477b1e219a00ff07ce3d7f52670aeca89af254"
+      "bytes": 24596,
+      "sha256": "fec28a2aac937c49f46a5e165164d61bfc3bc0bf3cae9d7c1f83e801a91a9106"
     },
     {
       "path": "src/IndicaAI.Web/wwwroot/favicon.ico",
@@ -1175,6 +1270,16 @@
       "sha256": "3dd53b9606283dfa0adcb0b10a7d9a4432369d4bebcfacf67f80fbe358381c34"
     },
     {
+      "path": "src/IndicaAI.Web/wwwroot/icons/tmdb.svg",
+      "bytes": 2577,
+      "sha256": "d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b"
+    },
+    {
+      "path": "src/IndicaAI.Web/wwwroot/js/associations.js",
+      "bytes": 1839,
+      "sha256": "679814f1021f57fcac9c1dff6cccf94603d981cfe692933f3bb8d71cef80fab2"
+    },
+    {
       "path": "src/IndicaAI.Web/wwwroot/js/batch.js",
       "bytes": 784,
       "sha256": "edb0c1b0ac925a3723d4736ce27d52f4632410cf00f6918907f40fba59e1d43d"
@@ -1186,8 +1291,13 @@
     },
     {
       "path": "src/IndicaAI.Web/wwwroot/js/drafts.js",
-      "bytes": 3122,
-      "sha256": "6885fc31a23c9c2b7239a476eee7f4a84bc3b705497c8b2ebe5622f0225cb64c"
+      "bytes": 3162,
+      "sha256": "40f8d74efc41761e27726708ecc506701c5c9d37a55acb467b32c579d3a8a1b0"
+    },
+    {
+      "path": "src/IndicaAI.Web/wwwroot/js/history-date.js",
+      "bytes": 989,
+      "sha256": "b5dc964c1587ab6e41af623e657d5e041e8daa472103c9a5c213fe6cf4b48379"
     },
     {
       "path": "src/IndicaAI.Web/wwwroot/js/preferences.js",
@@ -1196,8 +1306,8 @@
     },
     {
       "path": "src/IndicaAI.Web/wwwroot/js/selection.js",
-      "bytes": 1309,
-      "sha256": "d46c998c374fb2eccecb1a641473771cbee6a28c63cec8fc6e136a9ad237a883"
+      "bytes": 1782,
+      "sha256": "1ed61d01b48f46dfd0075bdbfc104def93c65b5873bc19305b4bb0993c2ab9a7"
     },
     {
       "path": "src/IndicaAI.Web/wwwroot/js/site.js",
@@ -1205,14 +1315,14 @@
       "sha256": "8514327ed5e2bb594b5f63fd2f2f716b88072602de475b86379a9e814a1bb46a"
     },
     {
-      "path": "tests/draft-model.test.cjs",
-      "bytes": 2157,
-      "sha256": "5ff66f562c5c9f8ef37709512fb14946eb4cf9d74344b9274facba37e8e163d0"
+      "path": "src/IndicaAI.Web/wwwroot/js/tmdb-search.js",
+      "bytes": 4048,
+      "sha256": "a1c736d476a8e1f4f523314a3b3e52f0af5cd2cfeaf4cc9ec5ddc8e0844a84d5"
     },
     {
-      "path": "tests/guide-contract.test.cjs",
-      "bytes": 2495,
-      "sha256": "2b861b1a737b8ca02fcfde22541eb93db29c7c4b3cd12311c8f7f6a411058a2f"
+      "path": "src/IndicaAI.Web/wwwroot/js/tracking-dates.js",
+      "bytes": 1565,
+      "sha256": "1db88b512825d6bcc18e2c8fa465612f61439889c4ff2bf8de2403b34f5500ec"
     },
     {
       "path": "tests/IndicaAI.Tests/Domain/NameKeyTests.cs",
@@ -1221,13 +1331,13 @@
     },
     {
       "path": "tests/IndicaAI.Tests/Fixtures/TestDatabase.cs",
-      "bytes": 417,
-      "sha256": "7a2b4c201ce56dc0a7cf05e26ddca11d80586339dbb478846aeb6628bd10fed9"
+      "bytes": 436,
+      "sha256": "3b27af811e7d73db39ad7c8651bffd37549d00762c9991fec05321df53719f18"
     },
     {
       "path": "tests/IndicaAI.Tests/Fixtures/WebFixture.cs",
-      "bytes": 645,
-      "sha256": "e7f3dbad1a7e7619d4e685637acc8923e6c3aa23fafd22458a1ab80d68fd6831"
+      "bytes": 697,
+      "sha256": "e319b33a67c217b185bd8e590ca8e37bf9967b9a488d70d8a1ad9f6876a3ecf3"
     },
     {
       "path": "tests/IndicaAI.Tests/IndicaAI.Tests.csproj",
@@ -1246,8 +1356,8 @@
     },
     {
       "path": "tests/IndicaAI.Tests/Integration/BootstrapTests.cs",
-      "bytes": 2031,
-      "sha256": "2d9d62a95fd7f39ca4675cccd5bec95b33006c0de2f7c2ef6d93316006354be6"
+      "bytes": 3560,
+      "sha256": "08e13e708d9e3475a4292d7f693665138c9ab86af2bbcf833b22a2655c8a6f14"
     },
     {
       "path": "tests/IndicaAI.Tests/Integration/CatalogIntegrityTests.cs",
@@ -1286,8 +1396,8 @@
     },
     {
       "path": "tests/IndicaAI.Tests/Integration/MigrationTests.cs",
-      "bytes": 1545,
-      "sha256": "503dc386efb3772172467066c1c6bb0272c1b8dfc467a58bbbd960697bc5b218"
+      "bytes": 2825,
+      "sha256": "32ca57a8d817110f444938d56cca7c9b3b296276485e73596c4b8cc5755d8ca2"
     },
     {
       "path": "tests/IndicaAI.Tests/Integration/OrganizationTests.cs",
@@ -1320,6 +1430,11 @@
       "sha256": "4e80147219630175b34e79e55321046b15df8011ea44490a4483d5ee9fc5dd20"
     },
     {
+      "path": "tests/IndicaAI.Tests/Integration/TmdbPosterCacheTests.cs",
+      "bytes": 2788,
+      "sha256": "e91ebd27b0803bd8e8379fc1c330d34b04315ee50d12f94f81547caa91b828fd"
+    },
+    {
       "path": "tests/IndicaAI.Tests/Integration/TrackingFailureTests.cs",
       "bytes": 2039,
       "sha256": "6101af3cf7b031636bb23355317dd502b28378ab0694c84c41708cc54003da73"
@@ -1330,9 +1445,14 @@
       "sha256": "87a22d35f266d3ff398a01f593c49235b8cb4944b7a89612bd7819190a7a4beb"
     },
     {
-      "path": "tests/IndicaAI.Tests/packages.lock.json",
-      "bytes": 30017,
-      "sha256": "5d1622f2c02a1913e98396cfb0d37a64233230232e2850142a34df4cb71690a4"
+      "path": "tests/IndicaAI.Tests/Integration/WatchListImportTests.cs",
+      "bytes": 15357,
+      "sha256": "816987b8b983cb923b3e8e991a54b4749092b2454999c685d9faa5698ce21a3d"
+    },
+    {
+      "path": "tests/IndicaAI.Tests/Web/AuditFormsTests.cs",
+      "bytes": 11723,
+      "sha256": "486925a59e38edc850083017fced2fd0480df2f8edcbc4441b7b4d3fa6a5e1c1"
     },
     {
       "path": "tests/IndicaAI.Tests/Web/BatchReviewTests.cs",
@@ -1341,8 +1461,13 @@
     },
     {
       "path": "tests/IndicaAI.Tests/Web/BootstrapHttpTests.cs",
-      "bytes": 1281,
-      "sha256": "3220fa7800cd57f7189152826a05fdc3e4693713744c85cecbd9e438767241cc"
+      "bytes": 1287,
+      "sha256": "b9540a8ebbae841b52283d1d1da28e0b66e9ff3dc8f44d08d968064cc3b0df5e"
+    },
+    {
+      "path": "tests/IndicaAI.Tests/Web/BrowseOriginTests.cs",
+      "bytes": 5706,
+      "sha256": "ca056a65ad64fbe551914921f63c8686c875a04ae0ec5fcdac178c26a59c7938"
     },
     {
       "path": "tests/IndicaAI.Tests/Web/CustomLabelTests.cs",
@@ -1351,8 +1476,8 @@
     },
     {
       "path": "tests/IndicaAI.Tests/Web/FinalReviewTests.cs",
-      "bytes": 3562,
-      "sha256": "548df42c5cc767e82cce84fdc3561a59b1debd6418b30255e3f1081e87a286b3"
+      "bytes": 3590,
+      "sha256": "5fcef81b74d2283fd1388f1edadee38cb72c8bad197d1eb88c403f2bb5a51928"
     },
     {
       "path": "tests/IndicaAI.Tests/Web/JourneyTests.cs",
@@ -1365,9 +1490,39 @@
       "sha256": "d1bcb2f17623cfdc13af77c8580b4a500a6d7fe483b7b712ae59e5a873738041"
     },
     {
+      "path": "tests/IndicaAI.Tests/Web/OrganizationAdminHttpTests.cs",
+      "bytes": 11824,
+      "sha256": "4250247efc8d9b7ece84f435fdb0199b104780459950c5d876c7470af0dad361"
+    },
+    {
+      "path": "tests/IndicaAI.Tests/Web/QuickStateTests.cs",
+      "bytes": 5133,
+      "sha256": "b208b061c74c1b4eff8ba2aec410cfb232525ec6c3d905e9b6c622ed03ab2fe6"
+    },
+    {
+      "path": "tests/IndicaAI.Tests/Web/TmdbCatalogTests.cs",
+      "bytes": 12427,
+      "sha256": "fed957c93a4fe55f18c96a4f03a2779be1be2f371a929e35277db157b48ff9b9"
+    },
+    {
       "path": "tests/IndicaAI.Tests/Web/TrackingHttpTests.cs",
-      "bytes": 1884,
-      "sha256": "65dee4c80d00e2205cc9e3712122c548844f966ad272b5c5ac48839576635e77"
+      "bytes": 12005,
+      "sha256": "14f73803460197ea60f3f7eececf227def1047c41001e0310103e7bed4575969"
+    },
+    {
+      "path": "tests/IndicaAI.Tests/packages.lock.json",
+      "bytes": 30017,
+      "sha256": "5d1622f2c02a1913e98396cfb0d37a64233230232e2850142a34df4cb71690a4"
+    },
+    {
+      "path": "tests/draft-model.test.cjs",
+      "bytes": 3655,
+      "sha256": "54c02ab4032522f27557f512535c3f352c2fd1d5cd1d0084d568836d6de44758"
+    },
+    {
+      "path": "tests/guide-contract.test.cjs",
+      "bytes": 2495,
+      "sha256": "0f14a3fc9850b81d04cf14289b69fb6e6a66ac295d511d69bd2650253895c301"
     },
     {
       "path": "tests/launcher-lifetime.test.ps1",
@@ -1376,28 +1531,23 @@
     },
     {
       "path": "tests/manual-coverage.json",
-      "bytes": 13406,
-      "sha256": "ea335bdc27418eaa12b0910fb18827980e9466e9bf92b54578b06bb7b774d3db"
+      "bytes": 17430,
+      "sha256": "1484a355325466b46f1456b636c38e3a744106d19fa38978b880f471a8cfdced"
+    },
+    {
+      "path": "tests/tmdb-search.test.cjs",
+      "bytes": 2364,
+      "sha256": "8fd831ab098f45dc021342194ab513eceaafc9a234be88b9e2a310afaa1e505a"
     },
     {
       "path": "tests/validation-plan.test.cjs",
-      "bytes": 2888,
-      "sha256": "8a46082ec0361acb8b76ad503f64ed573c5a2901b512ab4fd15fadd43b2664a5"
+      "bytes": 2958,
+      "sha256": "0af01f08ba215af1801f50fd654deff4a9b11e52149e022376a766ab7dc07798"
     },
     {
       "path": "tests/validation-runner.test.cjs",
       "bytes": 3064,
       "sha256": "780b779f848ac62ccdb0c67cb5d6508d9bbec412f61ab934990ad517075a2c48"
-    },
-    {
-      "path": "Validar-IndicaAI.bat",
-      "bytes": 449,
-      "sha256": "1cf76a0a1ad0e121382390ebf314f0bd9154e453bfb26c83e3533483ae32590a"
-    },
-    {
-      "path": "VERSION",
-      "bytes": 5,
-      "sha256": "0ee15e911b924ccc416e129dc5b75bdfc620136a0d5e449d3c61dd421f0c9395"
     }
   ]
 }

@@ -1,6 +1,7 @@
 using IndicaAI.Web.Domain;
 using IndicaAI.Web.Features.Tracking;
 using IndicaAI.Web.Hosting;
+using IndicaAI.Web.Pages.Library;
 using IndicaAI.Web.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,6 +11,8 @@ namespace IndicaAI.Web.Pages.Works;
 public sealed class DetailsModel(DataPaths paths, TrackingService service) : PageModel
 {
     [BindProperty(SupportsGet = true)] public string Id { get; set; } = "";
+    [BindProperty(SupportsGet = true)] public string? BrowseReturnUrl { get; set; }
+    public string? OriginUrl => BrowseOrigin.SafeUrl(Url, BrowseReturnUrl);
     [BindProperty] public TrackingInput Input { get; set; } = new();
     public Work Work { get; private set; } = null!;
     public Domain.Tracking? Tracking { get; private set; }
@@ -22,24 +25,44 @@ public sealed class DetailsModel(DataPaths paths, TrackingService service) : Pag
     public string[] Platforms { get; private set; } = [];
     public string[] TagNames { get; private set; } = [];
     public string? ErrorCode { get; set; }
+    public DateWarning DateWarnings { get; private set; }
     public async Task<IActionResult> OnGetAsync() => await Load(true) ? Page() : NotFound();
+    public async Task<IActionResult> OnPostDatesAsync()
+    {
+        if (!await Load(false)) return NotFound();
+        PrepareDateFields();
+        return Page();
+    }
+
     public async Task<IActionResult> OnPostSaveAsync()
     {
         if (!await Load(false)) return NotFound();
+        var (startPosted, completionPosted) = PrepareDateFields();
         if (!ModelState.IsValid) { ErrorCode = "invalid_date"; return Page(); }
         try
         {
-            var dates = new DateInput(Input.Start, Input.Completion, Input.ConfirmDates);
+            var dates = Input.Dates();
             // Version zero identifies the original inclusion intent, including a lost-response retry.
             if (Input.Version == 0) await service.AddAsync(new(Input.OperationId, Id, Input.StateCode, dates, Input.Note, Input.ListIds), HttpContext.RequestAborted);
-            else if(Tracking is not null) await service.ChangeStateAsync(new(new(Input.OperationId, Input.Version), Tracking.Id, Input.StateCode, dates, Input.Note, Input.ListIds, Input.KeepCycle), HttpContext.RequestAborted);
+            else if (Tracking is not null) await service.ChangeStateAsync(new(new(Input.OperationId, Input.Version), Tracking.Id, Input.StateCode, dates,
+                Input.Note, Input.ListIds, Input.KeepCycle, PreserveStart: !startPosted, PreserveCompletion: !completionPosted), HttpContext.RequestAborted);
             else throw new DomainException("not_found");
-            TempData["Notice"] = "Saved"; return RedirectToPage(new { id = Id });
+            TempData["Notice"] = "Saved"; return RedirectToPage(new { id = Id, BrowseReturnUrl = OriginUrl });
         }
-        catch (DomainException e) { ErrorCode = e.Code; }
+        catch (DomainException e) { ErrorCode = e.Code; DateWarnings = DateConfirmation.WarningsFrom(e); }
         catch (DbUpdateException) { ErrorCode = "save_failed"; }
         return Page();
     }
+
+    private (bool Start, bool Completion) PrepareDateFields()
+    {
+        var startPosted = TrackingDateForm.Posted(Request.Form, ModelState, nameof(Input.Start), Input.ShowStart);
+        var completionPosted = TrackingDateForm.Posted(Request.Form, ModelState, nameof(Input.Completion), Input.ShowCompletion);
+        if (!startPosted) Input.Start = Input.Version == 0 ? null : Cycle?.StartOn;
+        if (!completionPosted) Input.Completion = Input.Version == 0 ? null : Cycle?.CompletionOn;
+        return (startPosted, completionPosted);
+    }
+
     private async Task<bool> Load(bool populate)
     {
         await using var db = new AppDbContext(paths);
@@ -60,7 +83,15 @@ public sealed class DetailsModel(DataPaths paths, TrackingService service) : Pag
         public DateOnly? Start { get; set; }
         public DateOnly? Completion { get; set; }
         public bool ConfirmDates { get; set; }
+        public string DateConfirmationKey { get; set; } = "";
         public bool KeepCycle { get; set; }
         public string Note { get; set; } = ""; public string[] ListIds { get; set; } = [];
+
+        public bool ShowStart => TrackingDateForm.ShowsStart(StateCode);
+        public bool ShowCompletion => TrackingDateForm.ShowsCompletion(StateCode);
+        public string ExpectedDateConfirmationKey => FormattableString.Invariant($"{Version}|{StateCode}|{(ShowStart ? Start : null):yyyy-MM-dd}|{(ShowCompletion ? Completion : null):yyyy-MM-dd}");
+
+        public DateInput Dates() => new(ShowStart ? Start : null, ShowCompletion ? Completion : null,
+            ConfirmDates && DateConfirmationKey == ExpectedDateConfirmationKey);
     }
 }

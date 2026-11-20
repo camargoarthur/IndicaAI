@@ -25,7 +25,8 @@ Dados reais ficam por padrão em `%LOCALAPPDATA%/IndicaAI`, separados dos binár
 - `data/indicaai.db`: SQLite com identidade interna, catálogo, acompanhamento, ciclos, histórico, notas, listas, tags, preferências, recibos e diagnósticos CSV.
 - `assets/covers`: capas locais referenciadas pelo banco. Capas incluídas no pacote são copiadas apenas quando ausentes; dados existentes não são substituídos por seed.
 - `keys`: chaves locais de proteção dos tokens web. O banco e essas chaves não têm criptografia própria; a proteção de acesso é a da conta/pasta do Windows.
-- `backups`: bundles com banco consistente pela API SQLite, assets, migrações e manifesto SHA-256. Prefixos `b-d` (diário), `b-u` (pré-migração), `b-m` (manual), `b-r` (antes de restaurar). O manifesto é a descrição verificável de cada conjunto, não um CSV pessoal.
+- `backups`: bundles com banco consistente pela API SQLite, assets, migrações e manifesto SHA-256. Prefixos `b-d` (diário), `b-u` (pré-migração), `b-m` (manual), `b-r` (antes de restaurar), `b-c` (antes de retirar demonstrações). O manifesto é a descrição verificável de cada conjunto, não um CSV pessoal.
+- `cache/tmdb-posters`: pôsteres temporários do TMDB, com expiração em 90 dias e limpeza quando o aplicativo abre. O cache fica fora das cópias de backup da coleção.
 
 Ao reabrir um banco, a aplicação verifica o schema, cria no máximo um backup diário UTC antes das escritas e um snapshot verificado antes de migração pendente. Mantém os sete diários verificados mais recentes. Bundles inválidos, manuais e de migração são preservados; pastas `.p-*` indicam preparação incompleta e não são candidatas a restauração. Schema desconhecido/mais novo, falha de snapshot ou dados inválidos bloqueiam a atualização; não há reset automático.
 
@@ -60,7 +61,21 @@ alem-do-vale;aventura
 
 Os IDs de grupos, tags e obras são literais, sensíveis a maiúsculas. A interface administrativa mostra os IDs globais. Coluna ausente/vazia preserva valor existente; mídias fazem união. Criar grupos pela interface antes de importar tags. O preview mostra antes/depois/preservados; só sua confirmação aplica as válidas. Alteração global invalida preview antigo. Falha em um registro desfaz todas as partes dele; os já confirmados continuam. Após interrupção, consultar o resultado e gerar nova prévia para repetir. Diagnósticos terminados expiram após 30 dias; tags, vínculos e recibos pessoais permanecem.
 
-Catálogo inicial contém cinco obras fictícias e capas originais demonstrativas. Não há editor completo de obras. Novas obras entram via banco, respeitando constraints e triggers. Papéis de crédito: `author` em livro/mangá, `director` em filme, `creator` em série; `Games`/`Platforms` somente jogos, `Films` somente filmes. Mudanças operacionais no catálogo exigem servidor parado e backup verificado. Futuras migrações que reconstruam essas tabelas precisam recriar/verificar os triggers de compatibilidade.
+O catálogo pessoal inicial começa vazio. Os cinco exemplos com capas demonstrativas pertencem às raízes de teste. Em uma coleção existente, os exemplos intactos e sem vínculos são retirados após backup verificado. Os personalizados ou associados a acompanhamento e tags permanecem. Papéis de crédito: `author` em livro/mangá, `director` em filme, `creator` em série; `Games`/`Platforms` somente jogos, `Films` somente filmes.
+
+## Buscar filmes no TMDB
+
+No arquivo `.env` local da raiz do projeto, configure `INDICAAI_TMDB_READ_TOKEN` com o **API Read Access Token** da conta TMDB. Ao usar o pacote extraído diretamente, coloque o `.env` ao lado do `Start-IndicaAI.bat` depois de extrair. O iniciador também aceita a variável de ambiente de mesmo nome. Mantenha essa configuração fora do Git e de pacotes distribuídos. [Autenticação do TMDB](https://developer.themoviedb.org/docs/authentication-application)
+
+Em **Catálogo → Todas** ou **Catálogo → Filmes**, escolha **Buscar filmes no TMDB**, informe o título e, se ajudar, o ano. Abra um resultado, confira os dados, marque **Anime** quando for o caso e escolha **Adicionar ao catálogo**. O formulário da obra abre para salvar o estado pessoal. Filmes já vinculados ao mesmo ID do TMDB abrem os detalhes locais. Homônimos e obras locais sem ID externo ficam independentes.
+
+A busca externa e a prévia precisam de internet. A busca padrão do Catálogo, a Biblioteca e os dados de acompanhamento funcionam sem rede. Quando a imagem falta, o cartão mostra **Capa indisponível**. As últimas cinco buscas externas ficam no navegador e são separadas por raiz de dados. A consulta transmite o título pesquisado ao TMDB. Estado, listas e anotações ficam na base local.
+
+### Carga inicial da lista
+
+Com o aplicativo fechado, o comando de manutenção recebe `--maintenance import-watch-list`, `--list` (arquivo UTF-8 no formato de `docs/Assistir.txt`) e uma `--data-root` explícita. Com `--preview`, a operação conta e valida as entradas sem acessar a rede ou escrever dados. Para aplicar, forneça o token como a variável de processo `INDICAAI_TMDB_READ_TOKEN`, mantenha uma cópia verificada da base e execute sem `--preview`. Na raiz isolada dos BATs de teste, inclua `--demo-catalog` para manter as obras demonstrativas do roteiro. Os resultados mostram o número da linha e o estado da resolução. Repetir a operação retoma o lote pelos recibos e pode repor capas de entradas vinculadas que estiverem faltando.
+
+As capas são buscadas depois da gravação. `--skip-posters` permite executar a carga sem baixá-las. O resultado do lote traz a linha e a situação da capa de cada obra, incluindo falta de correspondência ou de imagem, falha e reaproveitamento do cache. Com o aplicativo fechado e o token disponível, use a mesma raiz e o mesmo arquivo com `--posters-only` para consultar os recibos e baixar as imagens pendentes de obras já vinculadas. A operação modifica somente o cache. O código de saída `4` indica que houve falhas passíveis de nova tentativa.
 
 ## Desenvolvimento e novos idiomas
 

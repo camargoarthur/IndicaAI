@@ -54,6 +54,12 @@ public sealed class ImportPreviewService(DataPaths paths)
         }
         finally { gate.Release(); }
     }
-    private static void Reject(ImportRow row, string reason) { row.Status = "rejected"; row.Action = "rejected"; row.ReasonCode = reason; }
+    private static void Reject(ImportRow row, string reason)
+    {
+        row.Status = "rejected";
+        row.Action = "rejected";
+        row.ReasonCode = reason;
+        row.ReasonArgs = null;
+    }
 }
 

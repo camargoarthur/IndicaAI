@@ -27,3 +27,45 @@ assert.notEqual(model.key('work-book'),model.key('work-game'));
 assert.equal(model.restorePlan({version:1,fields:selection},'1').conflict,false);
 assert.equal(model.eligible('Password','password'),false);assert.equal(model.eligible('','text'),false);
 console.log('PASS: Draft model — texto apagado, checkboxes distintos/desmarcados, isolamento, conflito de versão e exclusão de tokens. Não executa DOM/navegador.');
+
+function control() {
+ const events = {};
+ return {
+  checked: false,
+  addEventListener: (name, handler) => { events[name] = handler; },
+  dispatch: name => events[name](),
+  setAttribute(name, value) { this[name] = value; }
+ };
+}
+
+require('node:test').test('seleção da página acompanha nenhum, parte ou todos os cartões', () => {
+ const items = [control(), control()];
+ const toggle = control();
+ const page = control();
+ const counter = {};
+ const submit = {};
+ const controls = { '[data-selection-toggle]': toggle, '[data-select-page]': page,
+  '[data-selection-count]': counter, '[data-selection-submit]': submit };
+ const form = {
+  querySelectorAll: () => items,
+  querySelector: selector => controls[selector],
+  classList: { toggle() {} }
+ };
+ const document = { querySelector: selector => selector === '[data-selection-form]' ? form : null, querySelectorAll: () => [] };
+ const window = control();
+ vm.runInNewContext(fs.readFileSync('src/IndicaAI.Web/wwwroot/js/selection.js', 'utf8'), { document, window });
+ toggle.dispatch('click');
+ assert.equal(submit.disabled, true);
+ page.checked = true;
+ page.dispatch('change');
+ assert.ok(items.every(item => item.checked));
+ items[0].checked = false;
+ items[0].dispatch('change');
+ assert.equal(page.checked, false);
+ assert.equal(page.indeterminate, true);
+ assert.equal(counter.textContent, 1);
+ items[1].checked = false;
+ window.dispatch('pageshow');
+ assert.equal(page.indeterminate, false);
+ assert.equal(submit.disabled, true);
+});

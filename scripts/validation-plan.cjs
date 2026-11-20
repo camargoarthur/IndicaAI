@@ -1,10 +1,10 @@
 const modules={
- Tracking:['*TrackingTests','*TrackingFailureTests','*TrackingHttpTests','*OrganizationTests','*StateLabelTests'],
- Lists:['*OrganizationTests','*FilterBatchTests','*BatchReviewTests','*RecoveryAndBatchTests'],
- Tags:['*TagTests','*ImportTests','*ImportFailureTests','*ImportRecoveryTests','*CsvStructureTests'],
- Imports:['*TagTests','*ImportTests','*ImportFailureTests','*ImportRecoveryTests','*CsvStructureTests'],
- Preferences:['*PreferenceTests','*StateLabelTests','*CustomLabelTests'],
- Library:['*FilterBatchTests','*OrganizationTests','*BatchReviewTests','*CatalogIntegrityTests'],
+ Tracking:['*TrackingTests','*TrackingFailureTests','*TrackingHttpTests','*OrganizationTests','*StateLabelTests','*AuditFormsTests'],
+ Lists:['*OrganizationTests','*FilterBatchTests','*BatchReviewTests','*RecoveryAndBatchTests','*OrganizationAdminHttpTests','*BrowseOriginTests'],
+ Tags:['*TagTests','*ImportTests','*ImportFailureTests','*ImportRecoveryTests','*CsvStructureTests','*OrganizationAdminHttpTests'],
+ Imports:['*TagTests','*ImportTests','*ImportFailureTests','*ImportRecoveryTests','*CsvStructureTests','*OrganizationAdminHttpTests'],
+ Preferences:['*PreferenceTests','*StateLabelTests','*CustomLabelTests','*AuditFormsTests'],
+ Library:['*FilterBatchTests','*OrganizationTests','*BatchReviewTests','*CatalogIntegrityTests','*OrganizationAdminHttpTests','*BrowseOriginTests','*QuickStateTests','*WatchListImportTests','*TmdbPosterCacheTests'],
  Recovery:['*BackupTests','*BackupValidationTests','*RestoreDamagedActiveTests','*RecoveryAndBatchTests','*MigrationTests','*BootstrapTests']
 };
 const ranks={Docs:0,Visual:1,Functional:2,Full:3};
@@ -18,7 +18,7 @@ function impact(paths){
   if(p.includes('..')||p.startsWith('/')||/^[A-Za-z]:/.test(p))return 'Full';
   if(/^docs\/.*\.(md|html|png|jpg|jpeg|json|csv)$/.test(p)||/^[^/]+\.md$/.test(p))next=0;
   else if(/^src\/IndicaAI\.Web\/wwwroot\/(css|covers|icons|fonts)\//.test(p))next=1;
-  else if(/^src\/IndicaAI\.Web\/(Features|Pages|Domain|Localization|Text|wwwroot\/js)\//.test(p)||/^tests\/IndicaAI\.Tests\/.*\.cs$/.test(p)||p==='tests/draft-model.test.cjs')next=2;
+  else if(/^src\/IndicaAI\.Web\/(Features|Pages|Domain|Localization|Text|wwwroot\/js)\//.test(p)||/^tests\/IndicaAI\.Tests\/.*\.cs$/.test(p)||['tests/draft-model.test.cjs','tests/tmdb-search.test.cjs'].includes(p))next=2;
   rank=Math.max(rank,next);
  }
  return Object.keys(ranks).find(k=>ranks[k]===rank);

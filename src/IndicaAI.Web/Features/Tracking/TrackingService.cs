@@ -14,8 +14,10 @@ public sealed class TrackingService(DataPaths paths, TimeProvider? clock = null,
     private DateOnly Today => DateOnly.FromDateTime(time.GetLocalNow().DateTime);
 
     public Task<TrackingResult> AddAsync(AddTracking command, CancellationToken ct = default) =>
-        runner.RunAsync(command.OperationId, "tracking.add", command, async (db, owner) =>
-        {
+        runner.RunAsync(command.OperationId, "tracking.add", command, (db, owner) => AddCoreAsync(db, owner, command, ct), ct);
+
+    internal async Task<TrackingResult> AddCoreAsync(AppDbContext db, string owner, AddTracking command, CancellationToken ct)
+    {
             var work = await db.Works.FindAsync([command.WorkId], ct) ?? throw new DomainException("not_found");
             ValidateState(command.StateCode); ValidateDates(command.Dates);
             var existing = await db.Trackings.SingleOrDefaultAsync(t => t.IdentityId == owner && t.WorkId == work.Id, ct);
@@ -35,7 +37,7 @@ public sealed class TrackingService(DataPaths paths, TimeProvider? clock = null,
             }
             await AddEvent(db, tracking, cycle, "added", null, command.StateCode, command.OperationId, ct);
             return new TrackingResult(tracking.Id, tracking.Version, tracking.StateCode, 1);
-        }, ct);
+    }
 
     public Task<TrackingResult> ChangeStateAsync(ChangeState command, CancellationToken ct = default) =>
         runner.RunAsync(command.Mutation.OperationId, "tracking.change", command, (db, owner) => ChangeCoreAsync(db, owner, command, ct), ct);
@@ -44,17 +46,20 @@ public sealed class TrackingService(DataPaths paths, TimeProvider? clock = null,
     {
         var t = await FindOwned(db, owner, command.TrackingId, ct); CheckVersion(t, command.Mutation.ExpectedVersion);
         if (t.ArchivedAtUtc is not null) throw new DomainException("archived");
-        ValidateState(command.StateCode); ValidateDates(command.Dates);
-        if (t.StateCode == "completed" && command.StateCode == "in_progress" && !command.ConfirmKeepCycle) throw new DomainException("choose_cycle");
+        ValidateState(command.StateCode);
         var cycle = await CurrentCycle(db, t.Id, ct);
+        var dates = new DateInput(command.PreserveStart ? cycle.StartOn : command.Dates.Start,
+            command.PreserveCompletion ? cycle.CompletionOn : command.Dates.Completion, command.Dates.ConfirmUnusualDates);
+        ValidateDates(dates, cycle.StartOn, cycle.CompletionOn);
+        if (t.StateCode == "completed" && command.StateCode == "in_progress" && !command.ConfirmKeepCycle) throw new DomainException("choose_cycle");
         bool changed = false;
         if (t.StateCode != command.StateCode)
         {
             await AddEvent(db, t, cycle, "state_changed", t.StateCode, command.StateCode, command.Mutation.OperationId, ct);
             t.StateCode = command.StateCode; changed = true;
         }
-        changed |= await SetDate(db, t, cycle, "start", command.Dates.Start, command.Mutation.OperationId, ct);
-        changed |= await SetDate(db, t, cycle, "completion", command.Dates.Completion, command.Mutation.OperationId, ct);
+        changed |= await SetDate(db, t, cycle, "start", dates.Start, command.Mutation.OperationId, ct);
+        changed |= await SetDate(db, t, cycle, "completion", dates.Completion, command.Mutation.OperationId, ct);
         if (command.Note is not null && command.Note != t.Note) { t.Note = command.Note; changed = true; }
         if (command.ListIds is not null)
         {
@@ -88,7 +93,8 @@ public sealed class TrackingService(DataPaths paths, TimeProvider? clock = null,
             var t = await FindOwned(db, owner, command.TrackingId, ct); CheckVersion(t, command.Mutation.ExpectedVersion);
             var cycle = await db.Cycles.SingleOrDefaultAsync(c => c.Id == command.CycleId && c.TrackingId == t.Id, ct) ?? throw new DomainException("not_found");
             if (command.Field is not ("start" or "completion")) throw new DomainException("invalid_date");
-            ValidateDates(new(command.Field == "start" ? command.Value : cycle.StartOn, command.Field == "completion" ? command.Value : cycle.CompletionOn, command.ConfirmUnusualDates));
+            ValidateDates(new(command.Field == "start" ? command.Value : cycle.StartOn,
+                command.Field == "completion" ? command.Value : cycle.CompletionOn, command.ConfirmUnusualDates), cycle.StartOn, cycle.CompletionOn);
             if (await SetDate(db, t, cycle, command.Field, command.Value, command.Mutation.OperationId, ct)) t.Version++;
             return await Result(db, t, ct);
         }, ct);
@@ -120,9 +126,17 @@ public sealed class TrackingService(DataPaths paths, TimeProvider? clock = null,
         if (type is "added" or "new_cycle") e.NewValue = System.Text.Json.JsonSerializer.Serialize(new { c.StartOn, c.CompletionOn });
         db.Events.Add(e); return e;
     }
-    private void ValidateDates(DateInput dates)
+    private void ValidateDates(DateInput dates, DateOnly? originalStart = null, DateOnly? originalCompletion = null)
     {
-        if (!dates.ConfirmUnusualDates && (dates.Start > Today || dates.Completion > Today || (dates.Start.HasValue && dates.Completion.HasValue && dates.Completion < dates.Start))) throw new DomainException("unusual_dates");
+        if (dates.ConfirmUnusualDates) return;
+        var startChanged = dates.Start != originalStart;
+        var completionChanged = dates.Completion != originalCompletion;
+        var today = Today;
+        var warnings = DateWarning.None;
+        if (startChanged && dates.Start > today) warnings |= DateWarning.FutureStart;
+        if (completionChanged && dates.Completion > today) warnings |= DateWarning.FutureCompletion;
+        if ((startChanged || completionChanged) && dates.Completion < dates.Start) warnings |= DateWarning.CompletionBeforeStart;
+        if (warnings != DateWarning.None) throw new DomainException("unusual_dates", warnings);
     }
     internal static void ValidateState(string state) { if (!MediaCodes.States.Contains(state)) throw new DomainException("state_invalid"); }
     internal static void CheckVersion(Domain.Tracking t, long version) { if (t.Version != version) throw new DomainException("conflict"); }

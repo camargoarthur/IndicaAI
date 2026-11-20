@@ -5,4 +5,4 @@ if not exist "%~dp0.local\teste-manual-restaurado-01\data\indicaai.db" (
   pause
   exit /b 1
 )
-call "%~dp0Iniciar-IndicaAI.bat" -DataRoot "%~dp0.local\teste-manual-restaurado-01" -Port 5274
+call "%~dp0Iniciar-IndicaAI.bat" -DataRoot "%~dp0.local\teste-manual-restaurado-01" -Port 5274 -DemoCatalog

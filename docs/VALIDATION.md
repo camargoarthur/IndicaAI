@@ -36,7 +36,7 @@ No PowerShell, a partir da raiz:
 | Full | Lançamento, persistência, operação, dependências, infraestrutura ou impacto desconhecido | Functional + publicação isolada, verificação dos recursos do pacote e teste real do iniciador pelo BAT. |
 | Auto | Perfil padrão | Seleciona o maior impacto dos caminhos informados. Sem caminhos ou arquivo desconhecido, escolhe Full. |
 
-Módulos disponíveis: Tracking, Lists, Tags, Imports, Preferences, Library, Recovery. O seletor rejeita nomes inválidos e perfis explicitamente inferiores ao impacto dos caminhos fornecidos. Não há Git neste checkout: a lista de alterações é informada pelo agente; na dúvida, usar Full. Alterações mistas nunca ficam apenas no perfil documental. Mudanças em Razor executam Functional, pois podem alterar formulários e comportamento.
+Módulos disponíveis: Tracking, Lists, Tags, Imports, Preferences, Library, Recovery. O seletor rejeita nomes inválidos e perfis explicitamente inferiores ao impacto dos caminhos fornecidos. Informe os caminhos alterados, inclusive os novos; sem caminhos, use Full. Alterações mistas nunca ficam apenas no perfil documental. Mudanças em Razor executam Functional, pois podem alterar formulários e comportamento.
 
 A suíte inicial tinha 47 testes em aproximadamente 8 segundos: executar o conjunto funcional em cada entrega custa pouco e reduz risco de omissões. Medir novamente se o custo crescer; não reduzir cobertura só para encurtar o chat.
 
@@ -58,6 +58,6 @@ O ensaio operacional precisa consultar processos via CIM e acessar loopback. Se 
 
 ## Limites
 
-Os casos TM01–TM39 têm rastreabilidade para verificações automatizadas parciais. TestServer envia requisições reais à aplicação em memória e inspeciona HTML/dados, mas não executa JavaScript nem cliques em um navegador. Os testes JS cobrem o modelo de rascunhos e seleção, não toda a integração com DOM/storage. O ensaio do iniciador encerra abruptamente seu host; não simula o clique real no X.
+Os casos TM01–TM43 têm rastreabilidade para verificações automatizadas parciais. TestServer envia requisições à aplicação em memória e inspeciona HTML e dados, sem executar JavaScript ou cliques de navegador. Os testes do TMDB, do lote e da retomada de capas usam respostas simuladas. Os testes JS cobrem rascunhos, os três estados da seleção geral e buscas recentes. O ensaio do iniciador encerra abruptamente seu host; não simula o clique real no X.
 
-Aparência, foco, navegação por teclado, clipboard, diálogos, restauração de rascunhos/seleção na troca real de preferência e revisão visual continuam manuais. Marcação do guia não é alterada pelos testes automatizados. Não há alegação de cobertura total de código ou de automação integral dos 39 percursos.
+Aparência, foco, navegação por teclado, clipboard, diálogos e restauração de rascunhos ou seleção na troca real de preferência continuam no roteiro manual. A automação cobre parte dos 43 percursos e deixa suas marcações sob o controle do usuário.

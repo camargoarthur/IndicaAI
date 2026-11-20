@@ -1,7 +1,56 @@
 @page
 @model IndicaAI.Web.Pages.Archive.IndexModel
-@{ViewData["Title"]=T["Archived"];}
-<header class="page-heading"><p class="eyebrow">@T["Collection"]</p><h1>@T["Archived"]</h1><p>@T["ArchiveConfirm"]</p></header>
-@if(Model.ErrorCode is not null){<p class="alert" role="alert">@T["error."+Model.ErrorCode]</p>}
-@if(Model.Items.Count==0){<div class="empty-state">@T["EmptyArchive"]</div>}
-<div class="work-grid">@foreach(var item in Model.Items){<article class="work-card"><a asp-page="/Works/Details" asp-route-id="@item.Work.Id"><img src="/covers/@item.Work.CoverAsset" alt=""/><h2>@item.Work.Title</h2></a><p>@T["media."+item.Work.MediaCode]</p><form method="post" asp-page-handler="Set"><input name="operationId" value="@Guid.NewGuid()" type="hidden"/><input name="trackingId" value="@item.Tracking.Id" type="hidden"/><input name="version" value="@item.Tracking.Version" type="hidden"/><button class="secondary">@T["Restore"]</button></form></article>}</div>
+@inject IndicaAI.Web.Features.Catalog.TmdbPosterCache Posters
+@{ ViewData["Title"] = T["Archived"]; }
+<header class="page-heading">
+    <div>
+        <p class="eyebrow">@T["Collection"]</p>
+        <h1>@T["Archived"]</h1>
+        <p>@T["ArchiveConfirm"]</p>
+    </div>
+</header>
+@if (Model.ErrorCode is not null)
+{
+    <p class="alert" role="alert" tabindex="-1">@T["error." + Model.ErrorCode]</p>
+}
+@if (Model.RestoredWork is { } restored)
+{
+    <div class="notice success">
+        <span role="status">@T.Get("ArchiveRestoredWork", restored.Title)</span>
+        <a asp-page="/Works/Details" asp-route-id="@restored.Id" asp-route-BrowseReturnUrl="/Archive">@T["ArchiveOpenRestoredWork"]</a>
+    </div>
+}
+@if (Model.Items.Count == 0)
+{
+    <div class="empty-state">@T["EmptyArchive"]</div>
+}
+else
+{
+    <div class="work-grid">
+        @foreach (var item in Model.Items)
+        {
+            <article class="work-card">
+                <a asp-page="/Works/Details" asp-route-id="@item.Work.Id" asp-route-BrowseReturnUrl="/Archive">
+                    @if (Posters.CoverUrl(item.Work) is { } cover)
+                    {
+                        <div class="cover-wrap">
+                            <img src="@cover" alt="" loading="lazy" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="cover-wrap cover-missing"><span>@T["CoverUnavailable"]</span></div>
+                    }
+                    <h2>@item.Work.Title</h2>
+                </a>
+                <p>@T["media." + item.Work.MediaCode]</p>
+                <form method="post" asp-page-handler="Set">
+                    <input name="operationId" value="@Guid.NewGuid()" type="hidden" />
+                    <input name="trackingId" value="@item.Tracking.Id" type="hidden" />
+                    <input name="version" value="@item.Tracking.Version" type="hidden" />
+                    <button class="secondary">@T["Restore"]</button>
+                </form>
+            </article>
+        }
+    </div>
+}

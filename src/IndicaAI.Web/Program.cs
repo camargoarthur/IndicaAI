@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.Extensions.Logging.Abstractions;
 using IndicaAI.Web.Features.Tracking;
+using IndicaAI.Web.Features.Catalog;
 using IndicaAI.Web.Localization;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
@@ -20,8 +21,19 @@ builder.Services.AddRazorPages().AddMvcOptions(options=>{options.SuppressImplici
 builder.Services.AddSingleton(sp => DataPaths.ForRoot(builder.Configuration["IndicaAI:DataRoot"]
     ?? Environment.GetEnvironmentVariable("INDICAAI_DATA_ROOT")
     ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "IndicaAI")));
-builder.Services.AddSingleton<DatabaseBootstrapper>();
+builder.Services.AddSingleton(sp => new DatabaseBootstrapper(sp.GetRequiredService<DataPaths>(),
+    builder.Configuration["IndicaAI:DemoCatalog"] == "true" || builder.Configuration["INDICAAI_DEMO_CATALOG"] == "1"));
 builder.Services.AddScoped<TrackingService>();
+builder.Services.AddScoped<TmdbMovies>();
+builder.Services.AddScoped<TmdbCatalog>();
+builder.Services.AddHttpClient<TmdbPosterCache>(client => client.Timeout = TimeSpan.FromSeconds(10))
+    .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
+builder.Services.AddHttpClient("Tmdb", client =>
+{
+    client.BaseAddress = new Uri("https://api.themoviedb.org/3/");
+    client.Timeout = TimeSpan.FromSeconds(10);
+}).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false })
+    .RedactLoggedHeaders(["Authorization"]);
 builder.Services.AddScoped<IndicaAI.Web.Features.Library.LibraryQuery>();
 builder.Services.AddScoped<IndicaAI.Web.Features.Batch.BatchService>();
 builder.Services.AddScoped<IndicaAI.Web.Features.Lists.ListService>();
@@ -43,12 +55,20 @@ var app = builder.Build();
 app.UseExceptionHandler("/Error");
 using var instance=LocalInstance.Acquire(app.Services.GetRequiredService<DataPaths>());
 await app.Services.GetRequiredService<DatabaseBootstrapper>().InitializeAsync();
+app.Services.GetRequiredService<TmdbPosterCache>().PruneExpired();
 await new IndicaAI.Web.Features.Imports.ImportRecoveryService(app.Services.GetRequiredService<DataPaths>()).ReconcileAsync();
 app.Use(async(context,next)=>{
     var host=context.Request.Host.Host;
     var origin=context.Request.Headers.Origin.ToString();
     if((context.Connection.RemoteIpAddress is IPAddress remote&&!IPAddress.IsLoopback(remote))||!(host is "127.0.0.1" or "localhost" or "::1")||(!string.IsNullOrEmpty(origin)&&!string.Equals(origin,$"{context.Request.Scheme}://{context.Request.Host}",StringComparison.OrdinalIgnoreCase))){context.Response.StatusCode=403;return;}
-    context.Response.Headers["Content-Security-Policy"]="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'none'";
+    var tmdbPage = string.Equals(context.Request.Path.Value?.TrimEnd('/'), "/Catalog/Tmdb", StringComparison.OrdinalIgnoreCase);
+    if (tmdbPage && context.Request.Headers["Sec-Fetch-Site"].ToString() is "cross-site" or "same-site")
+    {
+        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+        return;
+    }
+    var images = tmdbPage ? "'self' https://image.tmdb.org" : "'self'";
+    context.Response.Headers["Content-Security-Policy"]=$"default-src 'self'; img-src {images}; style-src 'self'; script-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'none'";
     context.Response.Headers["X-Content-Type-Options"]="nosniff";
     context.Response.Headers["Referrer-Policy"]="same-origin";
     await next();
@@ -65,6 +85,12 @@ app.Use(async (context, next) =>
 app.UseStaticFiles(new StaticFileOptions{FileProvider=new PhysicalFileProvider(app.Services.GetRequiredService<DataPaths>().Assets)});
 app.UseStaticFiles();
 app.MapRazorPages();
+app.MapGet("/tmdb-posters/{media}/{id:int}", (string media, int id, TmdbPosterCache posters, HttpContext context) =>
+{
+    if (posters.Find(media, id) is not { } poster) return Results.NotFound();
+    context.Response.Headers.CacheControl = "private, max-age=300";
+    return Results.File(poster.Path, poster.ContentType);
+});
 app.MapGet("/", () => Results.Redirect("/Library"));
 app.Run();
 public partial class Program;

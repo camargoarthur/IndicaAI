@@ -2,6 +2,12 @@
 
 Requisitos R01–R21 implementados no MVP local. Autoridade em [GATES](GATES.md); validação atual em [VALIDATION](VALIDATION.md).
 
+A extensão 0.11, autorizada em D37, acrescenta uma entrada no catálogo para filmes escolhidos e confirmados por meio do TMDB. O acompanhamento continua local e separado. Veja [operação](OPERATIONS.md).
+
+A 0.12, autorizada em D38, amplia o catálogo local com a carga da lista pessoal de filmes e séries. O TMDB fica disponível por ação explícita. O Catálogo exibe o estado do acompanhamento e o formulário mostra as datas pertinentes ao estado selecionado. A evolução B15 segue no [backlog](BACKLOG.md).
+
+A 0.13, autorizada em D39, acrescenta o filtro rápido por estado e aplica as [correções da auditoria de usabilidade](quality/AUDITORIA-USABILIDADE.md). Elas preservam o recorte da consulta, reduzem perdas em edições de datas e rótulos e dão retorno explícito nas operações de associação, importação e restauração.
+
 ## Objetivo
 
 Unificar acompanhamento pessoal de jogos, livros, mangás, filmes e séries: estado, histórico, organização livre e anotações. Começar localmente, com catálogo reduzido, sem antecipar o produto multiusuário.

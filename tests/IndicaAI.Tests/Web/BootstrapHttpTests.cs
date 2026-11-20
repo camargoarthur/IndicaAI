@@ -23,7 +23,7 @@ public sealed class BootstrapHttpTests
         Assert.Equal(HttpStatusCode.OK, catalog.StatusCode);
         Assert.Null(library.Headers.Location);
         Assert.DoesNotContain("type=\"password\"", await library.Content.ReadAsStringAsync());
-        Assert.Contains("A cidade distante", await catalog.Content.ReadAsStringAsync());
+        Assert.DoesNotContain("A cidade distante", await catalog.Content.ReadAsStringAsync());
     }
 }
 

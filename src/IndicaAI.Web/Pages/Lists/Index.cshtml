@@ -1,8 +1,42 @@
 @page
 @model IndicaAI.Web.Pages.Lists.IndexModel
-@{ViewData["Title"] = T["Lists"];}
-<header class="page-heading"><p class="eyebrow">@T["Collection"]</p><h1>@T["Lists"]</h1></header>
-@if(Model.ErrorCode is not null){<p class="alert" role="alert">@T["error."+Model.ErrorCode]</p>}
-<form method="post" class="panel inline-form" data-draft="list-new" data-version="0"><input type="hidden" asp-for="OperationId"/><label asp-for="Name">@T["ListName"]<input asp-for="Name" required maxlength="200"/></label><button>@T["CreateList"]</button></form>
-<div class="list-grid">@foreach(var list in Model.Lists){<section class="panel"><h2><a asp-page="/Library/Index" asp-route-context="list" asp-route-listId="@list.Id">@list.Name</a></h2><form method="post" class="inline-form" data-draft="list-@list.Id" data-version="@list.Version"><input name="OperationId" type="hidden" value="@Guid.NewGuid()"/><input name="Id" type="hidden" value="@list.Id"/><input name="Version" type="hidden" value="@list.Version"/><label>@T["ListName"]<input name="Name" value="@list.Name" required/></label><button class="secondary">@T["Rename"]</button></form></section>}</div>
-
+@{ ViewData["Title"] = T["Lists"]; }
+<header class="page-heading">
+    <div><p class="eyebrow">@T["Collection"]</p><h1>@T["Lists"]</h1></div>
+</header>
+@if (Model.ErrorCode is not null)
+{
+    <p class="alert" role="alert" tabindex="-1">@T["error." + Model.ErrorCode]</p>
+}
+<form method="post" class="panel inline-form" data-draft="list-new" data-version="0">
+    <input type="hidden" name="OperationId" value="@Guid.NewGuid()" />
+    <label for="list-new-name">@T["ListName"]
+        <input id="list-new-name" name="Name" value="@(Model.Id is null ? Model.Name : null)" required maxlength="200" />
+    </label>
+    <button type="submit">@T["CreateList"]</button>
+</form>
+<div class="list-grid">
+    @foreach (var list in Model.Lists)
+    {
+        var renameFailed = Model.Id == list.Id && Model.ErrorCode is not null;
+        <section class="panel list-card">
+            <h2 id="list-heading-@list.Id">@list.Name</h2>
+            <p class="muted">@T.Get("WorkCount", list.WorkCount)</p>
+            <div class="list-card-actions">
+                <a class="button" asp-page="/Library/Index" asp-route-context="list" asp-route-listId="@list.Id" aria-describedby="list-heading-@list.Id">@T["OpenList"]</a>
+            </div>
+            <details open="@renameFailed">
+                <summary aria-describedby="list-heading-@list.Id">@T["Rename"]</summary>
+                <form method="post" class="inline-form" data-draft="list-@list.Id" data-version="@list.Version">
+                    <input name="OperationId" type="hidden" value="@Guid.NewGuid()" />
+                    <input name="Id" type="hidden" value="@list.Id" />
+                    <input name="Version" type="hidden" value="@list.Version" />
+                    <label for="list-name-@list.Id">@T["ListName"]
+                        <input id="list-name-@list.Id" name="Name" value="@(renameFailed ? Model.Name : list.Name)" required />
+                    </label>
+                    <button type="submit" class="secondary">@T["Save"]</button>
+                </form>
+            </details>
+        </section>
+    }
+</div>

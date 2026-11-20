@@ -160,7 +160,19 @@
     <value>Nenhuma mudança registrada.</value>
   </data>
   <data name="ConfirmDates" xml:space="preserve">
-    <value>Confirmo estas datas, mesmo que estejam no futuro ou a conclusão seja anterior ao início.</value>
+    <value>Manter as datas informadas</value>
+  </data>
+  <data name="FutureStartDate" xml:space="preserve">
+    <value>A data de início está no futuro.</value>
+  </data>
+  <data name="FutureCompletionDate" xml:space="preserve">
+    <value>A data de conclusão está no futuro.</value>
+  </data>
+  <data name="CompletionBeforeStart" xml:space="preserve">
+    <value>A conclusão vem antes da data de início.</value>
+  </data>
+  <data name="ShowStateDates" xml:space="preserve">
+    <value>Atualizar campos de data</value>
   </data>
   <data name="KeepCycle" xml:space="preserve">
     <value>Manter o ciclo atual ao voltar a consumir esta obra.</value>
@@ -389,7 +401,7 @@
     <value>Atualizar</value>
   </data>
   <data name="Rejected" xml:space="preserve">
-    <value>Rejeitar</value>
+    <value>Rejeitadas</value>
   </data>
   <data name="Pending" xml:space="preserve">
     <value>Não processada</value>
@@ -787,4 +799,55 @@
   <data name="ResolveUploadBeforePreferences" xml:space="preserve">
     <value>Conclua ou cancele a seleção do arquivo antes de trocar as preferências. O arquivo e seus campos foram mantidos.</value>
   </data>
+  <data name="TmdbSearch" xml:space="preserve"><value>Buscar no TMDB</value></data>
+  <data name="TmdbCatalogSearch" xml:space="preserve"><value>Buscar filmes no TMDB</value></data>
+  <data name="CatalogLocalNoMatch" xml:space="preserve"><value>Nenhuma obra corresponde à busca no catálogo local.</value></data>
+  <data name="TmdbSearchCatalogTitle" xml:space="preserve"><value>Buscar este título no TMDB</value></data>
+  <data name="TmdbRecentSearches" xml:space="preserve"><value>Buscas recentes</value></data>
+  <data name="TmdbResults" xml:space="preserve"><value>Resultados no TMDB</value></data>
+  <data name="TmdbNoPoster" xml:space="preserve"><value>Sem pôster</value></data>
+  <data name="TmdbNoOverview" xml:space="preserve"><value>Sinopse indisponível.</value></data>
+  <data name="CatalogUntracked" xml:space="preserve"><value>Sem acompanhamento</value></data>
+  <data name="CatalogTrackingArchived" xml:space="preserve"><value>Arquivado</value></data>
+  <data name="TmdbBackToCatalog" xml:space="preserve"><value>Voltar ao catálogo</value></data>
+  <data name="TmdbMovieTitle" xml:space="preserve"><value>Título do filme</value></data>
+  <data name="TmdbYearOptional" xml:space="preserve"><value>Ano (opcional)</value></data>
+  <data name="TmdbFind" xml:space="preserve"><value>Buscar filmes</value></data>
+  <data name="TmdbInvalidSearch" xml:space="preserve"><value>Informe um título de até 160 caracteres e, se quiser, um ano de lançamento válido.</value></data>
+  <data name="TmdbNoResults" xml:space="preserve"><value>Nenhum filme encontrado. Experimente o título original ou deixe o ano em branco.</value></data>
+  <data name="TmdbDirector" xml:space="preserve"><value>Direção</value></data>
+  <data name="TmdbDuration" xml:space="preserve"><value>Duração</value></data>
+  <data name="TmdbMinutes" xml:space="preserve"><value>{0} min</value></data>
+  <data name="TmdbAddMovie" xml:space="preserve"><value>Adicionar ao catálogo</value></data>
+  <data name="TmdbBackToSearch" xml:space="preserve"><value>Voltar à busca</value></data>
+  <data name="TmdbPrevious" xml:space="preserve"><value>Página anterior</value></data>
+  <data name="TmdbNext" xml:space="preserve"><value>Próxima página</value></data>
+  <data name="TmdbCredits" xml:space="preserve"><value>Créditos do catálogo externo</value></data>
+  <data name="TmdbInvalidPreview" xml:space="preserve"><value>A prévia expirou ou é inválida. Busque o filme e abra a prévia de novo.</value></data>
+  <data name="tmdb_configuration" xml:space="preserve"><value>Configure o token de leitura do TMDB no arquivo .env e reabra o IndicaAI.</value></data>
+  <data name="tmdb_authentication" xml:space="preserve"><value>O TMDB recusou a autenticação. Confira o token de leitura e reabra o IndicaAI.</value></data>
+  <data name="tmdb_not_found" xml:space="preserve"><value>O filme não foi encontrado no TMDB.</value></data>
+  <data name="tmdb_rate_limit" xml:space="preserve"><value>O TMDB recebeu muitas consultas. Tente novamente em instantes.</value></data>
+  <data name="tmdb_unavailable" xml:space="preserve"><value>Não foi possível consultar o TMDB agora. Tente novamente em instantes.</value></data>
+  <data name="BackToResults" xml:space="preserve"><value>Voltar aos resultados</value></data>
+  <data name="AnimeMedia" xml:space="preserve"><value>Filmes e séries</value></data>
+  <data name="CoverUnavailable" xml:space="preserve"><value>Capa indisponível</value></data>
+  <data name="ClearDate" xml:space="preserve"><value>Limpar data</value></data>
+  <data name="SaveLabels" xml:space="preserve"><value>Salvar rótulos</value></data>
+  <data name="LabelsSaved" xml:space="preserve"><value>Rótulos salvos.</value></data>
+  <data name="error.date_value_required" xml:space="preserve"><value>Informe uma data para salvar a correção.</value></data>
+  <data name="error.date_selection_changed" xml:space="preserve"><value>Data carregada. Revise o campo antes de salvar.</value></data>
+  <data name="error.label_too_long" xml:space="preserve"><value>Use até 100 caracteres por rótulo.</value></data>
+  <data name="AssociationChooseWork" xml:space="preserve"><value>Escolha uma obra</value></data>
+  <data name="AssociationChooseTag" xml:space="preserve"><value>Escolha uma tag</value></data>
+  <data name="AssociationShowTags" xml:space="preserve"><value>Mostrar tags</value></data>
+  <data name="AssociationNoApplicableTags" xml:space="preserve"><value>Não há tags para a mídia da obra selecionada. Cadastre uma tag e marque essa mídia como aplicável.</value></data>
+  <data name="error.association_selection_required" xml:space="preserve"><value>Escolha uma obra e uma tag antes de salvar.</value></data>
+  <data name="ArchiveRestoredWork" xml:space="preserve"><value>“{0}” foi restaurada ao acervo.</value></data>
+  <data name="ArchiveOpenRestoredWork" xml:space="preserve"><value>Abrir obra restaurada</value></data>
+  <data name="ImportViewRejections" xml:space="preserve"><value>Ver rejeições</value></data>
+  <data name="ImportViewAllRows" xml:space="preserve"><value>Ver todos os registros</value></data>
+  <data name="ImportNoRejections" xml:space="preserve"><value>Nenhum registro rejeitado.</value></data>
+  <data name="OpenList" xml:space="preserve"><value>Abrir lista</value></data>
+  <data name="DateField" xml:space="preserve"><value>Campo da data</value></data>
 </root>

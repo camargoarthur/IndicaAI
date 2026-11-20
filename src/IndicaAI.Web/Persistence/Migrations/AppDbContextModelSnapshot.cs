@@ -573,6 +573,12 @@ namespace IndicaAI.Web.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("TmdbMovieId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("TmdbSeriesId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<long>("Version")
                         .IsConcurrencyToken()
                         .HasColumnType("INTEGER");
@@ -580,6 +586,12 @@ namespace IndicaAI.Web.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("MediaCode");
+
+                    b.HasIndex("TmdbMovieId")
+                        .IsUnique();
+
+                    b.HasIndex("TmdbSeriesId")
+                        .IsUnique();
 
                     b.ToTable("Works", t =>
                         {

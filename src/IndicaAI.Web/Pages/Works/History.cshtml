@@ -3,7 +3,7 @@
 @{ViewData["Title"]=T["History"];}
 <div class="history-layout">
  <aside class="history-sidebar">
-  <a class="back-link" href="/Works/Details?id=@Model.Work.Id">@T["BackTracking"]</a>
+  <a class="back-link" asp-page="/Works/Details" asp-route-id="@Model.Work.Id" asp-route-BrowseReturnUrl="@Model.SafeBrowseReturnUrl">@T["BackTracking"]</a>
   <h2>@Model.Work.Title</h2>
   <dl>
    <div><dt>@T["Media"]</dt><dd>@T["media."+Model.Work.MediaCode]</dd></div>
@@ -11,7 +11,7 @@
    <div><dt>@T["CurrentCycle"]</dt><dd>@Model.Cycles.Last().Ordinal</dd></div>
    <div><dt>@T["AddedOn"]</dt><dd>@T.Date(Model.Tracking.IncludedOn)</dd></div>
   </dl>
-  <a class="button" href="/Works/NewCycle?id=@Model.Id">@T["NewConsumption"]</a>
+  <a class="button" asp-page="/Works/NewCycle" asp-route-id="@Model.Id" asp-route-BrowseReturnUrl="@Model.SafeBrowseReturnUrl">@T["NewConsumption"]</a>
  </aside>
  <section>
   <h1 class="history-title">@T["History"]</h1>
@@ -42,19 +42,34 @@
    </table>
   </div>
   <p class="history-reference help">@T.Get("DateReference",T.Date(Model.Tracking.IncludedOn)) @T["NoAutomaticCompletion"]</p>
-  <details class="correction-form" open="@(Model.ErrorCode is not null)">
+  <details class="correction-form" open="@Model.OpenCorrection">
    <summary>@T["event.date_corrected"]</summary>
-   @if(Model.ErrorCode is not null){<p class="notice error" role="alert">@T["error."+Model.ErrorCode]</p>}
-   <form method="post" data-draft="date-@Model.Id" data-version="@Model.Version" asp-route-id="@Model.Id">
+   @if (Model.ErrorCode is not null and not "unusual_dates") { <p class="notice error" role="alert" tabindex="-1">@T["error."+Model.ErrorCode]</p> }
+   <form method="post" data-draft="date-@Model.Id" data-version="@Model.Version" asp-route-id="@Model.Id" asp-route-BrowseReturnUrl="@Model.SafeBrowseReturnUrl" data-tracking-dates data-history-date>
     <input asp-for="Version" type="hidden"/><input asp-for="OperationId" type="hidden"/>
+    <input type="hidden" name="LoadedDateContext" value="@Model.SelectedDateContext" />
     <div class="date-grid">
-     <div class="field"><label asp-for="CycleId">@T["Cycle"]</label><select asp-for="CycleId">@foreach(var c in Model.Cycles){<option value="@c.Id">@T["Cycle"] @c.Ordinal</option>}</select></div>
-     <div class="field"><label asp-for="Field">@T["InformedDate"]</label><select asp-for="Field"><option value="start">@T["StartDate"]</option><option value="completion">@T["CompletionDate"]</option></select></div>
-     <div class="field"><label asp-for="Value">@T["InformedDate"]</label><input asp-for="Value" type="date"/></div>
+     <div class="field">
+      <label asp-for="CycleId">@T["Cycle"]</label>
+      <select asp-for="CycleId" data-date-edit>
+       @foreach(var c in Model.Cycles){
+        <option value="@c.Id" data-start="@FormattableString.Invariant($"{c.StartOn:yyyy-MM-dd}")" data-completion="@FormattableString.Invariant($"{c.CompletionOn:yyyy-MM-dd}")">@T["Cycle"] @c.Ordinal</option>
+       }
+      </select>
+     </div>
+     <div class="field"><label asp-for="Field">@T["DateField"]</label><select asp-for="Field" data-date-edit><option value="start">@T["StartDate"]</option><option value="completion">@T["CompletionDate"]</option></select></div>
+     <div class="field"><label asp-for="Value">@T["InformedDate"]</label><input asp-for="Value" type="date" asp-format="{0:yyyy-MM-dd}" data-date-edit /></div>
     </div>
-    <label class="check-line"><input asp-for="ConfirmDates"/>@T["ConfirmDates"]</label><button>@T["Save"]</button>
+    <partial name="_DateConfirmation" model="new DateConfirmation(Model.DateWarnings, Model.ExpectedDateConfirmationKey)" />
+    <button type="submit">@T["Save"]</button>
+    <button type="submit" name="ClearDate" value="true" class="text-button" formnovalidate hidden="@(Model.StoredDate is null)">@T["ClearDate"]</button>
    </form>
   </details>
  </section>
 </div>
+
+@section Scripts {
+    <script src="~/js/tracking-dates.js" asp-append-version="true" defer></script>
+    <script src="~/js/history-date.js" asp-append-version="true" defer></script>
+}
 

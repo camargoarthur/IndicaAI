@@ -1,0 +1,127 @@
+@page
+@model IndicaAI.Web.Pages.Catalog.TmdbModel
+@{ ViewData["Title"] = T["TmdbSearch"]; }
+
+<header class="page-heading">
+    <div><h1>@T["TmdbSearch"]</h1></div>
+    <a class="text-button" href="@(Model.CatalogReturnUrl ?? Url.Page("/Catalog/Index"))">@T["TmdbBackToCatalog"]</a>
+</header>
+
+@if (Model.ErrorKey is { } error)
+{
+    <p class="alert" role="alert">@T[error]</p>
+}
+
+@if (Model.Movie is { } movie)
+{
+    <article class="tmdb-preview">
+        @if (movie.PosterUrl is { } poster)
+        {
+            <img class="tmdb-poster" src="@poster" width="160" alt="" referrerpolicy="no-referrer" />
+        }
+        <div>
+            <h2>@movie.Title</h2>
+            <p>@T["media.filme"]@if (movie.Year is int year) { <text> · @year</text> }</p>
+            @if (movie.OriginalTitle is { } original && original != movie.Title) { <p>@original</p> }
+            @if (movie.Overview is { } overview) { <p>@overview</p> }
+            @if (movie.Directors.Length > 0 || movie.Minutes is not null)
+            {
+                <dl class="tmdb-metadata">
+                    @if (movie.Directors.Length > 0) { <dt>@T["TmdbDirector"]</dt><dd>@string.Join(", ", movie.Directors)</dd> }
+                    @if (movie.Minutes is int duration) { <dt>@T["TmdbDuration"]</dt><dd>@T.Get("TmdbMinutes", duration)</dd> }
+                </dl>
+            }
+            <form method="post" asp-page-handler="Confirm" asp-route-ReturnUrl="@Model.CatalogReturnUrl">
+                <input asp-for="PreviewTicket" type="hidden" />
+                <label class="check-line tmdb-anime"><input asp-for="IsAnime" /> Anime</label>
+                <button type="submit" class="button">@T["TmdbAddMovie"]</button>
+                <a class="text-button" asp-page="/Catalog/Tmdb" asp-route-Query="@Model.Query" asp-route-Year="@Model.Year"
+                   asp-route-ResultPage="@Model.ResultPage" asp-route-ReturnUrl="@Model.CatalogReturnUrl">@T["TmdbBackToSearch"]</a>
+            </form>
+        </div>
+    </article>
+}
+else if (Model.IsConfigured)
+{
+    <form method="get" asp-page="/Catalog/Tmdb" class="tmdb-search" data-tmdb-search="@Model.RecentSearchScope">
+        <label class="field"><span>@T["TmdbMovieTitle"]</span><input asp-for="Query" type="search" maxlength="160" required /></label>
+        <label class="field"><span>@T["TmdbYearOptional"]</span><input asp-for="Year" type="number" min="1" max="9999" inputmode="numeric" /></label>
+        <button type="submit" class="button">@T["TmdbFind"]</button>
+        <input name="Remember" type="hidden" value="true" />
+        @if (Model.CatalogReturnUrl is { } catalogUrl)
+        {
+            <input name="ReturnUrl" type="hidden" value="@catalogUrl" />
+        }
+        @if (Model.RecordRecentSearch)
+        {
+            <input type="hidden" data-tmdb-search-completed />
+        }
+    </form>
+    <section class="tmdb-recent" aria-labelledby="tmdb-recent-title" data-tmdb-recent hidden>
+        <h2 id="tmdb-recent-title">@T["TmdbRecentSearches"]</h2>
+        <ul></ul>
+    </section>
+    @if (Model.Results is { } results)
+    {
+        if (results.Movies.Count == 0)
+        {
+            <p class="notice" role="status">@T["TmdbNoResults"]</p>
+        }
+        else
+        {
+            <h2 id="tmdb-results-title">@T["TmdbResults"]</h2>
+            <ul class="tmdb-results" aria-labelledby="tmdb-results-title">
+                @foreach (var result in results.Movies)
+                {
+                    <li class="tmdb-result">
+                        <div class="tmdb-result-cover" aria-hidden="true">
+                            @if (result.PosterUrl is { } poster)
+                            {
+                                <img src="@poster" width="64" height="96" loading="lazy" alt=""
+                                     referrerpolicy="no-referrer" data-tmdb-result-poster />
+                            }
+                            <span hidden="@(result.PosterUrl is not null)">@T["TmdbNoPoster"]</span>
+                        </div>
+                        <div class="tmdb-result-description">
+                            <a class="tmdb-result-link" asp-page="/Catalog/Tmdb" asp-page-handler="Preview"
+                               asp-route-id="@result.Id" asp-route-Query="@Model.Query" asp-route-Year="@Model.Year"
+                               asp-route-ResultPage="@Model.ResultPage" asp-route-ReturnUrl="@Model.CatalogReturnUrl">
+                                <strong>@result.Title</strong>@if (result.Year is int year) { <text> · @year</text> }
+                            </a>
+                            @if (result.OriginalTitle is { } original && original != result.Title) { <small>@original</small> }
+                            <p class="tmdb-result-summary @(result.Overview is null ? "muted" : "")">@(result.Overview ?? T["TmdbNoOverview"])</p>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        @if (Model.ResultPage > 1 || Model.ResultPage < results.TotalPages)
+        {
+            <nav class="tmdb-pagination" aria-label="@T["TmdbSearch"]">
+                @if (Model.ResultPage > 1)
+                {
+                    <a asp-page="/Catalog/Tmdb" asp-route-Query="@Model.Query" asp-route-Year="@Model.Year"
+                       asp-route-ResultPage="@(Model.ResultPage - 1)" asp-route-ReturnUrl="@Model.CatalogReturnUrl">@T["TmdbPrevious"]</a>
+                }
+                @if (Model.ResultPage < results.TotalPages)
+                {
+                    <a asp-page="/Catalog/Tmdb" asp-route-Query="@Model.Query" asp-route-Year="@Model.Year"
+                       asp-route-ResultPage="@(Model.ResultPage + 1)" asp-route-ReturnUrl="@Model.CatalogReturnUrl">@T["TmdbNext"]</a>
+                }
+            </nav>
+        }
+    }
+}
+else if (Model.ErrorKey is null)
+{
+    <p class="notice">@T["tmdb_configuration"]</p>
+}
+
+<aside class="tmdb-credit" id="tmdb-credits" aria-label="@T["TmdbCredits"]">
+    <a href="https://www.themoviedb.org/" aria-label="The Movie Database"><img src="~/icons/tmdb.svg" alt="TMDB" width="76" /></a>
+    <small>This product uses the TMDB API but is not endorsed or certified by TMDB.</small>
+</aside>
+
+@section Scripts {
+    <script src="~/js/tmdb-search.js" asp-append-version="true" defer></script>
+}

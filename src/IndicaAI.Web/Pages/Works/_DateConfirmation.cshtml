@@ -1,0 +1,21 @@
+@using IndicaAI.Web.Features.Tracking
+@model DateConfirmation
+
+@if (Model.Warnings != DateWarning.None)
+{
+    <div class="notice error" data-date-confirmation>
+        <div role="alert" tabindex="-1">
+            @T["error.unusual_dates"]
+            <ul id="unusual-date-reasons">
+                @if (Model.Warnings.HasFlag(DateWarning.FutureStart)) { <li>@T["FutureStartDate"]</li> }
+                @if (Model.Warnings.HasFlag(DateWarning.FutureCompletion)) { <li>@T["FutureCompletionDate"]</li> }
+                @if (Model.Warnings.HasFlag(DateWarning.CompletionBeforeStart)) { <li>@T["CompletionBeforeStart"]</li> }
+            </ul>
+        </div>
+        <input type="hidden" name="@(Model.Prefix)DateConfirmationKey" value="@Model.Key" />
+        <label class="check-line">
+            <input type="checkbox" name="@(Model.Prefix)ConfirmDates" value="true" aria-describedby="unusual-date-reasons" data-confirm-dates data-draft-ignore />
+            @T["ConfirmDates"]
+        </label>
+    </div>
+}

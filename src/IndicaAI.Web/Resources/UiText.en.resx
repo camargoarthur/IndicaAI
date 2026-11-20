@@ -160,7 +160,19 @@
     <value>No changes recorded.</value>
   </data>
   <data name="ConfirmDates" xml:space="preserve">
-    <value>I confirm these dates, even if they are in the future or completion precedes the start.</value>
+    <value>Keep the dates I entered</value>
+  </data>
+  <data name="FutureStartDate" xml:space="preserve">
+    <value>The start date is in the future.</value>
+  </data>
+  <data name="FutureCompletionDate" xml:space="preserve">
+    <value>The completion date is in the future.</value>
+  </data>
+  <data name="CompletionBeforeStart" xml:space="preserve">
+    <value>The completion date is before the start date.</value>
+  </data>
+  <data name="ShowStateDates" xml:space="preserve">
+    <value>Update date fields</value>
   </data>
   <data name="KeepCycle" xml:space="preserve">
     <value>Keep the current cycle when returning to this work.</value>
@@ -787,4 +799,55 @@
   <data name="ResolveUploadBeforePreferences" xml:space="preserve">
     <value>Finish or cancel the file selection before changing preferences. Your file and fields have been kept.</value>
   </data>
+  <data name="TmdbSearch" xml:space="preserve"><value>Search TMDB</value></data>
+  <data name="TmdbCatalogSearch" xml:space="preserve"><value>Search for movies on TMDB</value></data>
+  <data name="CatalogLocalNoMatch" xml:space="preserve"><value>No works in the local catalog match this search.</value></data>
+  <data name="TmdbSearchCatalogTitle" xml:space="preserve"><value>Search for this title on TMDB</value></data>
+  <data name="TmdbRecentSearches" xml:space="preserve"><value>Recent searches</value></data>
+  <data name="TmdbResults" xml:space="preserve"><value>TMDB results</value></data>
+  <data name="TmdbNoPoster" xml:space="preserve"><value>No poster</value></data>
+  <data name="TmdbNoOverview" xml:space="preserve"><value>No synopsis available.</value></data>
+  <data name="CatalogUntracked" xml:space="preserve"><value>Not tracked</value></data>
+  <data name="CatalogTrackingArchived" xml:space="preserve"><value>Archived</value></data>
+  <data name="TmdbBackToCatalog" xml:space="preserve"><value>Back to catalog</value></data>
+  <data name="TmdbMovieTitle" xml:space="preserve"><value>Movie title</value></data>
+  <data name="TmdbYearOptional" xml:space="preserve"><value>Year (optional)</value></data>
+  <data name="TmdbFind" xml:space="preserve"><value>Find movies</value></data>
+  <data name="TmdbInvalidSearch" xml:space="preserve"><value>Enter a title of up to 160 characters and an optional valid release year.</value></data>
+  <data name="TmdbNoResults" xml:space="preserve"><value>No movies found. Try the original title or leave the year blank.</value></data>
+  <data name="TmdbDirector" xml:space="preserve"><value>Directed by</value></data>
+  <data name="TmdbDuration" xml:space="preserve"><value>Running time</value></data>
+  <data name="TmdbMinutes" xml:space="preserve"><value>{0} min</value></data>
+  <data name="TmdbAddMovie" xml:space="preserve"><value>Add to catalog</value></data>
+  <data name="TmdbBackToSearch" xml:space="preserve"><value>Back to search</value></data>
+  <data name="TmdbPrevious" xml:space="preserve"><value>Previous page</value></data>
+  <data name="TmdbNext" xml:space="preserve"><value>Next page</value></data>
+  <data name="TmdbCredits" xml:space="preserve"><value>External catalog credits</value></data>
+  <data name="TmdbInvalidPreview" xml:space="preserve"><value>The preview expired or is invalid. Search for the movie and open the preview again.</value></data>
+  <data name="tmdb_configuration" xml:space="preserve"><value>Set the TMDB read token in the .env file and reopen IndicaAI.</value></data>
+  <data name="tmdb_authentication" xml:space="preserve"><value>TMDB rejected authentication. Check the read token and reopen IndicaAI.</value></data>
+  <data name="tmdb_not_found" xml:space="preserve"><value>The movie was not found on TMDB.</value></data>
+  <data name="tmdb_rate_limit" xml:space="preserve"><value>TMDB received too many requests. Try again shortly.</value></data>
+  <data name="tmdb_unavailable" xml:space="preserve"><value>TMDB could not be reached right now. Try again shortly.</value></data>
+  <data name="BackToResults" xml:space="preserve"><value>Back to results</value></data>
+  <data name="AnimeMedia" xml:space="preserve"><value>Movies and series</value></data>
+  <data name="CoverUnavailable" xml:space="preserve"><value>Cover unavailable</value></data>
+  <data name="ClearDate" xml:space="preserve"><value>Clear date</value></data>
+  <data name="SaveLabels" xml:space="preserve"><value>Save labels</value></data>
+  <data name="LabelsSaved" xml:space="preserve"><value>Labels saved.</value></data>
+  <data name="error.date_value_required" xml:space="preserve"><value>Enter a date to save the correction.</value></data>
+  <data name="error.date_selection_changed" xml:space="preserve"><value>Date loaded. Review the field before saving.</value></data>
+  <data name="error.label_too_long" xml:space="preserve"><value>Use up to 100 characters per label.</value></data>
+  <data name="AssociationChooseWork" xml:space="preserve"><value>Choose a work</value></data>
+  <data name="AssociationChooseTag" xml:space="preserve"><value>Choose a tag</value></data>
+  <data name="AssociationShowTags" xml:space="preserve"><value>Show tags</value></data>
+  <data name="AssociationNoApplicableTags" xml:space="preserve"><value>No tags apply to the selected work’s media. Create a tag and select that media as applicable.</value></data>
+  <data name="error.association_selection_required" xml:space="preserve"><value>Choose a work and a tag before saving.</value></data>
+  <data name="ArchiveRestoredWork" xml:space="preserve"><value>“{0}” was restored to your collection.</value></data>
+  <data name="ArchiveOpenRestoredWork" xml:space="preserve"><value>Open restored work</value></data>
+  <data name="ImportViewRejections" xml:space="preserve"><value>View rejected rows</value></data>
+  <data name="ImportViewAllRows" xml:space="preserve"><value>View all records</value></data>
+  <data name="ImportNoRejections" xml:space="preserve"><value>No rows were rejected.</value></data>
+  <data name="OpenList" xml:space="preserve"><value>Open list</value></data>
+  <data name="DateField" xml:space="preserve"><value>Date field</value></data>
 </root>

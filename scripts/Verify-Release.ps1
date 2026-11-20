@@ -24,6 +24,8 @@ foreach($taskLauncherFile in @('Start-IndicaAI.bat','Start-IndicaAI.ps1','Launch
  if($taskHash -ne (Get-FileHash -LiteralPath $taskPackaged -Algorithm SHA256).Hash){throw "Iniciador divergente: $taskLauncherFile"}
  $taskManifest += [pscustomobject]@{path=$taskLauncherFile;sha256=$taskHash;bytes=(Get-Item -LiteralPath $taskSource).Length}
 }
-if((Get-ChildItem -LiteralPath $taskPackageRoot -Recurse -File|Where-Object {$_.Extension -in @('.db','.sqlite')}).Count -gt 0){throw 'O pacote contém um banco de dados; não distribuir dados pessoais.'}
+$taskFiles=Get-ChildItem -LiteralPath $taskPackageRoot -Recurse -Force -File
+if(($taskFiles|Where-Object {$_.Extension -in @('.db','.sqlite')}).Count -gt 0){throw 'O pacote contém um banco de dados; não distribuir dados pessoais.'}
+if(($taskFiles|Where-Object {$_.Name -match '^\.env(?:\.|$)'}).Count -gt 0){throw 'O pacote contém configuração .env; mantenha credenciais fora da distribuição.'}
 $taskManifest|ConvertTo-Json -Depth 4|Set-Content -LiteralPath $ReportPath -Encoding utf8
 Write-Host "Release verificado: $($taskManifest.Count) recursos idênticos; executável e idiomas presentes; nenhum banco incluído."

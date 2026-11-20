@@ -34,7 +34,7 @@ public sealed class ImportApplyService(DataPaths paths, IInterceptor[]? intercep
                     if (changed) await TagService.Bump(db, ct); row.Status = "applied"; await db.SaveChangesAsync(ct); await tx.CommitAsync(ct);
                 }
                 catch (OperationCanceledException) { interrupted = true; break; }
-                catch (DomainException e) { await MarkRow(batchId, number, e.Code); }
+                catch (DomainException e) { await MarkRow(batchId, number, e.Code, e.Arguments); }
                 catch (DbUpdateException) { await MarkRow(batchId, number, "save_failed"); }
                 catch (Microsoft.Data.Sqlite.SqliteException) { interrupted = true; break; }
             }
@@ -43,7 +43,15 @@ public sealed class ImportApplyService(DataPaths paths, IInterceptor[]? intercep
         }
         finally { gate.Release(); }
     }
-    private async Task MarkRow(string id, int number, string reason) { await using var db = new AppDbContext(paths); var row = await db.ImportRows.SingleAsync(r => r.BatchId == id && r.RecordNumber == number); row.Status = "rejected"; row.ReasonCode = reason; await db.SaveChangesAsync(); }
+    private async Task MarkRow(string id, int number, string reason, object[]? arguments = null)
+    {
+        await using var db = new AppDbContext(paths);
+        var row = await db.ImportRows.SingleAsync(r => r.BatchId == id && r.RecordNumber == number);
+        row.Status = "rejected";
+        row.ReasonCode = reason;
+        row.ReasonArgs = arguments is { Length: > 0 } ? JsonSerializer.Serialize(arguments.Select(a => a.ToString())) : null;
+        await db.SaveChangesAsync();
+    }
     public async Task<ImportResult> ResultAsync(string batchId, CancellationToken ct = default) { await using var db = new AppDbContext(paths); var batch = await db.ImportBatches.FindAsync([batchId], ct) ?? throw new DomainException("not_found"); var rows = await db.ImportRows.Where(r => r.BatchId == batchId).OrderBy(r => r.RecordNumber).ToListAsync(ct); return new(batchId, batch.Status, rows.Count(r => r.Status == "applied"), rows.Count(r => r.Status == "rejected"), rows.Count(r => r.Status is "pending" or "unprocessed"), batch.IgnoredRecords, rows); }
     public async Task CancelAsync(string batchId, CancellationToken ct = default) { var gate = DatabaseGate.For(paths); await gate.WaitAsync(ct); try { await using var db = new AppDbContext(paths); var batch = await db.ImportBatches.FindAsync([batchId], ct) ?? throw new DomainException("not_found"); if (batch.Status != "preview") throw new DomainException("preview_stale"); batch.Status = "cancelled"; batch.CompletedAtUtc = DateTime.UtcNow.ToString("O"); await db.SaveChangesAsync(ct); } finally { gate.Release(); } }
 }

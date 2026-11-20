@@ -1,8 +1,83 @@
 @page
 @model IndicaAI.Web.Pages.Admin.Associations.IndexModel
-@{ViewData["Title"]=T["AssociateTags"];}
-<a href="/Admin/Tags" class="back-link">@T["Administration"]</a><header class="page-heading"><h1>@T["AssociateTags"]</h1></header>
-@if(Model.ErrorCode is not null){<p class="alert" role="alert">@T["error."+Model.ErrorCode]</p>}
-<form method="post" class="panel inline-form" data-draft="association-new" data-version="0"><input name="operationId" value="@Guid.NewGuid()" type="hidden"/><input name="add" value="true" type="hidden"/><label>@T["Work"]<select name="workId">@foreach(var w in Model.Works){<option value="@w.Id">@w.Title · @T["media."+w.MediaCode]</option>}</select></label><label>@T["Tag"]<select name="tagId">@foreach(var tag in Model.Tags){<option value="@tag.Id">@tag.Name</option>}</select></label><button>@T["Save"]</button></form>
-<div class="table-scroll"><table><thead><tr><th>@T["Work"]</th><th>@T["Tags"]</th><th>@T["Action"]</th></tr></thead><tbody>@foreach(var link in Model.Links){<tr><td>@Model.Works.Single(w=>w.Id==link.WorkId).Title</td><td>@Model.Tags.Single(t=>t.Id==link.TagId).Name</td><td><form method="post"><input name="operationId" value="@Guid.NewGuid()" type="hidden"/><input name="workId" value="@link.WorkId" type="hidden"/><input name="tagId" value="@link.TagId" type="hidden"/><button class="text-button">@T["Remove"]</button></form></td></tr>}</tbody></table></div>
+@{
+    ViewData["Title"] = T["AssociateTags"];
+    var noApplicableTags = Model.SelectedWork is not null && Model.ApplicableTags.Count == 0;
+}
+<a asp-page="/Admin/Tags/Index" class="back-link">@T["Administration"]</a>
+<header class="page-heading"><h1>@T["AssociateTags"]</h1></header>
+@if (Model.ErrorCode is not null)
+{
+    <p class="alert" role="alert" tabindex="-1">@T["error." + Model.ErrorCode]</p>
+}
+<section class="panel" data-association>
+    <div class="association-fields">
+        <form method="get" asp-page="Index" class="inline-form">
+            <label for="association-work">@T["Work"]
+                <select id="association-work" name="workId" required>
+                    <option value="">@T["AssociationChooseWork"]</option>
+                    @foreach (var work in Model.Works)
+                    {
+                        <option value="@work.Id" data-media="@work.MediaCode" selected="@(work.Id == Model.SelectedWork?.Id)">@work.Title · @T["media." + work.MediaCode]</option>
+                    }
+                </select>
+            </label>
+            <button type="submit" class="secondary" data-association-fallback>@T["AssociationShowTags"]</button>
+        </form>
+        <form method="post" asp-page="Index" class="inline-form" data-draft="association-new" data-version="0" data-association-form>
+            <input name="operationId" value="@Guid.NewGuid()" type="hidden" />
+            <input name="add" value="true" type="hidden" />
+            <input name="workId" value="@Model.SelectedWork?.Id" type="hidden" />
+            <label for="association-tag">@T["Tag"]
+                <select id="association-tag" name="tagId" required disabled="@(Model.ApplicableTags.Count == 0)">
+                    <option value="">@T["AssociationChooseTag"]</option>
+                    @foreach (var tag in Model.ApplicableTags)
+                    {
+                        <option value="@tag.Id" selected="@(tag.Id == Model.SelectedTagId)">@tag.Name</option>
+                    }
+                </select>
+            </label>
+            <button type="submit" data-association-save disabled="@(Model.ApplicableTags.Count == 0)">@T["Save"]</button>
+        </form>
+    </div>
+    <div data-association-hint class="association-hint">
+        <span role="status" data-association-status data-no-tags="@T["AssociationNoApplicableTags"]">@(noApplicableTags ? T["AssociationNoApplicableTags"] : "")</span>
+        <a asp-page="/Admin/Tags/Index" asp-fragment="create-tag" hidden="@(!noApplicableTags)">@T["CreateTag"]</a>
+    </div>
+    @foreach (var (media, tags) in Model.TagsByMedia)
+    {
+        <template data-association-media="@media">
+            @foreach (var tag in tags)
+            {
+                <option value="@tag.Id">@tag.Name</option>
+            }
+        </template>
+    }
+</section>
+<div class="table-scroll">
+    <table>
+        <thead><tr><th scope="col">@T["Work"]</th><th scope="col">@T["Tags"]</th><th scope="col">@T["Action"]</th></tr></thead>
+        <tbody>
+            @foreach (var link in Model.Links)
+            {
+                <tr>
+                    <td>@link.WorkTitle</td>
+                    <td>@link.TagName</td>
+                    <td>
+                        <form method="post" asp-page="Index">
+                            <input name="operationId" value="@Guid.NewGuid()" type="hidden" />
+                            <input name="workId" value="@link.WorkId" type="hidden" />
+                            <input name="tagId" value="@link.TagId" type="hidden" />
+                            <input name="selectedWorkId" value="@Model.SelectedWork?.Id" type="hidden" data-association-return-work />
+                            <button type="submit" class="text-button">@T["Remove"]</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
+@section Scripts {
+    <script src="~/js/associations.js" asp-append-version="true" defer></script>
+}

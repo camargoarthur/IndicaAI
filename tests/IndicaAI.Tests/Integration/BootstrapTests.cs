@@ -1,4 +1,5 @@
 using IndicaAI.Web.Hosting;
+using IndicaAI.Web.Features.Tracking;
 using IndicaAI.Web.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,11 +8,23 @@ namespace IndicaAI.Tests.Integration;
 public sealed class BootstrapTests
 {
     [Fact]
+    public async Task PersonalInstallStartsWithAnEmptyCatalogAndKeepsTheFiveMedia()
+    {
+        var paths = DataPaths.ForRoot(Path.Combine(Path.GetTempPath(), "IndicaAI-tests", Guid.NewGuid().ToString("N")));
+        await new DatabaseBootstrapper(paths).InitializeAsync();
+        await using var db = new AppDbContext(paths);
+        Assert.Empty(await db.Works.ToArrayAsync());
+        Assert.Equal(5, await db.Media.CountAsync());
+        Assert.Equal(25, await db.BaseStates.CountAsync());
+        Assert.Single(await db.Identities.ToArrayAsync());
+    }
+
+    [Fact]
     public async Task ReopeningKeepsIdentityAndDoesNotReplaceData()
     {
         var root = Path.Combine(Path.GetTempPath(), "IndicaAI-tests", Guid.NewGuid().ToString("N"));
         var paths = DataPaths.ForRoot(root);
-        await new DatabaseBootstrapper(paths).InitializeAsync();
+        await new DatabaseBootstrapper(paths, demoCatalog: true).InitializeAsync();
         string id;
         await using (var db = new AppDbContext(paths))
         {
@@ -36,10 +49,25 @@ public sealed class BootstrapTests
     public async Task DatabaseRejectsAnimeForBooks()
     {
         var paths = DataPaths.ForRoot(Path.Combine(Path.GetTempPath(), "IndicaAI-tests", Guid.NewGuid().ToString("N")));
-        await new DatabaseBootstrapper(paths).InitializeAsync();
+        await new DatabaseBootstrapper(paths, demoCatalog: true).InitializeAsync();
         await using var db = new AppDbContext(paths);
         var book = await db.Works.FirstAsync(w => w.MediaCode == "livro");
         book.IsAnime = true;
         await Assert.ThrowsAsync<DbUpdateException>(() => db.SaveChangesAsync());
+    }
+
+    [Fact]
+    public async Task UpgradeRemovesOnlyUntouchedExamplesAndBacksThemUp()
+    {
+        var paths = DataPaths.ForRoot(Path.Combine(Path.GetTempPath(), "IndicaAI-tests", Guid.NewGuid().ToString("N")));
+        await new DatabaseBootstrapper(paths, demoCatalog: true).InitializeAsync();
+        var added = await new TrackingService(paths).AddAsync(new("seed-history", "rota-do-norte", "planned", new(null, null, false), "Preservar"));
+
+        await new DatabaseBootstrapper(paths).InitializeAsync();
+        await using var db = new AppDbContext(paths);
+        Assert.Equal("rota-do-norte", (await db.Works.SingleAsync()).Id);
+        Assert.Equal("Preservar", (await db.Trackings.SingleAsync()).Note);
+        Assert.Equal(added.TrackingId, (await db.Events.SingleAsync()).TrackingId);
+        Assert.Single(Directory.GetDirectories(paths.Backups, "b-c-*"));
     }
 }

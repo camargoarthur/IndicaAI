@@ -26,6 +26,6 @@ public class FinalReviewTests
  [Fact]public async Task EditableAdministrativeAndHistoryFormsDeclareDraftSupport()
  {
   await using var app=new WebFixture();using var client=app.CreateClient();await client.GetAsync("/Library");var tracking=await new IndicaAI.Web.Features.Tracking.TrackingService(app.Paths).AddAsync(new("a","cidade-distante","planned",new(null,null,false)));
-  foreach(var path in new[]{"/Lists","/Admin/Tags","/Admin/Associations","/Settings","/Works/History?id="+tracking.TrackingId}){var html=await client.GetStringAsync(path);foreach(Match form in Regex.Matches(html,@"<form\b[^>]*>[\s\S]*?</form>")){if(form.Value.Contains("data-quick-preferences")||!Regex.IsMatch(form.Value,@"<(input[^>]+type=\""(?:text|date)\""|select|textarea)"))continue;Assert.Contains("data-draft",form.Value);}}
+  foreach(var path in new[]{"/Lists","/Admin/Tags","/Admin/Associations","/Settings","/Works/History?id="+tracking.TrackingId}){var html=await client.GetStringAsync(path);foreach(Match form in Regex.Matches(html,@"<form\b(?=[^>]*\bmethod=\""post\"")[^>]*>[\s\S]*?</form>")){if(form.Value.Contains("data-quick-preferences")||!Regex.IsMatch(form.Value,@"<(input[^>]+type=\""(?:text|date)\""|select|textarea)"))continue;Assert.Contains("data-draft",form.Value);}}
  }
 }

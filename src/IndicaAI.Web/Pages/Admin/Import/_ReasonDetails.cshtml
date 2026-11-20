@@ -1,0 +1,9 @@
+@model IndicaAI.Web.Domain.ImportRow
+@if (Model.ReasonCode is { } reason)
+{
+    @T["error." + reason]
+    @if (Model.ReasonArgs is { } details)
+    {
+        <code>@string.Join(", ", System.Text.Json.JsonSerializer.Deserialize<string[]>(details) ?? [])</code>
+    }
+}

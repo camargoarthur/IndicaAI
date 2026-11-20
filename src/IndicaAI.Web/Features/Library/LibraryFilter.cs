@@ -7,6 +7,7 @@ public record LibraryFilter
     public string Context { get; init; } = "active";
     public string? ListId { get; init; }
     public string? Media { get; init; }
+    public string? QuickState { get; init; }
     public string? Search { get; init; }
     public string Mode { get; init; } = "all";
     public FilterCriterion[] Include { get; init; } = [];

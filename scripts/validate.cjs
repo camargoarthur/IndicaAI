@@ -60,7 +60,7 @@ function main(args){
  try{
   step('validation-contracts',process.execPath,['--test','--test-reporter=tap','tests/validation-plan.test.cjs','tests/validation-runner.test.cjs','tests/guide-contract.test.cjs'],{verify:r=>{summary.nodeContracts=checkNodeReport(fs.readFileSync(r.log,'utf8'));}});
   if(plan.profile!=='Docs'){
-   step('draft-model',process.execPath,['tests/draft-model.test.cjs']);
+   step('draft-model',process.execPath,['--test','tests/draft-model.test.cjs','tests/tmdb-search.test.cjs']);
    step('build',dotnet,['build','tests/IndicaAI.Tests','--no-restore','--disable-build-servers','-v','minimal']);
    const filters=plan.profile==='Visual'?['*BootstrapHttpTests','*JourneyTests','*CustomLabelTests','*FinalReviewTests']:plan.classes;
    const report=path.join(runDir,'product-tests.json');

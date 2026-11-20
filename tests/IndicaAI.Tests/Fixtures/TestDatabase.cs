@@ -4,6 +4,6 @@ namespace IndicaAI.Tests.Fixtures;
 public sealed class TestDatabase
 {
     public DataPaths Paths { get; } = DataPaths.ForRoot(Path.Combine(Path.GetTempPath(), "IndicaAI-tests", Guid.NewGuid().ToString("N")));
-    public async Task InitializeAsync() => await new DatabaseBootstrapper(Paths).InitializeAsync();
+    public async Task InitializeAsync() => await new DatabaseBootstrapper(Paths, demoCatalog: true).InitializeAsync();
     public AppDbContext Open() => new(Paths);
 }

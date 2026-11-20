@@ -20,7 +20,9 @@
     "id": "TM03",
     "coverage": "partial",
     "tests": [
-      "tests/IndicaAI.Tests/Integration/StateLabelTests.cs#RenameAndRestoreDoNotChangeStateOrMeaning"
+      "tests/IndicaAI.Tests/Integration/StateLabelTests.cs#RenameAndRestoreDoNotChangeStateOrMeaning",
+      "tests/IndicaAI.Tests/Web/AuditFormsTests.cs#PreferencesSaveBothLabelsTogetherAndReplayOneMutation",
+      "tests/IndicaAI.Tests/Web/AuditFormsTests.cs#PreferencesRejectDuplicateLabelsWithoutSavingPartAndKeepAllEnteredValues"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
@@ -36,7 +38,8 @@
     "id": "TM05",
     "coverage": "partial",
     "tests": [
-      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#RenamingAListPreservesMembershipAndRejectsStaleEdits"
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#RenamingAListPreservesMembershipAndRejectsStaleEdits",
+      "tests/IndicaAI.Tests/Web/OrganizationAdminHttpTests.cs#ListsPrioritizeOpeningAndCountTheWorksShownInTheList"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
@@ -68,7 +71,8 @@
     "id": "TM09",
     "coverage": "partial",
     "tests": [
-      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#TagRenameAndAssociationRemovalPreserveTracking"
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#TagRenameAndAssociationRemovalPreserveTracking",
+      "tests/IndicaAI.Tests/Web/OrganizationAdminHttpTests.cs#AssociationPickerShowsOnlyTagsForTheSelectedWorkAndGuidesAnEmptyMedia"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
@@ -76,7 +80,8 @@
     "id": "TM10",
     "coverage": "partial",
     "tests": [
-      "tests/IndicaAI.Tests/Integration/TagTests.cs#UnicodeUniquenessAndApplicabilityAreEnforcedWithoutPartialChanges"
+      "tests/IndicaAI.Tests/Integration/TagTests.cs#UnicodeUniquenessAndApplicabilityAreEnforcedWithoutPartialChanges",
+      "tests/IndicaAI.Tests/Web/OrganizationAdminHttpTests.cs#AssociationPickerShowsOnlyTagsForTheSelectedWorkAndGuidesAnEmptyMedia"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
@@ -93,7 +98,8 @@
     "id": "TM12",
     "coverage": "partial",
     "tests": [
-      "tests/IndicaAI.Tests/Integration/ImportTests.cs#AbsentFieldsArePreservedAndPreviewIsReadOnly"
+      "tests/IndicaAI.Tests/Integration/ImportTests.cs#AbsentFieldsArePreservedAndPreviewIsReadOnly",
+      "tests/IndicaAI.Tests/Web/OrganizationAdminHttpTests.cs#ImportResultUsesPhysicalLinesAndOffersARejectionsViewWithDetails"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
@@ -152,7 +158,8 @@
     "id": "TM19",
     "coverage": "partial",
     "tests": [
-      "tests/IndicaAI.Tests/Integration/TrackingTests.cs#UnusualDatesNeedConfirmationAndNoteIsPrivate"
+      "tests/IndicaAI.Tests/Integration/TrackingTests.cs#UnusualDatesNeedConfirmationAndNoteIsPrivate",
+      "tests/IndicaAI.Tests/Web/TrackingHttpTests.cs#UnusualDatesReceiveSpecificConfirmationBeforeTheyAreSaved"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
@@ -169,7 +176,9 @@
     "coverage": "partial",
     "tests": [
       "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#CorrectingAnOldCycleKeepsCurrentCycleAndState",
-      "tests/IndicaAI.Tests/Integration/TrackingTests.cs#NewCycleAndDateCorrectionKeepOldCycleAndOriginalInclusion"
+      "tests/IndicaAI.Tests/Integration/TrackingTests.cs#NewCycleAndDateCorrectionKeepOldCycleAndOriginalInclusion",
+      "tests/IndicaAI.Tests/Web/AuditFormsTests.cs#HistoryPrefillsOnlyTheInformedDateForTheSelectedCycleAndField",
+      "tests/IndicaAI.Tests/Web/AuditFormsTests.cs#HistoryRequiresExplicitClearingAndRecordsTheOriginalDateOnce"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
@@ -177,7 +186,8 @@
     "id": "TM22",
     "coverage": "partial",
     "tests": [
-      "tests/IndicaAI.Tests/Integration/OrganizationTests.cs#MixedListAndArchiveRestorePreserveAllPersonalData"
+      "tests/IndicaAI.Tests/Integration/OrganizationTests.cs#MixedListAndArchiveRestorePreserveAllPersonalData",
+      "tests/IndicaAI.Tests/Web/OrganizationAdminHttpTests.cs#RestoringShowsTheWorkTitleAndOpensTheRestoredTracking"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
@@ -202,7 +212,8 @@
     "id": "TM25",
     "coverage": "partial",
     "tests": [
-      "tests/IndicaAI.Tests/Web/ManualFormTests.cs#OtherMediaFormsCreateExactlyOneCompatibleTracking"
+      "tests/IndicaAI.Tests/Web/ManualFormTests.cs#OtherMediaFormsCreateExactlyOneCompatibleTracking",
+      "tests/IndicaAI.Tests/Web/TrackingHttpTests.cs#PlannedFormPreservesStoredDatesAndAcceptsAnUnrelatedNoteEdit"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
@@ -214,6 +225,32 @@
       "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#SearchAnimeAndArchiveStayInsideTheirContexts"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM40",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/TmdbCatalogTests.cs#SearchPreviewAndRepeatedImportOpenTheSameWorkAndPreserveTracking",
+      "tests/IndicaAI.Tests/Web/TmdbCatalogTests.cs#ConfigurationAndProviderFailuresAreSafeForLocalCatalog",
+      "tests/IndicaAI.Tests/Web/TmdbCatalogTests.cs#ForeignBrowserContextCannotTriggerProviderRequests",
+      "tests/IndicaAI.Tests/Integration/MigrationTests.cs#MovieSourceMigrationPreservesExistingWorksAndTrackingAndEnforcesUniqueSource",
+      "tests/IndicaAI.Tests/Web/TmdbCatalogTests.cs#CatalogCardsDistinguishActiveArchivedAndUntrackedWorks",
+      "tests/tmdb-search.test.cjs"
+    ],
+    "remaining": "Conferir no navegador dados do TMDB real, p?ster, teclado e apresenta??o. A su?te usa respostas simuladas."
+  },
+  {
+    "id": "TM41",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/WatchListImportTests.cs#ReusesTypedMatchesAndExistingTrackingAcrossRepeatedImports",
+      "tests/IndicaAI.Tests/Integration/WatchListImportTests.cs#RateLimitPausesWithoutCreatingAFallbackAndResumesCommittedRows",
+      "tests/IndicaAI.Tests/Integration/TmdbPosterCacheTests.cs#CachesTypedPostersLocallyWithoutRequiringTheProviderAndExpiresThem",
+      "tests/IndicaAI.Tests/Integration/WatchListImportTests.cs#ExplainsMissingPostersPerImportedWork",
+      "tests/IndicaAI.Tests/Integration/WatchListImportTests.cs#ResumesPendingPostersWithoutChangingTheCatalogOrTracking",
+      "tests/IndicaAI.Tests/Integration/WatchListImportTests.cs#PosterMaintenanceUsesReceiptsAndLeavesTheDatabaseUntouched"
+    ],
+    "remaining": "Conferir o lote com ambiente isolado, a reabertura offline e a apresentação no navegador."
   },
   {
     "id": "TM27",
@@ -233,13 +270,32 @@
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
   },
   {
+    "id": "TM42",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/QuickStateTests.cs#MediaOptionsFollowProductOrderLocaleAndPersonalLabels",
+      "tests/IndicaAI.Tests/Web/QuickStateTests.cs#LinksApplyStateIndependentlyOfAdvancedCriteriaAndRecoverFromEmptyResults"
+    ],
+    "remaining": "Conferir foco e ativação por teclado, centralização, temas e quebra de rótulos longos no navegador."
+  },
+  {
     "id": "TM29",
     "coverage": "partial",
     "tests": [
       "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#TagAndOrNotFiltersRespectMediaAndListContext",
-      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#SearchAnimeAndArchiveStayInsideTheirContexts"
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#SearchAnimeAndArchiveStayInsideTheirContexts",
+      "tests/IndicaAI.Tests/Web/BrowseOriginTests.cs#CatalogActionAndAnimeCriteriaRespectTheMediaAndClearPreservesTheSearch"
     ],
     "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM43",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/BrowseOriginTests.cs#WorkAndBatchReturnToTheFilteredList",
+      "tests/IndicaAI.Tests/Web/BrowseOriginTests.cs#CatalogActionAndAnimeCriteriaRespectTheMediaAndClearPreservesTheSearch"
+    ],
+    "remaining": "Conferir por clique a volta do detalhe e do lote ao recorte, inclusive da segunda página."
   },
   {
     "id": "TM30",

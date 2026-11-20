@@ -1,9 +1,10 @@
 (() => {
  const model=window.IndicaDraftModel;
  const forms=[...document.querySelectorAll('form[data-draft]')];
- const read=f=>[...f.elements].filter(e=>model.eligible(e.name,e.type)).map(e=>({name:e.name,type:e.type,value:e.value,checked:!!e.checked}));
+ const eligible=e=>!e.hasAttribute('data-draft-ignore')&&model.eligible(e.name,e.type);
+ const read=f=>[...f.elements].filter(eligible).map(e=>({name:e.name,type:e.type,value:e.value,checked:!!e.checked}));
  const baselines=new Map(forms.map(f=>[f,read(f)]));const pending=new Set();
- const apply=(form,fields)=>{[...form.elements].filter(e=>model.eligible(e.name,e.type)).forEach(e=>{const field=fields.find(v=>model.identity(v)===model.identity({name:e.name,type:e.type,value:e.value}));if(field){if(['checkbox','radio'].includes(e.type))e.checked=field.checked;else e.value=field.value;}});form.dispatchEvent(new Event('change',{bubbles:true}));};
+ const apply=(form,fields)=>{[...form.elements].filter(eligible).forEach(e=>{const field=fields.find(v=>model.identity(v)===model.identity({name:e.name,type:e.type,value:e.value}));if(field){if(['checkbox','radio'].includes(e.type))e.checked=field.checked;else e.value=field.value;}});form.dispatchEvent(new Event('change',{bubbles:true}));};
  window.indicaDrafts={capture:()=>forms.forEach(f=>{if(pending.has(f))return;const fields=model.changes(baselines.get(f),read(f));if(fields.length)sessionStorage.setItem(model.key(f.dataset.draft),JSON.stringify({version:f.dataset.version||'0',fields}));else sessionStorage.removeItem(model.key(f.dataset.draft));})};
  forms.forEach(form=>{
   try{

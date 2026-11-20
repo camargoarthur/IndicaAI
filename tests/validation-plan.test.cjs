@@ -19,7 +19,7 @@ if(fs.existsSync(planPath)){
  test('caminhos absolutos não são classificados como simples documentação',()=>assert.equal(selectPlan({changedPaths:['C:/fora/README.md']}).profile,'Full'));
  test('módulo inclui smoke e dependências compartilhadas',()=>{
   const p=selectPlan({profile:'Module',modules:['Tracking','Lists']});
-  for(const c of ['*BootstrapHttpTests','*TrackingTests','*OrganizationTests','*FilterBatchTests','*ManualFormTests'])assert.ok(p.classes.includes(c),c);
+  for(const c of ['*BootstrapHttpTests','*TrackingTests','*OrganizationTests','*FilterBatchTests','*ManualFormTests','*AuditFormsTests','*OrganizationAdminHttpTests','*BrowseOriginTests'])assert.ok(p.classes.includes(c),c);
   assert.equal(new Set(p.classes).size,p.classes.length);
  });
  test('perfil/módulo inválido nunca reduz silenciosamente cobertura',()=>{

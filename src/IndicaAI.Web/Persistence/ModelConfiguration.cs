@@ -17,6 +17,8 @@ internal static class ModelConfiguration
         b.Entity<BaseState>().HasOne<Media>().WithMany().HasForeignKey(x => x.MediaCode).OnDelete(DeleteBehavior.Restrict);
         b.Entity<BaseState>().ToTable(t=>t.HasCheckConstraint("CK_State_Code","Code IN ('planned','in_progress','paused','completed','dropped')"));
         b.Entity<Work>().HasKey(x => x.Id);
+        b.Entity<Work>().HasIndex(x => x.TmdbMovieId).IsUnique();
+        b.Entity<Work>().HasIndex(x => x.TmdbSeriesId).IsUnique();
         b.Entity<Work>().HasAlternateKey(x => new { x.Id, x.MediaCode });
         b.Entity<Work>().HasOne<Media>().WithMany().HasForeignKey(x => x.MediaCode).OnDelete(DeleteBehavior.Restrict);
         b.Entity<WorkCredit>().ToTable(t=>t.HasCheckConstraint("CK_Credit_Value","Position > 0 AND length(trim(Name)) > 0"));

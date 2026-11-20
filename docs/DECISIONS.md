@@ -1,5 +1,11 @@
 # Decisões e rastreabilidade
 
+**D39 — APROVADO, 20/11/2026:** em resposta ao escopo para a 0.13, o usuário disse “Aplique tudo, nao volte sem finalizer”, autorizando as 11 correções da [auditoria de usabilidade](quality/AUDITORIA-USABILIDADE.md) antes do fechamento. O escopo inclui proteção de datas e rótulos, contexto de navegação e lote, seleção pelas capas, filtros e retomada de pôsteres, associações administrativas, resultado do CSV, restauração e listas. Os requisitos de referência são R05–R10, R12–R20. Os cenários correspondentes estão no [roteiro](TEST_CASES.html).
+
+**D38 — APROVADO, 20/11/2026:** execução dos pontos 2 a 9 do plano de catálogo local. Carga inicial de `Assistir.txt`, consulta local como padrão, capas com retenção limitada, remoção segura de demonstrações, resultados com contexto e datas condicionais. A carga ampla segue como B15. Escopo e evidências em [patch notes](../PATCH_NOTES.md) e [continuidade](CONTINUE_HERE.md).
+
+**D37 — APROVADO, 20/11/2026:** o usuário autorizou implementar no Catálogo a busca e a prévia do primeiro filme no TMDB, após a consulta autenticada de Nosferatu. A 0.11 permite confirmar um filme por vez e reutiliza o acompanhamento existente. Evidência em [patch notes](../PATCH_NOTES.md) e no caso TM40 do [roteiro](TEST_CASES.html). As demais mídias e o lote continuam no [backlog](BACKLOG.md).
+
 **D36 — APROVADO, 15/11/2026:** backlog único em BACKLOG, com referência no README. O usuário autorizou executar B14, reorganizar a estrutura e excluir arquivos considerados desnecessários sem backup. Entrega local descrita em [STRUCTURE](STRUCTURE.md); a autorização não inclui publicar no GitHub. Instruções antigas de duplicação de backlog e fases iniciais abaixo são históricas.
 
 **D35 — APROVADO, 12/11/2026:** usuário autorizou expressamente criação/execução dos testes, aplicação da rotina de validação e atualização dos testes a cada mudança/nova adição. B11 implementado na 0.10 e retirado dos dois backlogs pendentes. [Rotina e comandos](VALIDATION.md), [plano](superpowers/plans/2026-11-12-automated-validation.md). Autorização inclui processos temporários isolados necessários aos ensaios, sem deixar servidor ativo, tocar coleção pessoal ou presumir aceitação G4/publicação.

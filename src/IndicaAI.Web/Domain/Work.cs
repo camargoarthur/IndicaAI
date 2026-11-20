@@ -9,6 +9,8 @@ public sealed class Work
     public int? ReleaseYear { get; set; }
     public bool IsAnime { get; set; }
     public string? CoverAsset { get; set; }
+    public int? TmdbMovieId { get; set; }
+    public int? TmdbSeriesId { get; set; }
     public long Version { get; set; } = 1;
 }
 public sealed class WorkCredit { public string WorkId { get; set; } = ""; public string Role { get; set; } = ""; public int Position { get; set; } public string Name { get; set; } = ""; }

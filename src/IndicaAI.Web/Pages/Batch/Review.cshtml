@@ -1,11 +1,12 @@
 @page
 @model IndicaAI.Web.Pages.Batch.ReviewModel
 @{ViewData["Title"]=T["BulkTitle"];}
-<a href="/Library" class="back-link">@T["BackLibrary"]</a>
-<header class="page-heading"><div><h1>@T["BulkTitle"]</h1><p>@T.Get("SelectedCount",Model.Trackings.Count)</p><p>@T["Context"]: @T["ActiveLibrary"]</p></div></header>
+<a href="@Model.OriginUrl" class="back-link">@T[Model.OriginUrl == "/Library" ? "BackLibrary" : "BackToResults"]</a>
+<header class="page-heading"><div><h1>@T["BulkTitle"]</h1><p>@T.Get("SelectedCount",Model.Trackings.Count)</p><p>@T["Context"]: @(Model.OriginListName ?? T["ActiveLibrary"]) @if(Model.OriginMedia is { } media){<span>· @T["mediaPlural."+media]</span>}</p></div></header>
 @if(Model.ErrorCode is not null){<p class="alert" role="alert">@T["error."+Model.ErrorCode]</p>}
 <form method="post" data-batch-form data-draft="batch" data-version="@string.Join(',',Model.Items.Select(i=>i.ExpectedVersion))">
  <input asp-for="OperationId" type="hidden"/>
+ <input type="hidden" name="BrowseReturnUrl" value="@Model.OriginUrl"/>
  @for(var i=0;i<Model.Items.Count;i++){<input asp-for="Items[i].TrackingId" type="hidden"/><input asp-for="Items[i].ExpectedVersion" type="hidden"/>}
  <div class="batch-action"><label>@T["Action"]<select asp-for="ActionKind"><option value="states">@T["ChangeStates"]</option><option value="lists">@T["ChangeLists"]</option></select></label></div>
  <div class="table-scroll">
@@ -30,7 +31,7 @@
   <label class="check-line"><input type="radio" name="Add" value="true" checked="@Model.Add"/>@T["AddToList"]</label>
   <label class="check-line"><input type="radio" name="Add" value="false" checked="@(!Model.Add)"/>@T["RemoveFromList"]</label>
  </section>
- <div class="actions"><button data-batch-confirm disabled="@(Model.Items.Count==0)">@T["ConfirmChanges"]</button><a href="/Library">@T["Cancel"]</a></div>
+ <div class="actions"><button data-batch-confirm disabled="@(Model.Items.Count==0)">@T["ConfirmChanges"]</button><a href="@Model.OriginUrl">@T["Cancel"]</a></div>
  <p class="batch-help help">@T["BatchHelp"]</p>
 </form>
 @section Scripts{<script src="~/js/batch.js" asp-append-version="true" defer></script>}

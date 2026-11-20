@@ -1,15 +1,18 @@
 using IndicaAI.Web.Domain;
 using IndicaAI.Web.Features.Batch;
 using IndicaAI.Web.Hosting;
+using IndicaAI.Web.Pages.Library;
 using IndicaAI.Web.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 namespace IndicaAI.Web.Pages.Batch;
 
 public sealed class ReviewModel(DataPaths paths, BatchService service) : PageModel
 {
     [BindProperty(SupportsGet = true)] public string[] Ids { get; set; } = [];
+    [BindProperty(SupportsGet = true)] public string? BrowseReturnUrl { get; set; }
     [BindProperty] public List<BatchItem> Items { get; set; } = [];
     [BindProperty] public Dictionary<string, string> Targets { get; set; } = [];
     [BindProperty] public string OperationId { get; set; } = Guid.NewGuid().ToString();
@@ -21,6 +24,9 @@ public sealed class ReviewModel(DataPaths paths, BatchService service) : PageMod
     public List<Work> Works { get; set; } = [];
     public List<PersonalList> Lists { get; set; } = [];
     public string? ErrorCode { get; set; }
+    public string OriginUrl => BrowseOrigin.SafeUrl(Url, BrowseReturnUrl) ?? "/Library";
+    public string? OriginListName { get; private set; }
+    public string? OriginMedia { get; private set; }
     public async Task OnGetAsync() { await Load(Ids); Items = Trackings.Select(t => new BatchItem(t.Id, t.Version)).ToList(); }
     public async Task<IActionResult> OnPostRemoveAsync(string media)
     {
@@ -29,6 +35,36 @@ public sealed class ReviewModel(DataPaths paths, BatchService service) : PageMod
         Items = Items.Where(i => !remove.Contains(i.TrackingId)).ToList(); Targets.Remove(media); OperationId = Guid.NewGuid().ToString();
         ModelState.Clear(); await Load(Items.Select(i => i.TrackingId).ToArray()); return Page();
     }
-    private async Task Load(string[] ids) { await using var db = new AppDbContext(paths); var owner = (await db.Identities.SingleAsync()).Id; Trackings = await db.Trackings.Where(t => ids.Contains(t.Id) && t.IdentityId == owner && t.ArchivedAtUtc == null).ToListAsync(); var workIds = Trackings.Select(t => t.WorkId).ToArray(); Works = await db.Works.Where(w => workIds.Contains(w.Id)).ToListAsync(); Lists = await db.Lists.Where(l => l.IdentityId == owner).ToListAsync(); }
-    public async Task<IActionResult> OnPostAsync() { try { if (ActionKind == "lists") await service.ChangeListsAsync(OperationId, Items, ListId, Add, HttpContext.RequestAborted); else await service.ChangeStatesAsync(OperationId, Items, Targets, KeepCycle, HttpContext.RequestAborted); TempData["Notice"] = "Saved"; return RedirectToPage("/Library/Index"); } catch (DomainException e) { ErrorCode = e.Code; } catch (DbUpdateException) { ErrorCode = "save_failed"; } await Load(Items.Select(i => i.TrackingId).ToArray()); return Page(); }
+    private async Task Load(string[] ids)
+    {
+        await using var db = new AppDbContext(paths);
+        var owner = (await db.Identities.SingleAsync()).Id;
+        Trackings = await db.Trackings.Where(t => ids.Contains(t.Id) && t.IdentityId == owner && t.ArchivedAtUtc == null).ToListAsync();
+        var workIds = Trackings.Select(t => t.WorkId).ToArray();
+        Works = await db.Works.Where(w => workIds.Contains(w.Id)).ToListAsync();
+        Lists = await db.Lists.Where(l => l.IdentityId == owner).ToListAsync();
+
+        var origin = OriginUrl.Split('#', 2)[0].Split('?', 2);
+        if (origin.Length == 1) return;
+        var query = QueryHelpers.ParseQuery(origin[1]);
+        var media = (query.TryGetValue("NewMedia", out var selected) ? selected : query.GetValueOrDefault("Media")).ToString();
+        if (MediaCodes.All.Contains(media)) OriginMedia = media;
+        if (query.GetValueOrDefault("Context") == "list" && query.TryGetValue("ListId", out var listId))
+            OriginListName = Lists.Find(list => list.Id == listId.ToString())?.Name;
+    }
+
+    public async Task<IActionResult> OnPostAsync()
+    {
+        try
+        {
+            if (ActionKind == "lists") await service.ChangeListsAsync(OperationId, Items, ListId, Add, HttpContext.RequestAborted);
+            else await service.ChangeStatesAsync(OperationId, Items, Targets, KeepCycle, HttpContext.RequestAborted);
+            TempData["Notice"] = "Saved";
+            return LocalRedirect(OriginUrl);
+        }
+        catch (DomainException e) { ErrorCode = e.Code; }
+        catch (DbUpdateException) { ErrorCode = "save_failed"; }
+        await Load(Items.Select(i => i.TrackingId).ToArray());
+        return Page();
+    }
 }

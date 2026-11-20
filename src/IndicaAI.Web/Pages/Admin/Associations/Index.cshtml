@@ -1,0 +1,8 @@
+@page
+@model IndicaAI.Web.Pages.Admin.Associations.IndexModel
+@{ViewData["Title"]=T["AssociateTags"];}
+<a href="/Admin/Tags" class="back-link">@T["Administration"]</a><header class="page-heading"><h1>@T["AssociateTags"]</h1></header>
+@if(Model.ErrorCode is not null){<p class="alert" role="alert">@T["error."+Model.ErrorCode]</p>}
+<form method="post" class="panel inline-form" data-draft="association-new" data-version="0"><input name="operationId" value="@Guid.NewGuid()" type="hidden"/><input name="add" value="true" type="hidden"/><label>@T["Work"]<select name="workId">@foreach(var w in Model.Works){<option value="@w.Id">@w.Title · @T["media."+w.MediaCode]</option>}</select></label><label>@T["Tag"]<select name="tagId">@foreach(var tag in Model.Tags){<option value="@tag.Id">@tag.Name</option>}</select></label><button>@T["Save"]</button></form>
+<div class="table-scroll"><table><thead><tr><th>@T["Work"]</th><th>@T["Tags"]</th><th>@T["Action"]</th></tr></thead><tbody>@foreach(var link in Model.Links){<tr><td>@Model.Works.Single(w=>w.Id==link.WorkId).Title</td><td>@Model.Tags.Single(t=>t.Id==link.TagId).Name</td><td><form method="post"><input name="operationId" value="@Guid.NewGuid()" type="hidden"/><input name="workId" value="@link.WorkId" type="hidden"/><input name="tagId" value="@link.TagId" type="hidden"/><button class="text-button">@T["Remove"]</button></form></td></tr>}</tbody></table></div>
+

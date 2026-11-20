@@ -1,0 +1,65 @@
+@model IndicaAI.Web.Pages.Library.BrowseModel
+@{var catalog=Model.Context=="catalog";var title=catalog?T["Catalog"]:Model.ListName??T["Collection"];}
+<header class="page-heading library-heading">
+ <div><h1>@title</h1><p class="sr-only">@T[catalog?"CatalogHint":"CollectionHint"]</p></div>
+ @if(!catalog){<a class="button" href="/Catalog"><img src="/icons/plus.svg" class="icon" alt=""/>@T["AddWork"]</a>}
+</header>
+<form method="get" class="browse-filter" data-selection-context>
+ <input name="Context" value="@Model.Context" type="hidden"/><input name="ListId" value="@Model.ListId" type="hidden"/>
+ <input name="Media" value="@Model.Media" type="hidden" data-media-current/>
+ <div class="browse-toolbar">
+  <label class="search-field"><span class="sr-only">@T[catalog?"SearchCatalog":"SearchLibrary"]</span><input name="Search" value="@Model.Search" placeholder="@T[catalog?"SearchCatalog":"SearchLibrary"]" type="search"/><button class="search-submit" aria-label="@T["Apply"]"><img src="/icons/search.svg" class="icon" alt=""/></button></label>
+  <div class="media-tabs" role="group" aria-label="@T["Media"]">
+   <button name="NewMedia" value="" class="@(string.IsNullOrEmpty(Model.Media)?"selected":"")">@T["AllMedia"]</button>
+   @foreach(var media in MediaCodes.All){<button name="NewMedia" value="@media" class="@(Model.Media==media?"selected":"")">@T["mediaPlural."+media]</button>}
+  </div>
+ </div>
+ <details class="filter-panel">
+  <summary>@T["Filters"] <span class="filter-count">@(Model.Include.Length+Model.Exclude.Length)</span></summary>
+  <div class="filter-content">
+   <div><label>@T["IncludeCriteria"]<select name="Mode"><option value="all" selected="@(Model.Mode=="all")">@T["MatchAll"]</option><option value="any" selected="@(Model.Mode=="any")">@T["MatchAny"]</option></select></label><p><a href="?Context=@Model.Context&ListId=@Model.ListId">@T["ClearFilters"]</a></p></div>
+   @foreach(var direction in new[]{"Include","Exclude"}){
+    var selected=direction=="Include"?Model.Include:Model.Exclude;
+    <fieldset><legend>@T[direction=="Include"?"Includes":"Exclude"]</legend>
+     <label class="check-line"><input name="@direction" value="anime:true" type="checkbox" checked="@selected.Contains("anime:true")"/>Anime</label>
+     @if(!catalog){
+      @foreach(var media in MediaCodes.All.Where(m=>string.IsNullOrEmpty(Model.Media)||m==Model.Media)){
+       <details><summary>@T["mediaPlural."+media] · @T["CurrentStatus"]</summary>
+       @foreach(var state in MediaCodes.States){var value="state:"+media+"/"+state;<label class="check-line"><input name="@direction" value="@value" type="checkbox" checked="@selected.Contains(value)"/>@(Model.Labels.GetValueOrDefault(media+":"+state)??UiMessages.State(media,state,T.Locale))</label>}
+       </details>
+      }
+      @foreach(var list in Model.Lists){var value="list:"+list.Id;<label class="check-line"><input name="@direction" value="@value" type="checkbox" checked="@selected.Contains(value)"/>@T["Lists"]: @list.Name</label>}
+     }
+     @foreach(var tag in Model.Tags){var value="tag:"+tag.Id;<label class="check-line"><input name="@direction" value="@value" type="checkbox" checked="@selected.Contains(value)"/>@Model.Groups[tag.GroupId] · @tag.Name</label>}
+    </fieldset>
+   }
+  </div><button class="secondary">@T["Apply"]</button>
+ </details>
+</form>
+@if(TempData["Notice"] is string notice){<p class="notice success" role="status">@T[notice]</p>}
+@if(Model.Result.Total==0){
+ <section class="empty-state"><h2>@T[catalog||Model.Include.Length+Model.Exclude.Length>0||Model.Search!=null?"EmptyResults":"EmptyLibraryTitle"]</h2><p>@T["EmptyLibraryText"]</p>@if(!catalog){<a class="button" href="/Catalog">@T["BrowseCatalog"]</a>}</section>
+}else{
+ <form method="get" action="/Batch/Review" data-selection-form>
+  <div class="selection-toolbar"><p>@T.Get("WorkCount",Model.Result.Total)</p>
+   @if(!catalog){<button class="text-button selection-toggle" type="button" data-selection-toggle aria-pressed="false">@T["SelectWorks"]</button><label class="check-line select-page-control"><input type="checkbox" data-select-page/>@T["SelectPage"]</label><button class="secondary" data-selection-submit disabled hidden>@T["ConfirmChanges"] (<span data-selection-count>0</span>)</button>}
+  </div>
+  <section class="work-grid">
+   @foreach(var item in Model.Result.Items){
+    <article class="work-card">
+     @if(!catalog&&item.Tracking is not null){<label class="cover-select"><input name="ids" value="@item.Tracking.Id" type="checkbox" aria-label="@T["Selected"] @item.Work.Title" data-select-item/></label>}
+     <a asp-page="/Works/Details" asp-route-id="@item.Work.Id">
+      <div class="cover-wrap">@if(item.Work.CoverAsset is not null){<img src="/covers/@item.Work.CoverAsset" alt="" loading="lazy"/>}</div>
+      <h2>@item.Work.Title</h2><p class="media-line">@T["media."+item.Work.MediaCode] @(item.Work.IsAnime?"· Anime":"")</p>
+     </a>
+     @if(item.Tracking is not null){<p class="state-badge">@(Model.Labels.GetValueOrDefault(item.Work.MediaCode+":"+item.Tracking.StateCode)??UiMessages.State(item.Work.MediaCode,item.Tracking.StateCode,T.Locale))</p>}
+    </article>
+   }
+  </section>
+ </form>
+}
+@if(Model.Result.Total>Model.Result.PageSize){
+ <nav class="pagination" aria-label="@T["Work"]">
+ @for(var page=1;page<=Math.Ceiling((double)Model.Result.Total/Model.Result.PageSize);page++){<a href="@Model.PageUrl(page)" aria-current="@(page==Model.PageNumber?"page":null)">@(page)</a>}
+ </nav>
+}

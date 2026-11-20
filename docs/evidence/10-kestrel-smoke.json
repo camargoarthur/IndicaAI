@@ -1,0 +1,7 @@
+{
+  "normal": 200,
+  "foreignHost": 403,
+  "foreignOrigin": 403,
+  "restoredCollection": true,
+  "loopbackOnly": true
+}

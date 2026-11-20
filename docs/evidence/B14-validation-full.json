@@ -1,0 +1,187 @@
+{
+  "version": "0.10",
+  "startedAt": "2026-11-15T12:31:08.900Z",
+  "plan": {
+    "profile": "Full",
+    "modules": [],
+    "classes": [],
+    "reason": "Perfil explícito ou fallback completo por ausência de caminhos."
+  },
+  "changedPaths": [],
+  "steps": [
+    {
+      "name": "validation-contracts",
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "--test",
+        "--test-reporter=tap",
+        "tests/validation-plan.test.cjs",
+        "tests/validation-runner.test.cjs",
+        "tests/guide-contract.test.cjs"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 889,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\validation-contracts.log",
+      "error": null
+    },
+    {
+      "name": "draft-model",
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "tests/draft-model.test.cjs"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 59,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\draft-model.log",
+      "error": null
+    },
+    {
+      "name": "build",
+      "command": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\dotnet\\dotnet.exe",
+      "args": [
+        "build",
+        "tests/IndicaAI.Tests",
+        "--no-restore",
+        "--disable-build-servers",
+        "-v",
+        "minimal"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 12550,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\build.log",
+      "error": null
+    },
+    {
+      "name": "product-tests",
+      "command": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\dotnet\\dotnet.exe",
+      "args": [
+        "tests/IndicaAI.Tests/bin/Debug/net10.0/IndicaAI.Tests.dll",
+        "-noLogo",
+        "-failSkips",
+        "-result-ctrf",
+        "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\product-tests.json"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 14911,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\product-tests.log",
+      "error": null
+    },
+    {
+      "name": "publish",
+      "command": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\dotnet\\dotnet.exe",
+      "args": [
+        "publish",
+        "src/IndicaAI.Web",
+        "-c",
+        "Release",
+        "-r",
+        "win-x64",
+        "--self-contained",
+        "true",
+        "--no-restore",
+        "--disable-build-servers",
+        "-o",
+        "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\package",
+        "-v",
+        "minimal"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 11289,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\publish.log",
+      "error": null
+    },
+    {
+      "name": "package",
+      "command": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "E:\\ProjetosPessoais\\IndicaAI\\scripts\\Verify-Release.ps1",
+        "-PackageRoot",
+        "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\package",
+        "-ReportPath",
+        "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\release-assets.json"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 2981,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\package.log",
+      "error": null
+    },
+    {
+      "name": "launcher",
+      "command": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "E:\\ProjetosPessoais\\IndicaAI\\tests\\launcher-lifetime.test.ps1",
+        "-LauncherRoot",
+        "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\package",
+        "-ThroughBat",
+        "-LogDirectory",
+        "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\launcher-output"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 15546,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\launcher.log",
+      "error": null
+    },
+    {
+      "name": "documents",
+      "command": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "E:\\ProjetosPessoais\\IndicaAI\\scripts\\Verify-Documents.ps1",
+        "-AllowExtra"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 1522,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-15T12-31-08-898Z-18184\\documents.log",
+      "error": null
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "TestServer não executa JavaScript do navegador.",
+    "Aparência, foco, diálogos e clipboard continuam com conferência manual do roteiro.",
+    "Nenhum resultado marca TM automaticamente como aprovado."
+  ],
+  "nodeContracts": {
+    "tests": 23,
+    "pass": 23,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "productTests": {
+    "tests": 61,
+    "passed": 61,
+    "failed": 0,
+    "pending": 0,
+    "skipped": 0,
+    "other": 0,
+    "suites": 1,
+    "start": 1794745884426,
+    "stop": 1794745897237,
+    "duration": 12811
+  },
+  "finishedAt": "2026-11-15T12:32:08.662Z"
+}

@@ -1,0 +1,42 @@
+@page
+@model IndicaAI.Web.Pages.Admin.Import.PreviewModel
+@{ViewData["Title"]=T["ImportCsv"];}
+<a href="/Admin/Tags" class="back-link">@T["Administration"]</a><header class="page-heading"><div><p class="eyebrow">CSV · MERGE</p><h1>@T[Model.Batch==null?"ImportCsv":"PreviewTitle"]</h1><p>@T["ImportHint"]</p></div></header>
+@if(Model.ErrorCode is not null){<p class="alert" role="alert">@T["error."+Model.ErrorCode]</p>}
+@if(Model.Batch is null){<form method="post" data-draft="import-upload" data-version="0" enctype="multipart/form-data" class="panel import-upload"><label asp-for="Type">@T["ImportType"]<select asp-for="Type"><option value="tags">@T["TagFile"]</option><option value="associacoes">@T["AssociationFile"]</option></select></label><p class="help">@T["CsvColumns"]</p><label asp-for="Upload">@T["CsvFile"]<input asp-for="Upload" type="file" accept=".csv,text/csv" required/></label><button>@T["Preview"]</button></form><h2>@T["RecentImports"]</h2><ul>@foreach(var batch in Model.Recent){<li><a href="@(batch.Status=="preview"?"/Admin/Import/Preview":"/Admin/Import/Result")?id=@batch.Id">@T.Instant(batch.CreatedAtUtc) · @T["import."+batch.Status]</a></li>}</ul>}
+else{<div class="notice"><strong>@T["PreviewHelp"]</strong><p>@T["Valid"]: @Model.Rows.Count(r=>r.Status!="rejected") · @T["Ignored"]: @Model.Batch.IgnoredRecords · @T["Rejected"]: @Model.Rows.Count(r=>r.Status=="rejected")</p><details><summary>@T["Details"]</summary><p>SHA-256: <code>@Model.Batch.FileHash</code><br/>@T["Revision"]: @Model.Batch.BaselineRevision · @T["Contract"]: @Model.Batch.ContractVersion</p></details></div>
+<p class="import-counts">@T["Created"]: @Model.Rows.Count(r=>r.Action=="created") · @T["Updated"]: @Model.Rows.Count(r=>r.Action=="updated") · @T["NoChanges"]: @Model.Rows.Count(r=>r.Action=="unchanged") · @T["Rejected"]: @Model.Rows.Count(r=>r.Status=="rejected")</p>
+<div class="table-scroll">
+<table class="import-table"><thead><tr><th>@T["Record"]</th><th>@T["Key"]</th><th>@T["Action"]</th><th>@T["Differences"]</th></tr></thead><tbody>
+@foreach(var row in Model.Rows)
+{
+ <tr class="@(row.Status=="rejected"?"row-rejected":"")">
+ <td>@row.RecordNumber <small>@T["PhysicalLine"] @row.PhysicalStartLine</small></td>
+ <td><code>@row.Key</code></td>
+ <td><span class="csv-action action-@row.Action">@T["action."+row.Action]</span></td>
+ <td>
+ @if(row.Status=="rejected")
+ {
+  <p>@T["error."+row.ReasonCode] @if(row.ReasonArgs is not null){<code>@string.Join(", ",System.Text.Json.JsonSerializer.Deserialize<string[]>(row.ReasonArgs)??[])</code>}</p><p class="muted">@T["RowRejected"]</p>
+ }
+ else if(row.Action=="unchanged")
+ {
+  <p>@T["NoChanges"]</p>
+ }
+ else
+ {
+  @if(row.Before is not null){<p><span class="muted">@T["Before"]:</span> @Model.Describe(row.Before,T)</p>}
+  <p><span class="muted">@T["After"]:</span> @Model.Describe(row.After,T)</p>
+  var preserved=Model.Preserved(row,T);
+  @if(!string.IsNullOrEmpty(preserved)&&preserved!="—"){<p class="muted">@T["Preserved"]: @preserved</p>}
+ }
+ </td>
+ </tr>
+}
+</tbody></table></div>
+@if(Model.Batch.Status=="preview"){<div class="actions"><form method="post" asp-page-handler="Apply"><input name="batchId" value="@Model.Batch.Id" type="hidden"/><input name="planHash" value="@Model.Batch.PlanHash" type="hidden"/><button disabled="@Model.Rows.All(r=>r.Status=="rejected")">@T.Get("ImportValid",Model.Rows.Count(r=>r.Status!="rejected"))</button></form><form method="post" asp-page-handler="Cancel"><input name="batchId" value="@Model.Batch.Id" type="hidden"/><button class="secondary">@T["CancelPreview"]</button></form></div>}else{<a class="button" href="/Admin/Import/Result?id=@Model.Batch.Id">@T["ImportResult"]</a>}}
+
+
+
+
+

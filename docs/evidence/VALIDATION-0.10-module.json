@@ -1,0 +1,149 @@
+{
+  "version": "0.10",
+  "startedAt": "2026-11-12T22:12:52.777Z",
+  "plan": {
+    "profile": "Module",
+    "modules": [
+      "Preferences"
+    ],
+    "classes": [
+      "*NameKeyTests",
+      "*BootstrapHttpTests",
+      "*JourneyTests",
+      "*FinalReviewTests",
+      "*ManualGuideTests",
+      "*ManualFormTests",
+      "*PreferenceTests",
+      "*StateLabelTests",
+      "*CustomLabelTests"
+    ],
+    "reason": "Seleção para desenvolvimento; entrega funcional exige Functional ou Full."
+  },
+  "changedPaths": [],
+  "steps": [
+    {
+      "name": "validation-contracts",
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "--test",
+        "--test-reporter=tap",
+        "tests/validation-plan.test.cjs",
+        "tests/validation-runner.test.cjs",
+        "tests/guide-contract.test.cjs"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 1020,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-12T22-12-52-775Z-11684\\validation-contracts.log",
+      "error": null
+    },
+    {
+      "name": "draft-model",
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "tests/draft-model.test.cjs"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 46,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-12T22-12-52-775Z-11684\\draft-model.log",
+      "error": null
+    },
+    {
+      "name": "build",
+      "command": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\dotnet\\dotnet.exe",
+      "args": [
+        "build",
+        "tests/IndicaAI.Tests",
+        "--no-restore",
+        "--disable-build-servers",
+        "-v",
+        "minimal"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 1449,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-12T22-12-52-775Z-11684\\build.log",
+      "error": null
+    },
+    {
+      "name": "product-tests",
+      "command": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\dotnet\\dotnet.exe",
+      "args": [
+        "tests/IndicaAI.Tests/bin/Debug/net10.0/IndicaAI.Tests.dll",
+        "-noLogo",
+        "-failSkips",
+        "-result-ctrf",
+        "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-12T22-12-52-775Z-11684\\product-tests.json",
+        "-class",
+        "*NameKeyTests",
+        "-class",
+        "*BootstrapHttpTests",
+        "-class",
+        "*JourneyTests",
+        "-class",
+        "*FinalReviewTests",
+        "-class",
+        "*ManualGuideTests",
+        "-class",
+        "*ManualFormTests",
+        "-class",
+        "*PreferenceTests",
+        "-class",
+        "*StateLabelTests",
+        "-class",
+        "*CustomLabelTests"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 5177,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-12T22-12-52-775Z-11684\\product-tests.log",
+      "error": null
+    },
+    {
+      "name": "documents",
+      "command": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "E:\\ProjetosPessoais\\IndicaAI\\docs\\evidence\\VERIFY_DOCUMENTS.ps1",
+        "-AllowExtra"
+      ],
+      "passed": true,
+      "exitCode": 0,
+      "durationMs": 1294,
+      "log": "E:\\ProjetosPessoais\\IndicaAI\\.tools\\validation\\2026-11-12T22-12-52-775Z-11684\\documents.log",
+      "error": null
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "TestServer não executa JavaScript do navegador.",
+    "Aparência, foco, diálogos e clipboard continuam com conferência manual do roteiro.",
+    "Nenhum resultado marca TM automaticamente como aprovado."
+  ],
+  "nodeContracts": {
+    "tests": 23,
+    "pass": 23,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "productTests": {
+    "tests": 30,
+    "passed": 30,
+    "failed": 0,
+    "pending": 0,
+    "skipped": 0,
+    "other": 0,
+    "suites": 1,
+    "start": 1794521575538,
+    "stop": 1794521580425,
+    "duration": 4887
+  },
+  "finishedAt": "2026-11-12T22:13:01.767Z"
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "path": "wwwroot/covers/alem-do-vale.png",
+    "sha256": "109A544F2FDF8ECF5D93358C24469B06C27B902210FFF78D8B6AFF2BE7CC4F5F",
+    "bytes": 3068563
+  },
+  {
+    "path": "wwwroot/covers/cidade-distante.png",
+    "sha256": "84927DB3D53C4D2D24507EC6C415748A963AAA8A3FB89D1C523D35DEAC23C1E5",
+    "bytes": 2885286
+  },
+  {
+    "path": "wwwroot/covers/jardins-de-inverno.png",
+    "sha256": "0B8C921CC834F4248D9DA2EE83DC3495852359D1DB6AECF716E537F6B0D37992",
+    "bytes": 3563125
+  },
+  {
+    "path": "wwwroot/covers/mare-de-estrelas.png",
+    "sha256": "28DDD699F7A70EBC69704DE45C4E8CB2A13BDD79C7F22C12F4E753B4D2EF475C",
+    "bytes": 2947671
+  },
+  {
+    "path": "wwwroot/covers/rota-do-norte.png",
+    "sha256": "08023AD4723ED71DA9E2A2DE9B12A7F3F4EB3F4BA1093C09AC8FD91AE51948CD",
+    "bytes": 2873726
+  },
+  {
+    "path": "wwwroot/fonts/LibreBaskerville-OFL.txt",
+    "sha256": "3624EDDD4C8F8A908130A417AE7CD089C9DA69899C4E0CA1A5217D0A6FAE16FD",
+    "bytes": 4542
+  },
+  {
+    "path": "wwwroot/fonts/LibreBaskerville.ttf",
+    "sha256": "05A95421961341C5B2556285E8415DF9DB27DAB4F4ABE22B446B3C6A8B916C5D",
+    "bytes": 171900
+  },
+  {
+    "path": "wwwroot/fonts/SourceSans3-OFL.txt",
+    "sha256": "09746787287A289323B0EC3CFF4D1A4A801331B82B7207C1E186F5D26619A392",
+    "bytes": 4579
+  },
+  {
+    "path": "wwwroot/fonts/SourceSans3.ttf",
+    "sha256": "042FE2CC0B933E328410D7ACBD0AA6A1873DCA5AEF81875F4BC214B08825C7B9",
+    "bytes": 646340
+  },
+  {
+    "path": "wwwroot/icons/LICENSE.txt",
+    "sha256": "B740A1D46122672DA62833E97F7E7C8A13FA85CBC7445B584B297CC00DDE93DB",
+    "bytes": 1073
+  },
+  {
+    "path": "wwwroot/icons/plus.svg",
+    "sha256": "9CC497D4CC1EB38CF9DAAE18F41FFDC1A5E2A8431D70247B0854978F303F28D6",
+    "bytes": 404
+  },
+  {
+    "path": "wwwroot/icons/search.svg",
+    "sha256": "3DD53B9606283DFA0ADCB0B10A7D9A4432369D4BEBCFACF67F80FBE358381C34",
+    "bytes": 433
+  },
+  {
+    "path": "wwwroot/css/site.css",
+    "sha256": "C1B00506C277C3F550968CBB1E477B1E219A00FF07CE3D7F52670AECA89AF254",
+    "bytes": 19228
+  },
+  {
+    "path": "wwwroot/js/batch.js",
+    "sha256": "EDB0C1B0AC925A3723D4736CE27D52F4632410CF00F6918907F40FBA59E1D43D",
+    "bytes": 784
+  },
+  {
+    "path": "wwwroot/js/draft-model.js",
+    "sha256": "6ADE45E02BC1EEE7940B9939B8223CDA855CE0B4CC663888C9B1A3F8D494038E",
+    "bytes": 661
+  },
+  {
+    "path": "wwwroot/js/drafts.js",
+    "sha256": "6885FC31A23C9C2B7239A476EEE7F4A84BC3B705497C8B2EBE5622F0225CB64C",
+    "bytes": 3122
+  },
+  {
+    "path": "wwwroot/js/preferences.js",
+    "sha256": "F3735DFCB453AAB11E527CED08F290D6F4BCBF814ABA7B76F6DE3EFA42E6BBC9",
+    "bytes": 1447
+  },
+  {
+    "path": "wwwroot/js/selection.js",
+    "sha256": "D46C998C374FB2ECCECB1A641473771CBEE6A28C63CEC8FC6E136A9AD237A883",
+    "bytes": 1309
+  },
+  {
+    "path": "wwwroot/js/site.js",
+    "sha256": "8514327ED5E2BB594B5F63FD2F2F716B88072602DE475B86379A9E814A1BB46A",
+    "bytes": 231
+  },
+  {
+    "path": "Start-IndicaAI.bat",
+    "sha256": "5B9EED44FD75647F3D3F04F7026615B561566175A5B3AEE18FF1D33D3759068D",
+    "bytes": 427
+  },
+  {
+    "path": "Start-IndicaAI.ps1",
+    "sha256": "4E43F55A91B59AAA4F1A574340AD1E0400A4145CC553E81474B075E496D4805F",
+    "bytes": 1906
+  },
+  {
+    "path": "LauncherProcess.cs",
+    "sha256": "01B32E1C0774881D632B552F43ADA35490A4488E5AB53409E3F079B31CF730AD",
+    "bytes": 6279
+  }
+]

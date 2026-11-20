@@ -1,0 +1,9 @@
+@page
+@model IndicaAI.Web.Pages.Settings.IndexModel
+@{ViewData["Title"]=T["Preferences"];}
+<header class="page-heading"><div><p class="eyebrow">IndicaAI</p><h1>@T["Preferences"]</h1><p>@T["PreferenceHint"]</p></div></header>
+@if(Model.ErrorCode is not null){<p class="alert" role="alert">@T["error."+Model.ErrorCode]</p>}
+@if(TempData["Notice"] is string message){<p class="notice success" role="status">@T[message]</p>}
+<form method="post" class="panel settings-form" data-draft="preferences" data-version="@Model.Version"><input asp-for="Version" type="hidden"/><input asp-for="OperationId" type="hidden"/><label asp-for="Theme">@T["Appearance"]</label><select asp-for="Theme"><option value="light">@T["Light"]</option><option value="dark">@T["Dark"]</option></select><label asp-for="Locale">@T["Language"]</label><select asp-for="Locale">@foreach(var locale in LocaleRegistry.GetSupported()){<option value="@locale.Code">@locale.NativeName</option>}</select><button>@T["Save"]</button></form>
+<h2 class="section-heading">@T["PersonalLabels"]</h2><div class="list-grid">@foreach(var media in MediaCodes.All){<section class="panel"><h3>@T["media."+media]</h3>@foreach(var code in MediaCodes.States){<form method="post" data-draft="label-@media-@code" data-version="@Model.Version" asp-page-handler="Label" class="label-form"><input name="operationId" value="@Guid.NewGuid()" type="hidden"/><input name="version" value="@Model.Version" type="hidden"/><input name="media" value="@media" type="hidden"/><input name="code" value="@code" type="hidden"/><label>@UiMessages.State(media,code,T.Locale)<input name="label" value="@(Model.Labels.GetValueOrDefault(media+":"+code)??UiMessages.State(media,code,T.Locale))" required maxlength="100"/></label><div><button class="secondary">@T["Rename"]</button><button class="text-button" name="reset" value="true">@T["RestoreDefault"]</button></div></form>}</section>}</div>
+

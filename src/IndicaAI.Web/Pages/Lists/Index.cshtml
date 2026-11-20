@@ -1,0 +1,8 @@
+@page
+@model IndicaAI.Web.Pages.Lists.IndexModel
+@{ViewData["Title"] = T["Lists"];}
+<header class="page-heading"><p class="eyebrow">@T["Collection"]</p><h1>@T["Lists"]</h1></header>
+@if(Model.ErrorCode is not null){<p class="alert" role="alert">@T["error."+Model.ErrorCode]</p>}
+<form method="post" class="panel inline-form" data-draft="list-new" data-version="0"><input type="hidden" asp-for="OperationId"/><label asp-for="Name">@T["ListName"]<input asp-for="Name" required maxlength="200"/></label><button>@T["CreateList"]</button></form>
+<div class="list-grid">@foreach(var list in Model.Lists){<section class="panel"><h2><a asp-page="/Library/Index" asp-route-context="list" asp-route-listId="@list.Id">@list.Name</a></h2><form method="post" class="inline-form" data-draft="list-@list.Id" data-version="@list.Version"><input name="OperationId" type="hidden" value="@Guid.NewGuid()"/><input name="Id" type="hidden" value="@list.Id"/><input name="Version" type="hidden" value="@list.Version"/><label>@T["ListName"]<input name="Name" value="@list.Name" required/></label><button class="secondary">@T["Rename"]</button></form></section>}</div>
+

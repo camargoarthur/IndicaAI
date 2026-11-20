@@ -1,0 +1,36 @@
+@page
+@model IndicaAI.Web.Pages.Batch.ReviewModel
+@{ViewData["Title"]=T["BulkTitle"];}
+<a href="/Library" class="back-link">@T["BackLibrary"]</a>
+<header class="page-heading"><div><h1>@T["BulkTitle"]</h1><p>@T.Get("SelectedCount",Model.Trackings.Count)</p><p>@T["Context"]: @T["ActiveLibrary"]</p></div></header>
+@if(Model.ErrorCode is not null){<p class="alert" role="alert">@T["error."+Model.ErrorCode]</p>}
+<form method="post" data-batch-form data-draft="batch" data-version="@string.Join(',',Model.Items.Select(i=>i.ExpectedVersion))">
+ <input asp-for="OperationId" type="hidden"/>
+ @for(var i=0;i<Model.Items.Count;i++){<input asp-for="Items[i].TrackingId" type="hidden"/><input asp-for="Items[i].ExpectedVersion" type="hidden"/>}
+ <div class="batch-action"><label>@T["Action"]<select asp-for="ActionKind"><option value="states">@T["ChangeStates"]</option><option value="lists">@T["ChangeLists"]</option></select></label></div>
+ <div class="table-scroll">
+  <table class="batch-table">
+   <thead><tr><th>@T["Media"]</th><th>@T["Work"]</th><th>@T["CurrentStatus"]</th><th>@T["NewStatus"]</th><th></th></tr></thead>
+   <tbody>
+    @foreach(var group in Model.Trackings.GroupBy(t=>t.MediaCode).OrderBy(g=>Array.IndexOf(MediaCodes.All,g.Key))){
+     <tr data-batch-group="@group.Key">
+      <td>@T["media."+group.Key]</td>
+      <td>@foreach(var item in group){<p class="batch-work-title">@Model.Works.Single(w=>w.Id==item.WorkId).Title</p>}</td>
+      <td>@foreach(var item in group){<p><span class="state-badge">@T.CurrentState(item.MediaCode,item.StateCode)</span></p>}</td>
+      <td class="batch-state-target"><label class="sr-only" for="target-@group.Key">@T["NewStatus"] · @T["media."+group.Key]</label><select id="target-@group.Key" name="Targets[@group.Key]" data-batch-target><option value="">@T["ChooseStatus"]</option>@foreach(var code in MediaCodes.States){<option value="@code" selected="@(Model.Targets.GetValueOrDefault(group.Key)==code)">@T.CurrentState(group.Key,code)</option>}</select><p class="field-error" data-group-missing>@T.Get("ChooseMediaStatus",T["media."+group.Key])</p></td>
+      <td><button class="text-button" type="submit" asp-page-handler="Remove" name="media" value="@group.Key" formnovalidate>@T["RemoveGroup"]</button></td>
+     </tr>
+    }
+   </tbody>
+  </table>
+ </div>
+ <div class="batch-state-options"><label class="check-line"><input asp-for="KeepCycle"/>@T["KeepCycle"]</label></div>
+ <section class="panel batch-list-options">
+  <label>@T["Lists"]<select asp-for="ListId" data-batch-list><option value="">@T["Lists"]</option>@foreach(var list in Model.Lists){<option value="@list.Id">@list.Name</option>}</select></label>
+  <label class="check-line"><input type="radio" name="Add" value="true" checked="@Model.Add"/>@T["AddToList"]</label>
+  <label class="check-line"><input type="radio" name="Add" value="false" checked="@(!Model.Add)"/>@T["RemoveFromList"]</label>
+ </section>
+ <div class="actions"><button data-batch-confirm disabled="@(Model.Items.Count==0)">@T["ConfirmChanges"]</button><a href="/Library">@T["Cancel"]</a></div>
+ <p class="batch-help help">@T["BatchHelp"]</p>
+</form>
+@section Scripts{<script src="~/js/batch.js" asp-append-version="true" defer></script>}

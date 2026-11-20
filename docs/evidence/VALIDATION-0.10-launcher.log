@@ -1,0 +1,1 @@
+PASS: Windows PowerShell 5.1 (bat=True): HTTP 200, owner killed => server exited and HTTP stopped, same data reopened, no orphan. DataRoot=E:\ProjetosPessoais\IndicaAI\.local\launcher test-29f55a90cb6549fbba59c7d583e4e76c; Logs=E:\ProjetosPessoais\IndicaAI\.tools\validation\2026-11-12T22-12-32-925Z-21032\launcher-output

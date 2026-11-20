@@ -1,0 +1,6 @@
+@page
+@model IndicaAI.Web.Pages.Admin.Import.ResultModel
+@{ViewData["Title"]=T["ImportResult"];}
+<a href="/Admin/Import/Preview" class="back-link">@T["ImportCsv"]</a><header class="page-heading"><h1>@T["ImportResult"]</h1></header><p class="notice" role="status">@T["import."+Model.Result.Status] · @T["Applied"]: @Model.Result.Applied · @T["Rejected"]: @Model.Result.Rejected · @T["Ignored"]: @Model.Result.IgnoredRecords · @T["Unprocessed"]: @Model.Result.Unprocessed</p>
+<div class="table-scroll"><table><thead><tr><th>@T["Record"]</th><th>@T["Key"]</th><th>@T["Action"]</th><th>@T["Details"]</th></tr></thead><tbody>@foreach(var row in Model.Result.Rows){<tr><td>@row.RecordNumber</td><td><code>@row.Key</code></td><td>@T["import."+row.Status] · @T["action."+row.Action]</td><td>@if(row.ReasonCode!=null){@T["error."+row.ReasonCode]}</td></tr>}</tbody></table></div>
+

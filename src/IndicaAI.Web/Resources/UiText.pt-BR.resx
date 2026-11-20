@@ -1,0 +1,790 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <data name="Library" xml:space="preserve">
+    <value>Biblioteca</value>
+  </data>
+  <data name="Catalog" xml:space="preserve">
+    <value>Catálogo</value>
+  </data>
+  <data name="Lists" xml:space="preserve">
+    <value>Listas</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>Arquivadas</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administração</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Preferências</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>Seu acervo</value>
+  </data>
+  <data name="CollectionHint" xml:space="preserve">
+    <value>Suas histórias, em um só lugar.</value>
+  </data>
+  <data name="AddWork" xml:space="preserve">
+    <value>Adicionar obra</value>
+  </data>
+  <data name="SearchLibrary" xml:space="preserve">
+    <value>Buscar na biblioteca</value>
+  </data>
+  <data name="SearchCatalog" xml:space="preserve">
+    <value>Buscar no catálogo</value>
+  </data>
+  <data name="AllMedia" xml:space="preserve">
+    <value>Todas</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="SelectWorks" xml:space="preserve">
+    <value>Selecionar obras</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Alterações salvas.</value>
+  </data>
+  <data name="BackLibrary" xml:space="preserve">
+    <value>Voltar à biblioteca</value>
+  </data>
+  <data name="MyTracking" xml:space="preserve">
+    <value>Meu acompanhamento</value>
+  </data>
+  <data name="WorkDetails" xml:space="preserve">
+    <value>Dados da obra</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="CurrentStatus" xml:space="preserve">
+    <value>Estado atual</value>
+  </data>
+  <data name="ChooseStatus" xml:space="preserve">
+    <value>Escolha um estado</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Início informado</value>
+  </data>
+  <data name="CompletionDate" xml:space="preserve">
+    <value>Conclusão informada</value>
+  </data>
+  <data name="Optional" xml:space="preserve">
+    <value>opcional</value>
+  </data>
+  <data name="DateReference" xml:space="preserve">
+    <value>Sem data informada: referência na inclusão, {0}.</value>
+  </data>
+  <data name="NoAutomaticCompletion" xml:space="preserve">
+    <value>Referência de conclusão não significa obra concluída.</value>
+  </data>
+  <data name="PrivateNote" xml:space="preserve">
+    <value>Anotação privada</value>
+  </data>
+  <data name="SaveTracking" xml:space="preserve">
+    <value>Salvar acompanhamento</value>
+  </data>
+  <data name="ViewHistory" xml:space="preserve">
+    <value>Ver histórico</value>
+  </data>
+  <data name="NewConsumption" xml:space="preserve">
+    <value>Registrar novo consumo</value>
+  </data>
+  <data name="ArchiveTracking" xml:space="preserve">
+    <value>Arquivar acompanhamento</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>Restaurar</value>
+  </data>
+  <data name="AddedOn" xml:space="preserve">
+    <value>Incluída em</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>Histórico</value>
+  </data>
+  <data name="CurrentCycle" xml:space="preserve">
+    <value>Ciclo atual</value>
+  </data>
+  <data name="RecordedAt" xml:space="preserve">
+    <value>Registrado em</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Evento</value>
+  </data>
+  <data name="InformedDate" xml:space="preserve">
+    <value>Data informada</value>
+  </data>
+  <data name="Cycle" xml:space="preserve">
+    <value>Ciclo</value>
+  </data>
+  <data name="OriginalPreserved" xml:space="preserve">
+    <value>Valor anterior preservado.</value>
+  </data>
+  <data name="EmptyLibraryTitle" xml:space="preserve">
+    <value>Um lugar para suas próximas histórias.</value>
+  </data>
+  <data name="EmptyLibraryText" xml:space="preserve">
+    <value>Encontre uma obra no catálogo e escolha um estado para começar.</value>
+  </data>
+  <data name="BrowseCatalog" xml:space="preserve">
+    <value>Explorar catálogo</value>
+  </data>
+  <data name="EmptyResults" xml:space="preserve">
+    <value>Nenhuma obra encontrada.</value>
+  </data>
+  <data name="ClearFilters" xml:space="preserve">
+    <value>Limpar filtros</value>
+  </data>
+  <data name="CatalogHint" xml:space="preserve">
+    <value>Um pequeno catálogo de obras demonstrativas para começar.</value>
+  </data>
+  <data name="EmptyHistory" xml:space="preserve">
+    <value>Nenhuma mudança registrada.</value>
+  </data>
+  <data name="ConfirmDates" xml:space="preserve">
+    <value>Confirmo estas datas, mesmo que estejam no futuro ou a conclusão seja anterior ao início.</value>
+  </data>
+  <data name="KeepCycle" xml:space="preserve">
+    <value>Manter o ciclo atual ao voltar a consumir esta obra.</value>
+  </data>
+  <data name="NewCycleHint" xml:space="preserve">
+    <value>Um novo ciclo preserva o histórico anterior e mantém a mesma obra, nota e listas.</value>
+  </data>
+  <data name="StartCycleAction" xml:space="preserve">
+    <value>Registrar consumo</value>
+  </data>
+  <data name="ArchiveConfirm" xml:space="preserve">
+    <value>Arquivar este acompanhamento? Seus dados e listas serão preservados.</value>
+  </data>
+  <data name="EmptyArchive" xml:space="preserve">
+    <value>Nenhum acompanhamento arquivado.</value>
+  </data>
+  <data name="CreateList" xml:space="preserve">
+    <value>Criar lista</value>
+  </data>
+  <data name="ListName" xml:space="preserve">
+    <value>Nome da lista</value>
+  </data>
+  <data name="ListEmpty" xml:space="preserve">
+    <value>Esta lista ainda não tem obras ativas.</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Renomear</value>
+  </data>
+  <data name="RemoveFromList" xml:space="preserve">
+    <value>Retirar da lista</value>
+  </data>
+  <data name="AddToList" xml:space="preserve">
+    <value>Adicionar à lista</value>
+  </data>
+  <data name="ChangeStates" xml:space="preserve">
+    <value>Alterar estados em lote</value>
+  </data>
+  <data name="ChangeLists" xml:space="preserve">
+    <value>Alterar listas em lote</value>
+  </data>
+  <data name="SelectedCount" xml:space="preserve">
+    <value>{0} {0:plural:obra selecionada|obras selecionadas} nesta página</value>
+  </data>
+  <data name="Media" xml:space="preserve">
+    <value>Mídia</value>
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value>Obra</value>
+  </data>
+  <data name="NewStatus" xml:space="preserve">
+    <value>Novo estado</value>
+  </data>
+  <data name="ConfirmChanges" xml:space="preserve">
+    <value>Confirmar alterações</value>
+  </data>
+  <data name="BatchHelp" xml:space="preserve">
+    <value>Todas as alterações são salvas juntas. Se houver falha, nenhuma é aplicada.</value>
+  </data>
+  <data name="MissingGroup" xml:space="preserve">
+    <value>Escolha um estado para todas as mídias selecionadas.</value>
+  </data>
+  <data name="RemoveGroup" xml:space="preserve">
+    <value>Retirar grupo da seleção</value>
+  </data>
+  <data name="MatchAll" xml:space="preserve">
+    <value>Corresponder a todos</value>
+  </data>
+  <data name="MatchAny" xml:space="preserve">
+    <value>Corresponder a qualquer</value>
+  </data>
+  <data name="Exclude" xml:space="preserve">
+    <value>Excluir qualquer um</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Grupos</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Grupo</value>
+  </data>
+  <data name="ApplicableMedia" xml:space="preserve">
+    <value>Mídias aplicáveis</value>
+  </data>
+  <data name="CreateTag" xml:space="preserve">
+    <value>Criar tag</value>
+  </data>
+  <data name="CreateGroup" xml:space="preserve">
+    <value>Criar grupo</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="AssociateTags" xml:space="preserve">
+    <value>Associar tags</value>
+  </data>
+  <data name="GlobalTagsHint" xml:space="preserve">
+    <value>Classificações globais do catálogo, organizadas por grupo e mídia.</value>
+  </data>
+  <data name="NoTags" xml:space="preserve">
+    <value>Nenhuma tag cadastrada.</value>
+  </data>
+  <data name="ImportCsv" xml:space="preserve">
+    <value>Importar CSV</value>
+  </data>
+  <data name="ImportType" xml:space="preserve">
+    <value>Tipo de arquivo</value>
+  </data>
+  <data name="TagFile" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="AssociationFile" xml:space="preserve">
+    <value>Associações obra–tag</value>
+  </data>
+  <data name="CsvFile" xml:space="preserve">
+    <value>Arquivo CSV</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Revisar prévia</value>
+  </data>
+  <data name="PreviewTitle" xml:space="preserve">
+    <value>Revisar importação</value>
+  </data>
+  <data name="PreviewHelp" xml:space="preserve">
+    <value>Prévia sem gravação. Campos ausentes serão preservados.</value>
+  </data>
+  <data name="Record" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Chave</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Ação</value>
+  </data>
+  <data name="Differences" xml:space="preserve">
+    <value>Diferenças e preservações</value>
+  </data>
+  <data name="ImportValid" xml:space="preserve">
+    <value>{0:plural:Nenhum registro válido|Importar um registro válido|Importar {} registros válidos}</value>
+  </data>
+  <data name="ImportResult" xml:space="preserve">
+    <value>Resultado da importação</value>
+  </data>
+  <data name="ImportHint" xml:space="preserve">
+    <value>UTF-8, cabeçalho e separador ;. Até 5 MiB e 10.000 registros.</value>
+  </data>
+  <data name="Appearance" xml:space="preserve">
+    <value>Aparência</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Escuro</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="PreferenceHint" xml:space="preserve">
+    <value>Suas escolhas ficam salvas neste computador.</value>
+  </data>
+  <data name="PersonalLabels" xml:space="preserve">
+    <value>Nomes dos estados</value>
+  </data>
+  <data name="DefaultMeaning" xml:space="preserve">
+    <value>Significado padrão</value>
+  </data>
+  <data name="RestoreDefault" xml:space="preserve">
+    <value>Restaurar nome padrão</value>
+  </data>
+  <data name="LeaveDraft" xml:space="preserve">
+    <value>Há alterações não salvas. Deseja continuar sem salvá-las?</value>
+  </data>
+  <data name="Demo" xml:space="preserve">
+    <value>Catálogo demonstrativo</value>
+  </data>
+  <data name="NoRating" xml:space="preserve">
+    <value>
+    </value>
+  </data>
+  <data name="Context" xml:space="preserve">
+    <value>Contexto</value>
+  </data>
+  <data name="ActiveLibrary" xml:space="preserve">
+    <value>Biblioteca ativa</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="Signoff" xml:space="preserve">
+    <value>Seu acervo. No seu ritmo.</value>
+  </data>
+  <data name="CancelPreview" xml:space="preserve">
+    <value>Cancelar prévia</value>
+  </data>
+  <data name="NoValidRows" xml:space="preserve">
+    <value>Nenhuma linha válida para importar.</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalhes</value>
+  </data>
+  <data name="Before" xml:space="preserve">
+    <value>Antes</value>
+  </data>
+  <data name="After" xml:space="preserve">
+    <value>Depois</value>
+  </data>
+  <data name="Preserved" xml:space="preserve">
+    <value>Preservados</value>
+  </data>
+  <data name="NoChanges" xml:space="preserve">
+    <value>Sem alteração</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Inserir</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Rejeitar</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Não processada</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="IncludesArchived" xml:space="preserve">
+    <value>Os vínculos são preservados quando a obra está arquivada.</value>
+  </data>
+  <data name="NoLists" xml:space="preserve">
+    <value>Nenhuma lista criada.</value>
+  </data>
+  <data name="IncludeCriteria" xml:space="preserve">
+    <value>Incluir critérios</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>Selecionadas</value>
+  </data>
+  <data name="Any" xml:space="preserve">
+    <value>Qualquer</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Criar</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="ApplyState" xml:space="preserve">
+    <value>Aplicar estado</value>
+  </data>
+  <data name="LoadError" xml:space="preserve">
+    <value>Não foi possível carregar os dados.</value>
+  </data>
+  <data name="CsvColumns" xml:space="preserve">
+    <value>Cabeçalhos: tags: tag_id;nome;grupo_id;midias · associações: obra_id;tag_id</value>
+  </data>
+  <data name="SettingsSaved" xml:space="preserve">
+    <value>Preferências salvas.</value>
+  </data>
+  <data name="NoDate" xml:space="preserve">
+    <value>Não informada</value>
+  </data>
+  <data name="media.jogo" xml:space="preserve">
+    <value>Jogo</value>
+  </data>
+  <data name="state.jogo.planned" xml:space="preserve">
+    <value>Quero jogar</value>
+  </data>
+  <data name="state.jogo.in_progress" xml:space="preserve">
+    <value>Jogando</value>
+  </data>
+  <data name="state.jogo.paused" xml:space="preserve">
+    <value>Pausado</value>
+  </data>
+  <data name="state.jogo.completed" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="state.jogo.dropped" xml:space="preserve">
+    <value>Abandonado</value>
+  </data>
+  <data name="media.livro" xml:space="preserve">
+    <value>Livro</value>
+  </data>
+  <data name="state.livro.planned" xml:space="preserve">
+    <value>Quero ler</value>
+  </data>
+  <data name="state.livro.in_progress" xml:space="preserve">
+    <value>Lendo</value>
+  </data>
+  <data name="state.livro.paused" xml:space="preserve">
+    <value>Pausado</value>
+  </data>
+  <data name="state.livro.completed" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="state.livro.dropped" xml:space="preserve">
+    <value>Abandonado</value>
+  </data>
+  <data name="media.manga" xml:space="preserve">
+    <value>Mangá</value>
+  </data>
+  <data name="state.manga.planned" xml:space="preserve">
+    <value>Quero ler</value>
+  </data>
+  <data name="state.manga.in_progress" xml:space="preserve">
+    <value>Lendo</value>
+  </data>
+  <data name="state.manga.paused" xml:space="preserve">
+    <value>Pausado</value>
+  </data>
+  <data name="state.manga.completed" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="state.manga.dropped" xml:space="preserve">
+    <value>Abandonado</value>
+  </data>
+  <data name="media.filme" xml:space="preserve">
+    <value>Filme</value>
+  </data>
+  <data name="state.filme.planned" xml:space="preserve">
+    <value>Quero assistir</value>
+  </data>
+  <data name="state.filme.in_progress" xml:space="preserve">
+    <value>Assistindo</value>
+  </data>
+  <data name="state.filme.paused" xml:space="preserve">
+    <value>Pausado</value>
+  </data>
+  <data name="state.filme.completed" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="state.filme.dropped" xml:space="preserve">
+    <value>Abandonado</value>
+  </data>
+  <data name="media.serie" xml:space="preserve">
+    <value>Série</value>
+  </data>
+  <data name="state.serie.planned" xml:space="preserve">
+    <value>Quero assistir</value>
+  </data>
+  <data name="state.serie.in_progress" xml:space="preserve">
+    <value>Assistindo</value>
+  </data>
+  <data name="state.serie.paused" xml:space="preserve">
+    <value>Pausado</value>
+  </data>
+  <data name="state.serie.completed" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="state.serie.dropped" xml:space="preserve">
+    <value>Abandonado</value>
+  </data>
+  <data name="error.not_found" xml:space="preserve">
+    <value>O registro não foi encontrado. Atualize a página.</value>
+  </data>
+  <data name="error.conflict" xml:space="preserve">
+    <value>Os dados mudaram em outra edição. Atualize a página antes de salvar.</value>
+  </data>
+  <data name="error.operation_invalid" xml:space="preserve">
+    <value>A operação não é válida. Atualize a página.</value>
+  </data>
+  <data name="error.operation_reused" xml:space="preserve">
+    <value>Esta confirmação já foi usada com outros dados. Atualize a página.</value>
+  </data>
+  <data name="error.state_invalid" xml:space="preserve">
+    <value>Escolha um estado válido para esta mídia.</value>
+  </data>
+  <data name="error.unusual_dates" xml:space="preserve">
+    <value>Revise as datas e confirme a informação incomum para continuar.</value>
+  </data>
+  <data name="error.choose_cycle" xml:space="preserve">
+    <value>Escolha manter o ciclo atual ou registrar novo consumo.</value>
+  </data>
+  <data name="error.archived" xml:space="preserve">
+    <value>Este acompanhamento está arquivado. Restaure-o para continuar.</value>
+  </data>
+  <data name="error.invalid_date" xml:space="preserve">
+    <value>Informe uma data válida.</value>
+  </data>
+  <data name="error.name_required" xml:space="preserve">
+    <value>Informe um nome.</value>
+  </data>
+  <data name="error.name_duplicate" xml:space="preserve">
+    <value>Já existe um nome equivalente neste contexto.</value>
+  </data>
+  <data name="error.media_required" xml:space="preserve">
+    <value>Selecione ao menos uma mídia.</value>
+  </data>
+  <data name="error.incompatible" xml:space="preserve">
+    <value>A tag não é aplicável à mídia desta obra.</value>
+  </data>
+  <data name="error.linked_media" xml:space="preserve">
+    <value>Há obras associadas a esta mídia. Os vínculos foram preservados.</value>
+  </data>
+  <data name="error.invalid_csv" xml:space="preserve">
+    <value>A estrutura do CSV não é válida. Verifique cabeçalho, colunas e aspas.</value>
+  </data>
+  <data name="error.csv_limit" xml:space="preserve">
+    <value>O arquivo ultrapassa 5 MiB ou 10.000 registros.</value>
+  </data>
+  <data name="error.reference_missing" xml:space="preserve">
+    <value>A referência informada não existe.</value>
+  </data>
+  <data name="error.row_incomplete" xml:space="preserve">
+    <value>Faltam campos obrigatórios para uma nova tag.</value>
+  </data>
+  <data name="error.key_conflict" xml:space="preserve">
+    <value>A mesma chave aparece com dados conflitantes.</value>
+  </data>
+  <data name="error.preview_stale" xml:space="preserve">
+    <value>Os dados mudaram desde a prévia. Revise uma nova prévia.</value>
+  </data>
+  <data name="error.no_valid_rows" xml:space="preserve">
+    <value>Nenhuma linha válida para importar.</value>
+  </data>
+  <data name="error.save_failed" xml:space="preserve">
+    <value>Não foi possível confirmar a gravação. Seus dados editados foram mantidos.</value>
+  </data>
+  <data name="error.preference_invalid" xml:space="preserve">
+    <value>Escolha um tema e idioma disponíveis.</value>
+  </data>
+  <data name="error.instance_running" xml:space="preserve">
+    <value>Já existe uma instância aberta para estes dados.</value>
+  </data>
+  <data name="error.backup_invalid" xml:space="preserve">
+    <value>O backup não passou na verificação. Os dados atuais foram preservados.</value>
+  </data>
+  <data name="error.interrupted" xml:space="preserve">
+    <value>A operação foi interrompida. Consulte os registros já confirmados.</value>
+  </data>
+  <data name="error.group_required" xml:space="preserve">
+    <value>Escolha um grupo existente.</value>
+  </data>
+  <data name="error.nothing_selected" xml:space="preserve">
+    <value>Selecione ao menos uma obra.</value>
+  </data>
+  <data name="error.state_group_missing" xml:space="preserve">
+    <value>Escolha um estado compatível para cada mídia.</value>
+  </data>
+  <data name="error.empty_file" xml:space="preserve">
+    <value>O arquivo está vazio.</value>
+  </data>
+  <data name="event.added" xml:space="preserve">
+    <value>Incluída na biblioteca</value>
+  </data>
+  <data name="event.state_changed" xml:space="preserve">
+    <value>Estado alterado</value>
+  </data>
+  <data name="event.new_cycle" xml:space="preserve">
+    <value>Novo consumo</value>
+  </data>
+  <data name="event.date_corrected" xml:space="preserve">
+    <value>Correção de data</value>
+  </data>
+  <data name="Includes" xml:space="preserve">
+    <value>Incluir</value>
+  </data>
+  <data name="SkipContent" xml:space="preserve">
+    <value>Ir ao conteúdo</value>
+  </data>
+  <data name="EditorialCollection" xml:space="preserve">
+    <value>Acervo Editorial</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navegação principal</value>
+  </data>
+  <data name="LocalCollection" xml:space="preserve">
+    <value>Local · seus dados neste dispositivo</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="ExistingAssociations" xml:space="preserve">
+    <value>Associações já existentes</value>
+  </data>
+  <data name="ExistingMedia" xml:space="preserve">
+    <value>Mídias já aplicáveis</value>
+  </data>
+  <data name="RecentImports" xml:space="preserve">
+    <value>Importações recentes</value>
+  </data>
+  <data name="Valid" xml:space="preserve">
+    <value>Válidas</value>
+  </data>
+  <data name="Revision" xml:space="preserve">
+    <value>Revisão</value>
+  </data>
+  <data name="Contract" xml:space="preserve">
+    <value>Contrato</value>
+  </data>
+  <data name="PhysicalLine" xml:space="preserve">
+    <value>linha</value>
+  </data>
+  <data name="Applied" xml:space="preserve">
+    <value>Processadas</value>
+  </data>
+  <data name="Unprocessed" xml:space="preserve">
+    <value>Não processadas</value>
+  </data>
+  <data name="error.duplicate" xml:space="preserve">
+    <value>Repetição idêntica; sem alteração adicional.</value>
+  </data>
+  <data name="action.created" xml:space="preserve">
+    <value>Inserir</value>
+  </data>
+  <data name="action.updated" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="action.unchanged" xml:space="preserve">
+    <value>Sem alteração</value>
+  </data>
+  <data name="action.rejected" xml:space="preserve">
+    <value>Rejeitada</value>
+  </data>
+  <data name="import.preview" xml:space="preserve">
+    <value>Prévia aguardando confirmação</value>
+  </data>
+  <data name="import.applying" xml:space="preserve">
+    <value>Em processamento</value>
+  </data>
+  <data name="import.completed" xml:space="preserve">
+    <value>Concluída</value>
+  </data>
+  <data name="import.interrupted" xml:space="preserve">
+    <value>Interrompida; os registros confirmados foram preservados</value>
+  </data>
+  <data name="import.cancelled" xml:space="preserve">
+    <value>Cancelada</value>
+  </data>
+  <data name="import.applied" xml:space="preserve">
+    <value>Processada</value>
+  </data>
+  <data name="import.rejected" xml:space="preserve">
+    <value>Rejeitada</value>
+  </data>
+  <data name="import.pending" xml:space="preserve">
+    <value>Pendente</value>
+  </data>
+  <data name="import.unprocessed" xml:space="preserve">
+    <value>Não processada</value>
+  </data>
+  <data name="Studio" xml:space="preserve">
+    <value>Estúdio</value>
+  </data>
+  <data name="Platforms" xml:space="preserve">
+    <value>Plataformas</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duração</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="credit.author" xml:space="preserve">
+    <value>Autoria</value>
+  </data>
+  <data name="credit.director" xml:space="preserve">
+    <value>Direção</value>
+  </data>
+  <data name="credit.creator" xml:space="preserve">
+    <value>Criação</value>
+  </data>
+  <data name="mediaPlural.jogo" xml:space="preserve">
+    <value>Jogos</value>
+  </data>
+  <data name="mediaPlural.livro" xml:space="preserve">
+    <value>Livros</value>
+  </data>
+  <data name="mediaPlural.manga" xml:space="preserve">
+    <value>Mangás</value>
+  </data>
+  <data name="mediaPlural.filme" xml:space="preserve">
+    <value>Filmes</value>
+  </data>
+  <data name="mediaPlural.serie" xml:space="preserve">
+    <value>Séries</value>
+  </data>
+  <data name="WorkCount" xml:space="preserve">
+    <value>{0:plural:nenhuma obra|uma obra|{} obras}</value>
+  </data>
+  <data name="SelectPage" xml:space="preserve">
+    <value>Selecionar esta página</value>
+  </data>
+  <data name="ClearSelectionConfirm" xml:space="preserve">
+    <value>Limpar a seleção e mudar a visualização?</value>
+  </data>
+  <data name="Ignored" xml:space="preserve">
+    <value>Vazios ignorados</value>
+  </data>
+  <data name="BackTracking" xml:space="preserve">
+    <value>Voltar ao acompanhamento</value>
+  </data>
+  <data name="BulkTitle" xml:space="preserve">
+    <value>Revisar alterações em lote</value>
+  </data>
+  <data name="ChooseMediaStatus" xml:space="preserve">
+    <value>Escolha um estado compatível com {0}.</value>
+  </data>
+  <data name="RowRejected" xml:space="preserve">
+    <value>Nenhum dado deste registro será gravado.</value>
+  </data>
+  <data name="DraftConflict" xml:space="preserve">
+    <value>Este registro mudou desde a edição. Seu rascunho foi preservado abaixo. Escolha qual versão revisar antes de salvar.</value>
+  </data>
+  <data name="UseDraft" xml:space="preserve">
+    <value>Revisar meu rascunho</value>
+  </data>
+  <data name="KeepCurrent" xml:space="preserve">
+    <value>Manter dados atuais</value>
+  </data>
+  <data name="ResolveUploadBeforePreferences" xml:space="preserve">
+    <value>Conclua ou cancele a seleção do arquivo antes de trocar as preferências. O arquivo e seus campos foram mantidos.</value>
+  </data>
+</root>

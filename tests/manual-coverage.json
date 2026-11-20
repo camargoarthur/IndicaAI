@@ -1,0 +1,329 @@
+[
+  {
+    "id": "TM01",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/BootstrapHttpTests.cs#LibraryAndCatalogOpenWithoutLogin",
+      "tests/launcher-lifetime.test.ps1"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM02",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/JourneyTests.cs#FourCombinationsRenderLanguageAndThemeWithStableCanonicalValues"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM03",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/StateLabelTests.cs#RenameAndRestoreDoNotChangeStateOrMeaning"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM04",
+    "coverage": "partial",
+    "tests": [
+      "tests/draft-model.test.cjs"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM05",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#RenamingAListPreservesMembershipAndRejectsStaleEdits"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM06",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#TagRenameAndAssociationRemovalPreserveTracking"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM07",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/TagTests.cs#UnicodeUniquenessAndApplicabilityAreEnforcedWithoutPartialChanges"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM08",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#TagRenameAndAssociationRemovalPreserveTracking"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM09",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#TagRenameAndAssociationRemovalPreserveTracking"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM10",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/TagTests.cs#UnicodeUniquenessAndApplicabilityAreEnforcedWithoutPartialChanges"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM11",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#CancelledCsvCannotApplyAndDoesNotChangeGlobalData",
+      "tests/IndicaAI.Tests/Integration/ImportTests.cs#AbsentFieldsArePreservedAndPreviewIsReadOnly"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM12",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ImportTests.cs#AbsentFieldsArePreservedAndPreviewIsReadOnly"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM13",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ImportTests.cs#ExistingAssociationsAndIndependentValidRowsSurviveReimport",
+      "tests/IndicaAI.Tests/Integration/ImportTests.cs#AbsentFieldsArePreservedAndPreviewIsReadOnly"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM14",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ImportTests.cs#ExistingAssociationsAndIndependentValidRowsSurviveReimport"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM15",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/ManualFormTests.cs#MissingOrInvalidStateCannotCreateTracking",
+      "tests/IndicaAI.Tests/Web/BootstrapHttpTests.cs#LibraryAndCatalogOpenWithoutLogin"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM16",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/TrackingHttpTests.cs#AddFromFormRequiresStateAndStoresAnActualTracking"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM17",
+    "coverage": "partial",
+    "tests": [
+      "tests/draft-model.test.cjs",
+      "tests/IndicaAI.Tests/Web/TrackingHttpTests.cs#AddFromFormRequiresStateAndStoresAnActualTracking"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM18",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/ManualFormTests.cs#StaleFormKeepsDraftAndCannotOverwriteOtherTab"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM19",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/TrackingTests.cs#UnusualDatesNeedConfirmationAndNoteIsPrivate"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM20",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/TrackingTests.cs#NewCycleAndDateCorrectionKeepOldCycleAndOriginalInclusion"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM21",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#CorrectingAnOldCycleKeepsCurrentCycleAndState",
+      "tests/IndicaAI.Tests/Integration/TrackingTests.cs#NewCycleAndDateCorrectionKeepOldCycleAndOriginalInclusion"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM22",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/OrganizationTests.cs#MixedListAndArchiveRestorePreserveAllPersonalData"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM23",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/ManualFormTests.cs#OtherMediaFormsCreateExactlyOneCompatibleTracking",
+      "tests/IndicaAI.Tests/Integration/OrganizationTests.cs#MixedListAndArchiveRestorePreserveAllPersonalData"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM24",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/ManualFormTests.cs#OtherMediaFormsCreateExactlyOneCompatibleTracking"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM25",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/ManualFormTests.cs#OtherMediaFormsCreateExactlyOneCompatibleTracking"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM26",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/ManualFormTests.cs#OtherMediaFormsCreateExactlyOneCompatibleTracking",
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#SearchAnimeAndArchiveStayInsideTheirContexts"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM27",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#SearchAnimeAndArchiveStayInsideTheirContexts"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM28",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#TagAndOrNotFiltersRespectMediaAndListContext",
+      "tests/IndicaAI.Tests/Integration/FilterBatchTests.cs#AllAnyNotHonorContextAndBatchIsAtomic"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM29",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#TagAndOrNotFiltersRespectMediaAndListContext",
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#SearchAnimeAndArchiveStayInsideTheirContexts"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM30",
+    "coverage": "partial",
+    "tests": [
+      "tests/draft-model.test.cjs"
+    ],
+    "remaining": "Modelo de seleção coberto; persistência da seleção na troca real de preferência exige navegador."
+  },
+  {
+    "id": "TM31",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/BatchReviewTests.cs#RemovingAGroupKeepsOtherChoicesAndDoesNotWrite",
+      "tests/IndicaAI.Tests/Integration/FilterBatchTests.cs#AllAnyNotHonorContextAndBatchIsAtomic"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM32",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/FilterBatchTests.cs#AllAnyNotHonorContextAndBatchIsAtomic",
+      "tests/IndicaAI.Tests/Integration/RecoveryAndBatchTests.cs#LastWriteFailureRollsBackEntirePersonalBatch"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM33",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Web/JourneyTests.cs#RealFormsOrganizeBatchArchiveAndImportWithoutLogin",
+      "tests/IndicaAI.Tests/Web/BatchReviewTests.cs#RemovingAGroupKeepsOtherChoicesAndDoesNotWrite"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM34",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/ManualGuideTests.cs#BatchListRemovalKeepsOtherMembershipsAndConsumptionHistory"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM35",
+    "coverage": "partial",
+    "tests": [
+      "tests/launcher-lifetime.test.ps1"
+    ],
+    "remaining": "Ensaio do iniciador não abre/fecha navegador; conferir esse gesto manualmente."
+  },
+  {
+    "id": "TM36",
+    "coverage": "partial",
+    "tests": [
+      "tests/launcher-lifetime.test.ps1"
+    ],
+    "remaining": "Ensaio encerra o host abruptamente; clique real no X permanece manual."
+  },
+  {
+    "id": "TM37",
+    "coverage": "partial",
+    "tests": [
+      "tests/launcher-lifetime.test.ps1",
+      "tests/IndicaAI.Tests/Integration/BootstrapTests.cs#ReopeningKeepsIdentityAndDoesNotReplaceData"
+    ],
+    "remaining": "Reabertura/lock cobertos; conferir o conjunto específico de dados da rodada manual."
+  },
+  {
+    "id": "TM38",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/BackupTests.cs#RestorePreservesSnapshotAndCorruptBundleKeepsActive"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  },
+  {
+    "id": "TM39",
+    "coverage": "partial",
+    "tests": [
+      "tests/IndicaAI.Tests/Integration/RecoveryAndBatchTests.cs#SnapshotRestoresEveryBusinessTableAndAssetExactly",
+      "tests/IndicaAI.Tests/Integration/BackupTests.cs#RestorePreservesSnapshotAndCorruptBundleKeepsActive"
+    ],
+    "remaining": "Conferir o percurso e apresentação no navegador; integração/modelo não equivalem à execução manual integral."
+  }
+]

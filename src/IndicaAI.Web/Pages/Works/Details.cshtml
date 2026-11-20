@@ -1,0 +1,54 @@
+@page
+@model IndicaAI.Web.Pages.Works.DetailsModel
+@{ViewData["Title"]=Model.Work.Title;var active=Model.Tracking is not null&&Model.Tracking.ArchivedAtUtc is null;}
+<div class="detail-layout"><aside class="work-sidebar"><a class="back-link" href="/Library">@T["BackLibrary"]</a>
+@if(Model.Work.CoverAsset is not null){<img class="detail-cover" src="/covers/@Model.Work.CoverAsset" alt="@Model.Work.Title"/>}
+<h2 class="work-title">@Model.Work.Title</h2><p class="media-line">@T["media."+Model.Work.MediaCode] @if(Model.Work.IsAnime){<span> · Anime</span>}</p>
+<section class="work-facts">
+<h2>@T["WorkDetails"]</h2>
+<dl>
+<dt>@T["Title"]</dt><dd>@Model.Work.Title</dd>
+@foreach(var credit in Model.Credits)
+{
+ <dt>@T["credit."+credit.Role]</dt><dd>@credit.Name</dd>
+}
+@if(Model.Game?.Studio is string studio)
+{
+ <dt>@T["Studio"]</dt><dd>@studio</dd>
+}
+@if(Model.Platforms.Length > 0)
+{
+ <dt>@T["Platforms"]</dt><dd>@string.Join(", ",Model.Platforms)</dd>
+}
+@if(Model.Film?.DurationMinutes is int duration)
+{
+ <dt>@T["Duration"]</dt><dd>@T.Get("Minutes",duration)</dd>
+}
+</dl>
+@if(Model.TagNames.Length > 0)
+{
+ <p>@string.Join(" · ",Model.TagNames)</p>
+}
+<p class="description">@Model.Work.Description</p>
+@if(Model.Work.ReleaseYear is not null)
+{
+ <p class="muted">@Model.Work.ReleaseYear</p>
+}
+</section>
+@if(active){<form method="post" action="/Archive?handler=Set" class="archive-action" data-confirm="@T["ArchiveConfirm"]"><input type="hidden" name="trackingId" value="@Model.Tracking!.Id"/><input type="hidden" name="version" value="@Model.Tracking.Version"/><input type="hidden" name="archived" value="true"/><input type="hidden" name="operationId" value="@Guid.NewGuid()"/><button class="text-button">@T["ArchiveTracking"]</button>@Html.AntiForgeryToken()</form>}
+</aside><section class="tracking-pane"><h1>@T["MyTracking"]</h1>
+@if(TempData["Notice"] is string notice){<p class="notice success" role="status">@T[notice]</p>}
+@if(Model.ErrorCode is not null){<div class="notice error" role="alert" tabindex="-1">@T["error."+Model.ErrorCode]</div>}
+@if(Model.Tracking?.ArchivedAtUtc is not null){<div class="notice">@T["error.archived"]</div><a class="button" href="/Archive">@T["Archived"]</a>}
+else{<form method="post" asp-page-handler="Save" asp-route-id="@Model.Id" class="tracking-form" data-draft="work-@Model.Work.Id" data-version="@Model.Input.Version"><input asp-for="Input.OperationId" type="hidden"/><input asp-for="Input.Version" type="hidden"/>
+<div class="field"><label asp-for="Input.StateCode">@T["CurrentStatus"] <span class="required">*</span></label><select asp-for="Input.StateCode" required><option value="">@T["ChooseStatus"]</option>@foreach(var code in MediaCodes.States){<option value="@code">@(Model.Labels.GetValueOrDefault(code)??UiMessages.State(Model.Work.MediaCode,code,T.Locale))</option>}</select></div>
+<div class="date-grid"><div class="field"><label asp-for="Input.Start">@T["StartDate"] <span>(@T["Optional"])</span></label><input asp-for="Input.Start" type="date" asp-format="{0:yyyy-MM-dd}"/></div><div class="field"><label asp-for="Input.Completion">@T["CompletionDate"] <span>(@T["Optional"])</span></label><input asp-for="Input.Completion" type="date" asp-format="{0:yyyy-MM-dd}"/></div></div>
+<p class="help">@T.Get("DateReference",T.Date(Model.Tracking?.IncludedOn??DateOnly.FromDateTime(DateTime.Today)))<br/>@T["NoAutomaticCompletion"]</p><label class="check-line"><input asp-for="Input.ConfirmDates"/><span>@T["ConfirmDates"]</span></label>
+@if(Model.Tracking?.StateCode=="completed"){<label class="check-line"><input asp-for="Input.KeepCycle"/><span>@T["KeepCycle"]</span></label>}
+<div class="field"><label>@T["Lists"]</label>@if(Model.Lists.Count==0){<p class="muted">@T["NoLists"] <a href="/Lists">@T["CreateList"]</a></p>}else{<div class="list-checks">@foreach(var list in Model.Lists){<label class="check-line"><input type="checkbox" name="Input.ListIds" value="@list.Id" checked="@Model.Input.ListIds.Contains(list.Id)"/>@list.Name</label>}</div>}</div>
+<div class="field"><label asp-for="Input.Note">@T["PrivateNote"]</label><textarea asp-for="Input.Note" rows="4"></textarea></div><div class="actions"><button class="button primary" type="submit">@(active?T["SaveTracking"]:T["AddWork"])</button>@if(active){<a href="/Works/History?id=@Model.Tracking!.Id">@T["ViewHistory"]</a>}</div></form>
+@if(active){<div class="secondary-actions"><a href="/Works/NewCycle?id=@Model.Tracking!.Id">@T["NewConsumption"]</a></div>}}
+</section></div>
+
+
+

@@ -1,0 +1,8 @@
+@page
+@model IndicaAI.Web.Pages.Works.NewCycleModel
+@{ViewData["Title"]=T["NewConsumption"];}
+<a class="back-link" href="/Works/Details?id=@Model.Work.Id">@Model.Work.Title</a><h1>@T["NewConsumption"]</h1><p class="intro">@T["NewCycleHint"]</p>
+@if(Model.ErrorCode is not null){<div class="notice error" role="alert">@T["error."+Model.ErrorCode]</div>}
+<form method="post" asp-route-id="@Model.Id" class="narrow-form" data-draft="cycle-@Model.Id" data-version="@Model.Input.Version"><input asp-for="Input.OperationId" type="hidden"/><input asp-for="Input.Version" type="hidden"/><div class="field"><label asp-for="Input.StateCode">@T["CurrentStatus"] *</label><select asp-for="Input.StateCode" required><option value="">@T["ChooseStatus"]</option>@foreach(var code in MediaCodes.States){<option value="@code">@T.CurrentState(Model.Work.MediaCode,code)</option>}</select></div><div class="date-grid"><div class="field"><label asp-for="Input.Start">@T["StartDate"] (@T["Optional"])</label><input asp-for="Input.Start" type="date"/></div><div class="field"><label asp-for="Input.Completion">@T["CompletionDate"] (@T["Optional"])</label><input asp-for="Input.Completion" type="date"/></div></div><p class="help">@T.Get("DateReference",T.Date(Model.Tracking.IncludedOn))<br/>@T["NoAutomaticCompletion"]</p><label class="check-line"><input asp-for="Input.ConfirmDates"/>@T["ConfirmDates"]</label><div class="actions"><button class="button primary">@T["StartCycleAction"]</button><a href="/Works/Details?id=@Model.Work.Id">@T["Cancel"]</a></div></form>
+
+

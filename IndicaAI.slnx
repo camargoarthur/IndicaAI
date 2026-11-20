@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/IndicaAI.Web/IndicaAI.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/IndicaAI.Tests/IndicaAI.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "CsvHelper",
+    "version": "34.0.0",
+    "license": "MS-PL OR Apache-2.0",
+    "authors": "Josh Close",
+    "copyright": "Copyright © 2009-2026 Josh Close",
+    "repository": "https://github.com/JoshClose/CsvHelper",
+    "sha512": "sha512-yiFG6lPSgNFhraURmM/e4ROhbnNzMOZI1HxMvjNzn5lkc9dx3aN/sm/N4UM+rV6CPpZBQfrJfwEKUxkndeRKUQ=="
+  },
+  {
+    "id": "Microsoft.Data.Sqlite.Core",
+    "version": "10.0.14",
+    "license": "MIT",
+    "authors": "Microsoft",
+    "copyright": "© Microsoft Corporation. All rights reserved.",
+    "repository": "https://github.com/dotnet/dotnet",
+    "sha512": "sha512-1p9rO3Q2X/L/9YrYog3vaDzi8u+WZfJCOkDYoHqmofqYP0DLPLPyZcS2Rnh/79JXAodgbs1AgsaNwLpIvC3Xew=="
+  },
+  {
+    "id": "Microsoft.EntityFrameworkCore",
+    "version": "10.0.14",
+    "license": "MIT",
+    "authors": "Microsoft",
+    "copyright": "© Microsoft Corporation. All rights reserved.",
+    "repository": "https://github.com/dotnet/dotnet",
+    "sha512": "sha512-vY3931PYPIDBbKovGHbACmpOWvURvKNyRXfCjMh5yLW+FH6vLWeqUu2xzSCRo4Oz4tgx9GYpd0JlV5LDyAoQdg=="
+  },
+  {
+    "id": "Microsoft.EntityFrameworkCore.Abstractions",
+    "version": "10.0.14",
+    "license": "MIT",
+    "authors": "Microsoft",
+    "copyright": "© Microsoft Corporation. All rights reserved.",
+    "repository": "https://github.com/dotnet/dotnet",
+    "sha512": "sha512-/SaznoTTFfKzxYEbCPAwwKBR3XT92DZgH4jJ3/cqs2skP3o2D+TL6i9Aaj+8Azwtu6/sRd0ve4P2mN12nfVmCw=="
+  },
+  {
+    "id": "Microsoft.EntityFrameworkCore.Relational",
+    "version": "10.0.14",
+    "license": "MIT",
+    "authors": "Microsoft",
+    "copyright": "© Microsoft Corporation. All rights reserved.",
+    "repository": "https://github.com/dotnet/dotnet",
+    "sha512": "sha512-Ut0kgtfoKX9QElQVEXSEAgdQc79jISWStVWSOhfPDDHNSKMwFzSXG3gtdYFTAbsBoV+8NtXdVaj4xwdqeky8UA=="
+  },
+  {
+    "id": "Microsoft.EntityFrameworkCore.Sqlite",
+    "version": "10.0.14",
+    "license": "MIT",
+    "authors": "Microsoft",
+    "copyright": "© Microsoft Corporation. All rights reserved.",
+    "repository": "https://github.com/dotnet/dotnet",
+    "sha512": "sha512-lxrwnVwvlIfQD4IF4WUVupE6Qxfj3MfFftDVwo7tsGAWCKLL8Ttb8UjIt+gE4e9nRlH7EgdC6TrsArFGnNYREw=="
+  },
+  {
+    "id": "Microsoft.EntityFrameworkCore.Sqlite.Core",
+    "version": "10.0.14",
+    "license": "MIT",
+    "authors": "Microsoft",
+    "copyright": "© Microsoft Corporation. All rights reserved.",
+    "repository": "https://github.com/dotnet/dotnet",
+    "sha512": "sha512-08VGlMQ9WbK869as9Ho+VZQbM5Qu6zdorgeh6ShVwQgLYgfUBiaIm02T7spfW7Xc1MBHCvclwPgGWpvx5BYGXQ=="
+  },
+  {
+    "id": "Microsoft.Extensions.DependencyModel",
+    "version": "10.0.14",
+    "license": "MIT",
+    "authors": "Microsoft",
+    "copyright": "© Microsoft Corporation. All rights reserved.",
+    "repository": "https://github.com/dotnet/dotnet",
+    "sha512": "sha512-N8OcqM0370wSXMJ3ZxO66rSElHrIgxvpfUn0vV7zRj7NvKo0nfwgEoTmC3Yz3860o60IaQ4KIPyeLIGX9EeNWA=="
+  },
+  {
+    "id": "Newtonsoft.Json",
+    "version": "13.0.4",
+    "license": "MIT",
+    "authors": "James Newton-King",
+    "copyright": "Copyright © James Newton-King 2008",
+    "repository": "https://github.com/JamesNK/Newtonsoft.Json",
+    "sha512": "sha512-pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A=="
+  },
+  {
+    "id": "SmartFormat",
+    "version": "3.6.2",
+    "license": "MIT",
+    "authors": "axuno gGmbH, Scott Rippey, SmartFormat Project maintainers and contributors.",
+    "copyright": "Copyright 2011-2026 SmartFormat Project",
+    "repository": "https://github.com/axuno/SmartFormat.git",
+    "sha512": "sha512-LMgV9QqRhYn+mBkGurpAf7U5LOJJ1MviD9s0MjN/DXn7BdUNWRzhgNmqzjDdrEQBoYaKjS2VkEYlcJQx560BaQ=="
+  },
+  {
+    "id": "SmartFormat.Extensions.Newtonsoft.Json",
+    "version": "3.6.2",
+    "license": "MIT",
+    "authors": "axuno gGmbH, Scott Rippey, SmartFormat Project maintainers and contributors.",
+    "copyright": "Copyright 2011-2026 SmartFormat Project",
+    "repository": "https://github.com/axuno/SmartFormat.git",
+    "sha512": "sha512-LhQaEzNW3ZlgZvKgDUP8NOPLPGiJvLwg0RK8kvBjgX/j0JJSmHv7t8PHcjXwLEnU6sIvoIBuYzF72OkVv+mNHw=="
+  },
+  {
+    "id": "SmartFormat.Extensions.System.Text.Json",
+    "version": "3.6.2",
+    "license": "MIT",
+    "authors": "axuno gGmbH, Scott Rippey, SmartFormat Project maintainers and contributors.",
+    "copyright": "Copyright 2011-2026 SmartFormat Project",
+    "repository": "https://github.com/axuno/SmartFormat.git",
+    "sha512": "sha512-jtieCrSxR5K6PY0OCYAlMD48bAFB6fj/M5xelTo4C9++WTj73cc1eAJwa37H8YKFx6CvZGpkoe5oXx/oIYEe1Q=="
+  },
+  {
+    "id": "SmartFormat.Extensions.Time",
+    "version": "3.6.2",
+    "license": "MIT",
+    "authors": "axuno gGmbH, Scott Rippey, SmartFormat Project maintainers and contributors.",
+    "copyright": "Copyright 2011-2026 SmartFormat Project",
+    "repository": "https://github.com/axuno/SmartFormat.git",
+    "sha512": "sha512-VNaX+b/1LOf7Pn0lA+7HLG3PkOsk8hHV8rAORje3Z5FAdm/JsygXx0Em8XPM8j30SR5T17T6syY9HqOmOM48Ig=="
+  },
+  {
+    "id": "SmartFormat.Extensions.Xml",
+    "version": "3.6.2",
+    "license": "MIT",
+    "authors": "axuno gGmbH, Scott Rippey, SmartFormat Project maintainers and contributors.",
+    "copyright": "Copyright 2011-2026 SmartFormat Project",
+    "repository": "https://github.com/axuno/SmartFormat.git",
+    "sha512": "sha512-AM4jmBmnlORFwUk2aXAoe+jcDeGfi9X4U2CqgEzec4g3r5MpTYoXBGKAz/SKFdohiUi3lo5njNKD67JKrEYEHw=="
+  },
+  {
+    "id": "SmartFormat.NET",
+    "version": "3.6.2",
+    "license": "MIT",
+    "authors": "axuno gGmbH, Scott Rippey, SmartFormat Project maintainers and contributors.",
+    "copyright": "Copyright 2011-2026 SmartFormat Project",
+    "repository": "https://github.com/axuno/SmartFormat.git",
+    "sha512": "sha512-fzz3JU+hAqUW2hZBNrh8bntXRHtOrjZskUUiRDcpV9nLMKgb913/MS0UQns2BejvKCWabwwrG8PdLnPOlGGKBg=="
+  },
+  {
+    "id": "SQLitePCLRaw.bundle_e_sqlite3",
+    "version": "2.1.13",
+    "license": "Apache-2.0",
+    "authors": "Eric Sink",
+    "copyright": "Copyright 2014-2024 SourceGear, LLC",
+    "repository": "https://github.com/ericsink/SQLitePCL.raw",
+    "sha512": "sha512-NlDixlC7uHmo+ojXRgkNvN0tQtVGpLDZ3x2OpgNj+G07VHh5cXSszFDrAiC4BpUiPwkcaeuQkMV9WQ123xVtmQ=="
+  },
+  {
+    "id": "SQLitePCLRaw.core",
+    "version": "2.1.13",
+    "license": "Apache-2.0",
+    "authors": "Eric Sink",
+    "copyright": "Copyright 2014-2024 SourceGear, LLC",
+    "repository": "https://github.com/ericsink/SQLitePCL.raw",
+    "sha512": "sha512-2joofoinuHBFs0nMX3nKuXgxpXryRkCOdM2Ua6HBqQLLy6IW+5f28ZI+HAvMyF8vG7XfNz/lwfBfE6V4juru8Q=="
+  },
+  {
+    "id": "SQLitePCLRaw.lib.e_sqlite3",
+    "version": "2.1.13",
+    "license": "Apache-2.0",
+    "authors": "Eric Sink",
+    "copyright": "Copyright 2014-2024 SourceGear, LLC",
+    "repository": "https://github.com/ericsink/SQLitePCL.raw",
+    "sha512": "sha512-D2UAuiGxFYBqeRXjjjGgvJ5UQifzn6wefmSqeKU7XcNGKLbJRP6X7kcPZ6opOBJGdCIlgbSxTvDpBbLvsN594A=="
+  },
+  {
+    "id": "SQLitePCLRaw.provider.e_sqlite3",
+    "version": "2.1.13",
+    "license": "Apache-2.0",
+    "authors": "Eric Sink",
+    "copyright": "Copyright 2014-2024 SourceGear, LLC",
+    "repository": "https://github.com/ericsink/SQLitePCL.raw",
+    "sha512": "sha512-ZU60dSqoSNRe49KcQDUmOVgdRtjITOssVXFtiISs+zJXDI4D2Sndwpn2NOtzDQNPu0ZAvpoLPQ+GLKv6iEZn8Q=="
+  },
+  {
+    "id": "ZString",
+    "version": "2.6.0",
+    "license": "MIT",
+    "authors": "Cysharp",
+    "copyright": "© Cysharp, Inc.",
+    "repository": "https://github.com/Cysharp/ZString",
+    "sha512": "sha512-XE8a+11nZg0LRaf+RGABEWaHIf8yGd5w8v/Ra1iWxMBmAVzwuKbW7G21mS0U7w7sh1lYcgckInWGgnz4qyET8A=="
+  }
+]

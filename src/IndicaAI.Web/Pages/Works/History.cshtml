@@ -1,0 +1,60 @@
+@page
+@model IndicaAI.Web.Pages.Works.HistoryModel
+@{ViewData["Title"]=T["History"];}
+<div class="history-layout">
+ <aside class="history-sidebar">
+  <a class="back-link" href="/Works/Details?id=@Model.Work.Id">@T["BackTracking"]</a>
+  <h2>@Model.Work.Title</h2>
+  <dl>
+   <div><dt>@T["Media"]</dt><dd>@T["media."+Model.Work.MediaCode]</dd></div>
+   <div><dt>@T["CurrentStatus"]</dt><dd><span class="state-badge">@T.CurrentState(Model.Work.MediaCode,Model.Tracking.StateCode)</span></dd></div>
+   <div><dt>@T["CurrentCycle"]</dt><dd>@Model.Cycles.Last().Ordinal</dd></div>
+   <div><dt>@T["AddedOn"]</dt><dd>@T.Date(Model.Tracking.IncludedOn)</dd></div>
+  </dl>
+  <a class="button" href="/Works/NewCycle?id=@Model.Id">@T["NewConsumption"]</a>
+ </aside>
+ <section>
+  <h1 class="history-title">@T["History"]</h1>
+  <div class="table-scroll">
+   <table class="history-table">
+    <thead><tr><th>@T["RecordedAt"]</th><th>@T["Event"]</th><th>@T["InformedDate"]</th></tr></thead>
+    <tbody>
+     @foreach(var e in Model.Events){
+      <tr>
+       <td>@T.Instant(e.RecordedAtUtc)</td>
+       <td><strong>@T["event."+e.Type] · @T["Cycle"] @Model.Cycles.Single(c=>c.Id==e.CycleId).Ordinal</strong>
+        @if(e.ToStateCode is not null){<p>@(e.FromStateCode is null?"":T.CurrentState(e.MediaCode,e.FromStateCode)+" → ")@T.CurrentState(e.MediaCode,e.ToStateCode)</p>}
+        @if(e.Type=="date_corrected"){<p class="muted">@T["OriginalPreserved"]</p>}
+       </td>
+       <td>
+        @if(e.Field is not null){
+         <p>@T[e.Field=="start"?"StartDate":"CompletionDate"]: @(DateOnly.TryParse(e.OldValue,out var oldDate)?T.Date(oldDate):T["NoDate"]) → @(DateOnly.TryParse(e.NewValue,out var newDate)?T.Date(newDate):T["NoDate"])</p>
+        }else if(e.NewValue is not null){
+         using var dates=System.Text.Json.JsonDocument.Parse(e.NewValue);
+         foreach(var property in dates.RootElement.EnumerateObject()){
+          <p>@T[property.Name=="StartOn"?"StartDate":"CompletionDate"]: @(property.Value.ValueKind!=System.Text.Json.JsonValueKind.Null&&DateOnly.TryParse(property.Value.GetString(),out var d)?T.Date(d):T["NoDate"])</p>
+         }
+        }else{<span class="muted">—</span>}
+       </td>
+      </tr>
+     }
+    </tbody>
+   </table>
+  </div>
+  <p class="history-reference help">@T.Get("DateReference",T.Date(Model.Tracking.IncludedOn)) @T["NoAutomaticCompletion"]</p>
+  <details class="correction-form" open="@(Model.ErrorCode is not null)">
+   <summary>@T["event.date_corrected"]</summary>
+   @if(Model.ErrorCode is not null){<p class="notice error" role="alert">@T["error."+Model.ErrorCode]</p>}
+   <form method="post" data-draft="date-@Model.Id" data-version="@Model.Version" asp-route-id="@Model.Id">
+    <input asp-for="Version" type="hidden"/><input asp-for="OperationId" type="hidden"/>
+    <div class="date-grid">
+     <div class="field"><label asp-for="CycleId">@T["Cycle"]</label><select asp-for="CycleId">@foreach(var c in Model.Cycles){<option value="@c.Id">@T["Cycle"] @c.Ordinal</option>}</select></div>
+     <div class="field"><label asp-for="Field">@T["InformedDate"]</label><select asp-for="Field"><option value="start">@T["StartDate"]</option><option value="completion">@T["CompletionDate"]</option></select></div>
+     <div class="field"><label asp-for="Value">@T["InformedDate"]</label><input asp-for="Value" type="date"/></div>
+    </div>
+    <label class="check-line"><input asp-for="ConfirmDates"/>@T["ConfirmDates"]</label><button>@T["Save"]</button>
+   </form>
+  </details>
+ </section>
+</div>
+
